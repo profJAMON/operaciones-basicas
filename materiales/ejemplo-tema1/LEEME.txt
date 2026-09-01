@@ -1,0 +1,2 @@
+Coloca aquí el PDF real de "apuntes.pdf" para el tema de ejemplo,
+o borra esta referencia de data/temas.json si no lo necesitas.

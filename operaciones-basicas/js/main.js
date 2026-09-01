@@ -1,55 +1,89 @@
-/* Pinta el índice de temas en index.html a partir de data/temas.json */
+/* Pinta el índice de unidades y sesiones en index.html a partir de data/temas.json */
 
 async function cargarIndice() {
   const contenedor = document.getElementById('indice-temas');
   try {
     const respuesta = await fetch('data/temas.json');
     const datos = await respuesta.json();
-    const temas = [...(datos.temas || [])].sort((a, b) => b.fecha.localeCompare(a.fecha));
+    const unidades = datos.unidades || [];
 
-    if (temas.length === 0) {
-      contenedor.innerHTML = '<p class="vacio">Todavía no hay temas publicados. Vuelve pronto.</p>';
+    if (unidades.length === 0) {
+      contenedor.innerHTML = '<p class="vacio">Todavía no hay unidades publicadas. Vuelve pronto.</p>';
       return;
     }
 
-    const cabecera = document.createElement('div');
-    cabecera.className = 'indice__cabecera';
-    cabecera.innerHTML = '<span>Fecha</span><span>Tema</span>';
-    contenedor.appendChild(cabecera);
+    unidades.forEach((unidad, indiceUnidad) => {
+      const bloque = document.createElement('section');
+      bloque.className = 'unidad';
 
-    temas.forEach(tema => {
-      const fila = document.createElement('a');
-      fila.className = 'tema-fila';
-      fila.href = `tema.html?id=${encodeURIComponent(tema.id)}`;
+      const cabecera = document.createElement('div');
+      cabecera.className = 'unidad__cabecera';
+      const titulo = document.createElement('h2');
+      titulo.className = 'unidad__titulo';
+      titulo.textContent = `Unidad ${indiceUnidad + 1} · ${unidad.titulo}`;
+      cabecera.appendChild(titulo);
+      if (unidad.descripcion) {
+        const descripcion = document.createElement('p');
+        descripcion.className = 'unidad__descripcion';
+        descripcion.textContent = unidad.descripcion;
+        cabecera.appendChild(descripcion);
+      }
+      bloque.appendChild(cabecera);
 
-      const fecha = document.createElement('span');
-      fecha.className = 'tema-fila__fecha';
-      fecha.textContent = formatearFecha(tema.fecha);
+      const sesiones = unidad.sesiones || [];
+      if (sesiones.length === 0) {
+        const vacio = document.createElement('p');
+        vacio.className = 'vacio';
+        vacio.textContent = 'Todavía no hay sesiones publicadas en esta unidad.';
+        bloque.appendChild(vacio);
+      } else {
+        const lista = document.createElement('div');
+        lista.className = 'indice';
 
-      const cuerpo = document.createElement('div');
-      const titulo = document.createElement('p');
-      titulo.className = 'tema-fila__titulo';
-      titulo.textContent = tema.titulo;
-      const descripcion = document.createElement('p');
-      descripcion.className = 'tema-fila__descripcion';
-      descripcion.textContent = tema.descripcion || '';
+        const filaCabecera = document.createElement('div');
+        filaCabecera.className = 'indice__cabecera';
+        filaCabecera.innerHTML = '<span>Fecha</span><span>Sesión</span>';
+        lista.appendChild(filaCabecera);
 
-      const meta = document.createElement('p');
-      meta.className = 'tema-fila__meta';
-      const nMateriales = (tema.materiales || []).length;
-      const nActividades = (tema.actividades || []).length;
-      meta.textContent = `${nMateriales} material(es) · ${nActividades} actividad(es)`;
+        sesiones.forEach(sesion => {
+          const fila = document.createElement('a');
+          fila.className = 'tema-fila';
+          fila.href = `tema.html?id=${encodeURIComponent(sesion.id)}`;
 
-      cuerpo.appendChild(titulo);
-      cuerpo.appendChild(descripcion);
-      cuerpo.appendChild(meta);
+          const fecha = document.createElement('span');
+          fecha.className = 'tema-fila__fecha';
+          fecha.textContent = formatearFecha(sesion.fecha);
 
-      fila.appendChild(fecha);
-      fila.appendChild(cuerpo);
-      contenedor.appendChild(fila);
+          const cuerpo = document.createElement('div');
+          const tituloSesion = document.createElement('p');
+          tituloSesion.className = 'tema-fila__titulo';
+          tituloSesion.textContent = sesion.titulo;
+          const descripcionSesion = document.createElement('p');
+          descripcionSesion.className = 'tema-fila__descripcion';
+          descripcionSesion.textContent = sesion.descripcion || '';
+
+          const meta = document.createElement('p');
+          meta.className = 'tema-fila__meta';
+          const nMateriales = (sesion.materiales || []).length;
+          const nActividades = (sesion.actividades || []).length;
+          meta.textContent = `${nMateriales} material(es) · ${nActividades} actividad(es)`;
+
+          cuerpo.appendChild(tituloSesion);
+          cuerpo.appendChild(descripcionSesion);
+          cuerpo.appendChild(meta);
+
+          fila.appendChild(fecha);
+          fila.appendChild(cuerpo);
+          lista.appendChild(fila);
+        });
+
+        bloque.appendChild(lista);
+      }
+
+      contenedor.appendChild(bloque);
     });
   } catch (error) {
-    contenedor.innerHTML = '<p class="vacio">No se ha podido cargar el listado de temas. Si estás probando el sitio en tu ordenador, recuerda abrirlo con un servidor local (ver README).</p>';
+    contenedor.innerHTML = '<p class="vacio">No se ha podido cargar el listado de unidades. Si estás probando el sitio en tu ordenador, recuerda abrirlo con un servidor local (ver README).</p>';
     console.error(error);
   }
 }

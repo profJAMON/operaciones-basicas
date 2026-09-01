@@ -10,14 +10,27 @@ async function cargarTema() {
   try {
     const respuesta = await fetch('data/temas.json');
     const datos = await respuesta.json();
-    const tema = (datos.temas || []).find(t => t.id === id);
+
+    let tema = null;
+    let unidadDeLaSesion = null;
+    for (const unidad of (datos.unidades || [])) {
+      const encontrada = (unidad.sesiones || []).find(s => s.id === id);
+      if (encontrada) {
+        tema = encontrada;
+        unidadDeLaSesion = unidad;
+        break;
+      }
+    }
 
     if (!tema) {
-      raiz.innerHTML = '<p class="vacio">No se ha encontrado este tema.</p>';
+      raiz.innerHTML = '<p class="vacio">No se ha encontrado esta sesión.</p>';
       return;
     }
 
     document.title = `${tema.titulo} · Operaciones Básicas`;
+    if (unidadDeLaSesion) {
+      document.getElementById('tema-unidad').textContent = unidadDeLaSesion.titulo;
+    }
     document.getElementById('tema-titulo').textContent = tema.titulo;
     document.getElementById('tema-descripcion').textContent = tema.descripcion || '';
 
@@ -25,7 +38,7 @@ async function cargarTema() {
     pintarMateriales(tema.materiales || []);
     pintarActividades(tema.actividades || []);
   } catch (error) {
-    raiz.innerHTML = '<p class="vacio">No se ha podido cargar el tema. Si estás probando el sitio en tu ordenador, recuerda abrirlo con un servidor local (ver README).</p>';
+    raiz.innerHTML = '<p class="vacio">No se ha podido cargar la sesión. Si estás probando el sitio en tu ordenador, recuerda abrirlo con un servidor local (ver README).</p>';
     console.error(error);
   }
 }

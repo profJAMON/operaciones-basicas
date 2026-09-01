@@ -113,6 +113,29 @@ img, svg { max-width: 100%; }
 
 .contenedor { max-width: 880px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
 
+/* ---------- Unidades (agrupan sesiones en el índice) ---------- */
+
+.unidad { margin-bottom: 3.2rem; }
+.unidad:last-child { margin-bottom: 0; }
+
+.unidad__cabecera { margin-bottom: 0.6rem; }
+
+.unidad__titulo {
+  font-family: var(--fuente-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+}
+
+.unidad__descripcion {
+  margin: 0;
+  color: #454a3f;
+  font-size: 0.96rem;
+  max-width: 62ch;
+}
+
+.unidad .indice { margin-top: 0.8rem; }
+
 /* ---------- Índice de temas ---------- */
 
 .indice { border-top: 2px solid var(--tinta); }

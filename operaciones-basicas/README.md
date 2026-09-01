@@ -2,7 +2,7 @@
 
 Sitio estático (HTML + CSS + JS, sin frameworks ni build step) para ir publicando
 los temas de la asignatura a medida que los creas. Los alumnos ven un índice con
-los temas más recientes primero; cada tema puede tener materiales (PDF, enlaces,
+las sesiones agrupadas por unidad; cada sesión puede tener materiales (PDF, enlaces,
 vídeos) y actividades interactivas (quiz de opción múltiple, relacionar conceptos).
 
 ## Candado de acceso (contraseña)
@@ -31,60 +31,73 @@ con `sessionStorage`, así que se la volverá a pedir si cierra la pestaña).
 
 ```
 index.html          → página de inicio, lista los temas
-tema.html            → plantilla de detalle de un tema (usa ?id=... en la URL)
+tema.html            → plantilla de detalle de una sesión (usa ?id=... en la URL)
 css/estilos.css      → todos los estilos
 js/main.js           → pinta el índice de index.html
-js/tema.js           → pinta el detalle de tema.html
+js/tema.js           → pinta el detalle de tema.html (busca la sesión dentro de las unidades)
 js/actividades.js    → motor de actividades interactivas (quiz, relacionar)
 data/temas.json      → AQUÍ ES DONDE AÑADES CONTENIDO NUEVO
-materiales/          → PDFs y otros ficheros que cuelgues (organizados por tema)
+materiales/          → PDFs y otros ficheros que cuelgues (organizados por sesión)
 ```
 
 No hay backend ni base de datos: todo el contenido vive en `data/temas.json`,
 y los ficheros (apuntes, etc.) se suben directamente al repositorio dentro de
 `materiales/`.
 
-## Añadir un tema nuevo
+## Añadir una sesión nueva
 
-Edita `data/temas.json` y añade un objeto nuevo dentro del array `"temas"`:
+El contenido se organiza en **unidades**, y cada unidad contiene **sesiones**. Edita `data/temas.json`:
 
 ```json
 {
-  "id": "identificador-unico-sin-espacios",
-  "titulo": "Título del tema",
-  "fecha": "2026-09-15",
-  "descripcion": "Una o dos frases sobre el tema.",
-  "contenido": "<h2>Un apartado</h2><p>Texto de la sesión, en HTML. Opcional: si lo omites, la página solo muestra descripción + materiales + actividades.</p>",
-  "materiales": [
-    { "tipo": "pdf", "titulo": "Apuntes", "url": "materiales/mi-tema/apuntes.pdf" },
-    { "tipo": "enlace", "titulo": "Un enlace externo", "url": "https://..." }
-  ],
-  "actividades": [
+  "unidades": [
     {
-      "tipo": "quiz",
-      "titulo": "Autoevaluación",
-      "preguntas": [
-        { "pregunta": "¿Enunciado?", "opciones": ["A", "B", "C"], "correcta": 1 }
-      ]
-    },
-    {
-      "tipo": "relacionar",
-      "titulo": "Relaciona los conceptos",
-      "pares": [
-        { "izquierda": "Término", "derecha": "Definición" }
+      "id": "html-css-practico",
+      "titulo": "HTML/CSS práctico",
+      "descripcion": "Una frase sobre la unidad.",
+      "sesiones": [
+        {
+          "id": "identificador-unico-sin-espacios",
+          "titulo": "Sesión 4 — Introducción a CSS",
+          "fecha": "2026-09-29",
+          "descripcion": "Una o dos frases sobre la sesión.",
+          "contenido": "<h2>Un apartado</h2><p>Texto de la sesión, en HTML. Opcional: si lo omites, la página solo muestra descripción + materiales + actividades.</p>",
+          "materiales": [
+            { "tipo": "pdf", "titulo": "Apuntes", "url": "materiales/mi-sesion/apuntes.pdf" },
+            { "tipo": "enlace", "titulo": "Un enlace externo", "url": "https://..." }
+          ],
+          "actividades": [
+            {
+              "tipo": "quiz",
+              "titulo": "Autoevaluación",
+              "preguntas": [
+                { "pregunta": "¿Enunciado?", "opciones": ["A", "B", "C"], "correcta": 1 }
+              ]
+            },
+            {
+              "tipo": "relacionar",
+              "titulo": "Relaciona los conceptos",
+              "pares": [
+                { "izquierda": "Término", "derecha": "Definición" }
+              ]
+            }
+          ]
+        }
       ]
     }
   ]
 }
 ```
 
+Para añadir una **sesión** a una unidad ya existente, añade un objeto dentro de su array `"sesiones"`. Para añadir una **unidad nueva**, añade un objeto nuevo dentro del array `"unidades"` (aparecerá como una sección más en la portada, en el orden en que la coloques en el array — no se reordena automáticamente).
+
 Notas:
-- `"contenido"` es HTML libre que se inserta tal cual en la página del tema (apartado "lección"). Usa `<h2>`, `<p>`, `<ul>`, `<pre><code>...</code></pre>` para bloques de código, y `<div class="nota">...</div>` para avisos destacados. Como es HTML que tú mismo escribes, recuerda escapar `<` y `>` como `&lt;` y `&gt;` cuando quieras mostrar una etiqueta HTML como texto (por ejemplo, dentro de un bloque de código de ejemplo).
+- `"contenido"` es HTML libre que se inserta tal cual en la página de la sesión (apartado "lección"). Usa `<h2>`, `<p>`, `<ul>`, `<pre><code>...</code></pre>` para bloques de código, y `<div class="nota">...</div>` para avisos destacados. Como es HTML que tú mismo escribes, recuerda escapar `<` y `>` como `&lt;` y `&gt;` cuando quieras mostrar una etiqueta HTML como texto (por ejemplo, dentro de un bloque de código de ejemplo).
 - `"correcta"` es el **índice** (empezando en 0) de la opción correcta dentro de `"opciones"`.
 - `"id"` debe ser único y sin espacios (se usa en la URL: `tema.html?id=identificador-unico-sin-espacios`).
-- `"materiales"` y `"actividades"` son opcionales: si un tema no tiene actividades, simplemente omite esa clave o déjala como `[]`.
+- `"materiales"` y `"actividades"` son opcionales: si una sesión no tiene actividades, simplemente omite esa clave o déjala como `[]`.
 - Los tipos de material soportados son `pdf`, `enlace` y `video` (solo cambia el icono que se muestra; en los tres casos es un enlace normal).
-- Si subes un PDF, colócalo dentro de `materiales/<nombre-del-tema>/` y apunta `"url"` a esa ruta relativa.
+- Si subes un PDF, colócalo dentro de `materiales/<nombre-de-la-sesion>/` y apunta `"url"` a esa ruta relativa.
 
 ### Añadir un tipo de actividad nuevo
 
@@ -131,11 +144,11 @@ O, si usas VS Code, la extensión "Live Server" hace lo mismo con un clic.
 
 ## Publicar contenido nuevo a partir de ahora
 
-Cada vez que quieras subir un tema nuevo:
+Cada vez que quieras publicar una sesión nueva:
 ```bash
 # edita data/temas.json y añade tus PDFs a materiales/
 git add .
-git commit -m "Añadir tema: nombre del tema"
+git commit -m "Añadir sesión: nombre de la sesión"
 git push
 ```
 GitHub Pages se actualiza sola en uno o dos minutos tras cada `push`.
@@ -147,5 +160,5 @@ GitHub Pages se actualiza sola en uno o dos minutos tras cada `push`.
   cada alumno, para que vean su progreso.
 - Añadir un tipo de actividad "ordenar pasos" (arrastrar una secuencia de
   pasos hasta ponerlos en el orden correcto).
-- Sustituir `data/temas.json` por varios ficheros (uno por tema) si la lista
+- Sustituir `data/temas.json` por varios ficheros (uno por unidad) si la lista
   crece mucho, para que los `git diff` sean más pequeños.

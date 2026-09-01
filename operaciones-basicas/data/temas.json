@@ -1,0 +1,198 @@
+{
+  "temas": [
+    {
+      "id": "sesion-1-primeros-pasos-html",
+      "titulo": "Sesión 1 — Primeros pasos en HTML",
+      "fecha": "2026-09-08",
+      "descripcion": "La estructura mínima de toda página HTML, las etiquetas de encabezado, y tu primera página guardada y abierta en el navegador.",
+      "contenido": "<h2>¿Qué es HTML?</h2>\n<p>HTML es el lenguaje que usan todas las páginas web para definir <strong>qué contenido hay y cómo está organizado</strong> (no cómo se ve — eso lo veremos con CSS más adelante).</p>\n<p>Se basa en <strong>etiquetas</strong>, que casi siempre van en pareja: una de apertura y una de cierre.</p>\n<pre><code><span class='et'>&lt;p&gt;</span>Esto es un párrafo.<span class='et'>&lt;/p&gt;</span></code></pre>\n\n<h2>La estructura mínima de toda página HTML</h2>\n<p>Cualquier página HTML empieza siempre igual:</p>\n<pre><code><span class='et'>&lt;!DOCTYPE html&gt;</span>\n<span class='et'>&lt;html&gt;</span>\n<span class='et'>&lt;head&gt;</span>\n    <span class='et'>&lt;title&gt;</span>Mi primera página<span class='et'>&lt;/title&gt;</span>\n<span class='et'>&lt;/head&gt;</span>\n<span class='et'>&lt;body&gt;</span>\n\n    <span class='co'>&lt;!-- Aquí va todo el contenido visible --&gt;</span>\n\n<span class='et'>&lt;/body&gt;</span>\n<span class='et'>&lt;/html&gt;</span></code></pre>\n<ul>\n<li><code>&lt;!DOCTYPE html&gt;</code> → le dice al navegador que esto es HTML moderno.</li>\n<li><code>&lt;html&gt;</code> → envuelve toda la página.</li>\n<li><code>&lt;head&gt;</code> → información sobre la página (no se ve en pantalla). Aquí ponemos el <code>&lt;title&gt;</code>, que aparece en la pestaña del navegador.</li>\n<li><code>&lt;body&gt;</code> → todo lo que SÍ se ve en pantalla va aquí.</li>\n</ul>\n\n<h2>Ejercicio guiado</h2>\n<ol>\n<li>Abre VS Code y crea una carpeta nueva llamada <code>mi-web</code>.</li>\n<li>Dentro, crea un archivo llamado <code>index.html</code>.</li>\n<li>Copia la estructura mínima de arriba.</li>\n<li>Dentro de <code>&lt;body&gt;</code>, añade un <code>&lt;h1&gt;</code> con un saludo y un <code>&lt;p&gt;</code> de presentación.</li>\n<li>Guarda el archivo y ábrelo con el navegador (arrastra el archivo a una pestaña).</li>\n</ol>\n\n<h2>Las etiquetas de encabezado</h2>\n<p>HTML tiene 6 niveles de encabezado, del más importante al menos importante:</p>\n<pre><code><span class='et'>&lt;h1&gt;</span>Título principal<span class='et'>&lt;/h1&gt;</span>\n<span class='et'>&lt;h2&gt;</span>Subtítulo<span class='et'>&lt;/h2&gt;</span>\n<span class='et'>&lt;h3&gt;</span>Un subtítulo más pequeño<span class='et'>&lt;/h3&gt;</span>\n<span class='co'>&lt;!-- ... hasta h6 --&gt;</span></code></pre>\n<div class=\"nota\"><strong>Regla de oro:</strong> en una página normalmente hay un solo <code>&lt;h1&gt;</code> (el título principal), y el resto de encabezados se usan para organizar secciones, de mayor a menor importancia.</div>\n\n<h2>Práctica</h2>\n<ul class=\"checklist\">\n<li>Un <code>&lt;h1&gt;</code> con tu nombre.</li>\n<li>Un <code>&lt;h2&gt;</code> que diga \"Sobre mí\" y dos o tres <code>&lt;p&gt;</code> contando quién eres.</li>\n<li>Un <code>&lt;h2&gt;</code> que diga \"Esta asignatura\" y un <code>&lt;p&gt;</code> explicando qué esperas aprender.</li>\n</ul>",
+      "materiales": [
+        {
+          "tipo": "enlace",
+          "titulo": "Referencia de etiquetas HTML (MDN)",
+          "url": "https://developer.mozilla.org/es/docs/Web/HTML/Element"
+        }
+      ],
+      "actividades": [
+        {
+          "tipo": "quiz",
+          "titulo": "Autoevaluación rápida",
+          "preguntas": [
+            {
+              "pregunta": "¿Qué etiqueta contiene todo el contenido que SÍ se ve en pantalla?",
+              "opciones": [
+                "<head>",
+                "<body>",
+                "<html>"
+              ],
+              "correcta": 1
+            },
+            {
+              "pregunta": "¿Cuántos <h1> debería tener normalmente una página?",
+              "opciones": [
+                "Uno",
+                "Tantos como secciones",
+                "Ninguno, es opcional"
+              ],
+              "correcta": 0
+            },
+            {
+              "pregunta": "¿Qué hace <!DOCTYPE html>?",
+              "opciones": [
+                "Añade un título a la pestaña",
+                "Le dice al navegador que es HTML moderno",
+                "Crea un comentario"
+              ],
+              "correcta": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sesion-2-texto-listas-enlaces",
+      "titulo": "Sesión 2 — Texto, listas y enlaces",
+      "fecha": "2026-09-15",
+      "descripcion": "Cómo destacar texto con <strong> y <em>, organizar información con listas ordenadas y anidadas, y conectar páginas con enlaces y anclas.",
+      "contenido": "<h2>Texto importante y texto enfatizado</h2>\n<pre><code><span class='et'>&lt;p&gt;</span>Esto es <span class='et'>&lt;strong&gt;</span>muy importante<span class='et'>&lt;/strong&gt;</span> y esto está <span class='et'>&lt;em&gt;</span>enfatizado<span class='et'>&lt;/em&gt;</span>.<span class='et'>&lt;/p&gt;</span></code></pre>\n<ul>\n<li><code>&lt;strong&gt;</code> → el texto es importante (normalmente en <strong>negrita</strong>).</li>\n<li><code>&lt;em&gt;</code> → énfasis (normalmente en cursiva).</li>\n</ul>\n<p>Existen <code>&lt;b&gt;</code> y <code>&lt;i&gt;</code>, pero solo cambian el aspecto visual sin decir <em>por qué</em> ese texto es especial — importa, por ejemplo, para lectores de pantalla. Usamos <code>&lt;strong&gt;</code>/<code>&lt;em&gt;</code> como norma en esta asignatura.</p>\n<div class=\"nota\">⚠️ La etiqueta <code>&lt;font&gt;</code> está eliminada de HTML moderno. El aspecto del texto lo controlaremos con CSS, no con etiquetas HTML.</div>\n\n<h2>Comentarios</h2>\n<pre><code><span class='co'>&lt;!-- Esto es un comentario, no se muestra en el navegador --&gt;</span></code></pre>\n\n<h2>Listas</h2>\n<h3>No ordenadas (con viñetas)</h3>\n<pre><code><span class='et'>&lt;ul&gt;</span>\n    <span class='et'>&lt;li&gt;</span>Elemento 1<span class='et'>&lt;/li&gt;</span>\n    <span class='et'>&lt;li&gt;</span>Elemento 2<span class='et'>&lt;/li&gt;</span>\n<span class='et'>&lt;/ul&gt;</span></code></pre>\n<h3>Ordenadas (numeradas)</h3>\n<pre><code><span class='et'>&lt;ol&gt;</span>\n    <span class='et'>&lt;li&gt;</span>Primer paso<span class='et'>&lt;/li&gt;</span>\n    <span class='et'>&lt;li&gt;</span>Segundo paso<span class='et'>&lt;/li&gt;</span>\n<span class='et'>&lt;/ol&gt;</span></code></pre>\n<h3>Listas anidadas</h3>\n<p>La lista anidada va <strong>dentro</strong> de la etiqueta <code>&lt;li&gt;</code>, no después:</p>\n<pre><code><span class='et'>&lt;ul&gt;</span>\n    <span class='et'>&lt;li&gt;</span>Frontend\n        <span class='et'>&lt;ul&gt;</span>\n            <span class='et'>&lt;li&gt;</span>HTML<span class='et'>&lt;/li&gt;</span>\n            <span class='et'>&lt;li&gt;</span>CSS<span class='et'>&lt;/li&gt;</span>\n        <span class='et'>&lt;/ul&gt;</span>\n    <span class='et'>&lt;/li&gt;</span>\n    <span class='et'>&lt;li&gt;</span>Backend<span class='et'>&lt;/li&gt;</span>\n<span class='et'>&lt;/ul&gt;</span></code></pre>\n\n<h2>Enlaces</h2>\n<pre><code><span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>\"https://www.google.com\"</span><span class='et'>&gt;</span>Ir a Google<span class='et'>&lt;/a&gt;</span></code></pre>\n<p>Para abrir en pestaña nueva de forma segura, añade <code>target=\"_blank\" rel=\"noopener\"</code>.</p>\n<p>Enlace local a otro archivo tuyo: <code>&lt;a href=\"sobre-mi.html\"&gt;Sobre mí&lt;/a&gt;</code></p>\n<p>Ancla dentro de la misma página:</p>\n<pre><code><span class='et'>&lt;h2</span> <span class='at'>id</span>=<span class='ca'>\"css\"</span><span class='et'>&gt;</span>CSS<span class='et'>&lt;/h2&gt;</span>\n...\n<span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>\"#css\"</span><span class='et'>&gt;</span>Ir a la sección CSS<span class='et'>&lt;/a&gt;</span></code></pre>\n\n<h2>Práctica</h2>\n<ul class=\"checklist\">\n<li>Una lista <code>&lt;ul&gt;</code> con al menos 3 temas de la asignatura, y una <code>&lt;ol&gt;</code> anidada dentro de uno de ellos.</li>\n<li>Un enlace externo a alguna web relacionada con lo que estás estudiando.</li>\n<li>Un enlace tipo ancla que salte a una sección de tu propia página.</li>\n</ul>",
+      "materiales": [
+        {
+          "tipo": "enlace",
+          "titulo": "MDN: la etiqueta <a>",
+          "url": "https://developer.mozilla.org/es/docs/Web/HTML/Element/a"
+        }
+      ],
+      "actividades": [
+        {
+          "tipo": "quiz",
+          "titulo": "Autoevaluación rápida",
+          "preguntas": [
+            {
+              "pregunta": "¿Por qué usamos <strong> en vez de <b>?",
+              "opciones": [
+                "<strong> es más corto de escribir",
+                "<strong> indica significado, no solo aspecto visual",
+                "<b> ya no funciona en navegadores modernos"
+              ],
+              "correcta": 1
+            },
+            {
+              "pregunta": "¿Dónde debe ir una lista <ul> anidada?",
+              "opciones": [
+                "Después del <li> padre",
+                "Dentro del <li> padre",
+                "Al principio de la lista principal"
+              ],
+              "correcta": 1
+            },
+            {
+              "pregunta": "¿Qué atributo añadimos a un enlace con target=\"_blank\" por seguridad?",
+              "opciones": [
+                "rel=\"noopener\"",
+                "safe=\"true\"",
+                "external=\"true\""
+              ],
+              "correcta": 0
+            }
+          ]
+        },
+        {
+          "tipo": "relacionar",
+          "titulo": "Relaciona cada etiqueta con su función",
+          "pares": [
+            {
+              "izquierda": "<strong>",
+              "derecha": "Marca texto importante"
+            },
+            {
+              "izquierda": "<em>",
+              "derecha": "Marca texto con énfasis"
+            },
+            {
+              "izquierda": "<ul>",
+              "derecha": "Lista sin orden, con viñetas"
+            },
+            {
+              "izquierda": "<ol>",
+              "derecha": "Lista numerada"
+            },
+            {
+              "izquierda": "<a href=\"#id\">",
+              "derecha": "Enlace ancla dentro de la misma página"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sesion-3-imagenes-estructura-semantica",
+      "titulo": "Sesión 3 — Imágenes y estructura semántica",
+      "fecha": "2026-09-22",
+      "descripcion": "Cómo insertar imágenes correctamente, y cómo organizar tu página en bloques con significado: header, nav, main, section, article y footer.",
+      "contenido": "<h2>Insertar imágenes</h2>\n<pre><code><span class='et'>&lt;img</span> <span class='at'>src</span>=<span class='ca'>\"foto.jpg\"</span> <span class='at'>alt</span>=<span class='ca'>\"Descripción de la imagen\"</span><span class='et'>&gt;</span></code></pre>\n<ul>\n<li><code>src</code> → dónde está la imagen.</li>\n<li><code>alt</code> → texto alternativo (lectores de pantalla, y aparece si la imagen no carga). No lo dejes vacío si aporta información.</li>\n</ul>\n<p><code>&lt;img&gt;</code> no se cierra — no existe <code>&lt;/img&gt;</code>.</p>\n<div class=\"nota\">Si cambias <code>width</code> y <code>height</code> sin mantener la proporción, la imagen sale deformada. Mejor indicar solo uno de los dos.</div>\n\n<h2>Estructura semántica</h2>\n<p>Hasta ahora todo el contenido está \"suelto\" dentro de <code>&lt;body&gt;</code>. HTML tiene etiquetas para dar significado a cada parte de la página:</p>\n<table>\n<tr><th>Etiqueta</th><th>Para qué sirve</th></tr>\n<tr><td><code>&lt;header&gt;</code></td><td>Cabecera de la página (título, logo...)</td></tr>\n<tr><td><code>&lt;nav&gt;</code></td><td>Menú de navegación</td></tr>\n<tr><td><code>&lt;main&gt;</code></td><td>Contenido principal (solo uno por página)</td></tr>\n<tr><td><code>&lt;section&gt;</code></td><td>Un bloque temático dentro del contenido</td></tr>\n<tr><td><code>&lt;article&gt;</code></td><td>Contenido independiente, con sentido por sí solo</td></tr>\n<tr><td><code>&lt;footer&gt;</code></td><td>Pie de página</td></tr>\n<tr><td><code>&lt;div&gt;</code></td><td>Contenedor genérico, sin significado propio</td></tr>\n</table>\n<div class=\"nota\"><strong>Regla práctica:</strong> antes de usar <code>&lt;div&gt;</code>, pregúntate si alguna etiqueta semántica describe mejor ese contenido. <code>&lt;div&gt;</code> es el último recurso, no el primero.</div>\n\n<h2>Plantilla de estructura</h2>\n<pre><code><span class='et'>&lt;body&gt;</span>\n\n    <span class='et'>&lt;header&gt;</span>\n        <span class='et'>&lt;h1&gt;</span>Tu nombre<span class='et'>&lt;/h1&gt;</span>\n    <span class='et'>&lt;/header&gt;</span>\n\n    <span class='et'>&lt;nav&gt;</span>\n        <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>\"#sobre-mi\"</span><span class='et'>&gt;</span>Sobre mí<span class='et'>&lt;/a&gt;</span>\n    <span class='et'>&lt;/nav&gt;</span>\n\n    <span class='et'>&lt;main&gt;</span>\n        <span class='et'>&lt;section</span> <span class='at'>id</span>=<span class='ca'>\"sobre-mi\"</span><span class='et'>&gt;</span>\n            <span class='et'>&lt;h2&gt;</span>Sobre mí<span class='et'>&lt;/h2&gt;</span>\n            <span class='et'>&lt;p&gt;</span>...<span class='et'>&lt;/p&gt;</span>\n        <span class='et'>&lt;/section&gt;</span>\n    <span class='et'>&lt;/main&gt;</span>\n\n    <span class='et'>&lt;footer&gt;</span>\n        <span class='et'>&lt;p&gt;</span>Página creada por [tu nombre]<span class='et'>&lt;/p&gt;</span>\n    <span class='et'>&lt;/footer&gt;</span>\n\n<span class='et'>&lt;/body&gt;</span></code></pre>\n\n<h2>Práctica</h2>\n<ul class=\"checklist\">\n<li>Todo tu contenido está dentro de <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code> o <code>&lt;footer&gt;</code> — nada suelto directamente en <code>&lt;body&gt;</code>.</li>\n<li>Tu <code>&lt;nav&gt;</code> tiene enlaces tipo ancla que funcionan.</li>\n<li>Tu imagen está bien colocada dentro de alguna sección con sentido.</li>\n</ul>",
+      "materiales": [
+        {
+          "tipo": "enlace",
+          "titulo": "MDN: elementos semánticos de HTML5",
+          "url": "https://developer.mozilla.org/es/docs/Web/HTML/Reference/Elements"
+        }
+      ],
+      "actividades": [
+        {
+          "tipo": "relacionar",
+          "titulo": "Relaciona cada etiqueta semántica con su función",
+          "pares": [
+            {
+              "izquierda": "<header>",
+              "derecha": "Cabecera de la página"
+            },
+            {
+              "izquierda": "<nav>",
+              "derecha": "Menú de navegación"
+            },
+            {
+              "izquierda": "<main>",
+              "derecha": "Contenido principal (solo uno por página)"
+            },
+            {
+              "izquierda": "<section>",
+              "derecha": "Bloque temático dentro del contenido"
+            },
+            {
+              "izquierda": "<article>",
+              "derecha": "Contenido independiente con sentido propio"
+            },
+            {
+              "izquierda": "<div>",
+              "derecha": "Contenedor genérico sin significado"
+            }
+          ]
+        },
+        {
+          "tipo": "quiz",
+          "titulo": "Autoevaluación rápida",
+          "preguntas": [
+            {
+              "pregunta": "¿Qué atributo de <img> describe la imagen para lectores de pantalla?",
+              "opciones": [
+                "title",
+                "alt",
+                "desc"
+              ],
+              "correcta": 1
+            },
+            {
+              "pregunta": "¿Cuál es el último recurso cuando ninguna etiqueta semántica encaja?",
+              "opciones": [
+                "<section>",
+                "<div>",
+                "<article>"
+              ],
+              "correcta": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

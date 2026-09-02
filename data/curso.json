@@ -1,0 +1,14 @@
+{
+    "unidades": [
+          {
+                  "id": "html-css-practico",
+                  "titulo": "HTML/CSS práctico",
+                  "descripcion": "Etiquetas, estructura y estilos: construyes tu propia web personal desde la primera sesión.",
+                  "sesiones": [
+                            "sesion-1-primeros-pasos-html",
+                            "sesion-2-texto-listas-enlaces",
+                            "sesion-3-imagenes-estructura-semantica"
+                  ]
+          }
+    ]
+}

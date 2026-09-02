@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Operaciones Básicas</title>
-<meta name="description" content="Contenidos y actividades de la asignatura Operaciones Básicas.">
-<link rel="stylesheet" href="css/estilos.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operaciones Básicas</title>
+  <meta name="description" content="Contenidos y actividades de la asignatura Operaciones Básicas.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
-<header class="pizarra">
-  <div class="pizarra__marco">
-    <p class="pizarra__asignatura">Operaciones Básicas</p>
-    <h1 class="pizarra__titulo">Aquí encontrarás cada sesión en cuanto la publiquemos en clase.</h1>
-    <p class="pizarra__intro">Apuntes, materiales y actividades para practicar. Empezamos construyendo tu propia web con HTML y CSS — los temas más recientes aparecen primero.</p>
-  </div>
-  <div class="pizarra__simbolos" aria-hidden="true">&lt;/&gt;</div>
-</header>
+  <!-- Navegación Lateral -->
+  <nav class="sidebar">
+    <h2>Temario</h2>
+    <div id="indice-temas"></div> 
+  </nav>
 
-<main class="contenedor">
-  <div class="indice" id="indice-temas"></div>
-</main>
+  <!-- Contenido Principal -->
+  <main class="main-content">
+    <header class="card">
+      <span class="badge">Operaciones Básicas</span>
+      <h1>Apuntes y Actividades</h1>
+      <p>Contenidos y actividades para practicar. Empezamos construyendo tu propia web con HTML y CSS.</p>
+    </header>
 
-<footer class="pie">Operaciones Básicas · contenido publicado por el profesor/a</footer>
+    <div id="contenido-dinamico"></div>
+  </main>
 
-<script src="js/main.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,75 @@
+{
+    "id": "sesion-2-texto-listas-enlaces",
+    "titulo": "Sesión 2 — Texto, listas y enlaces",
+    "fecha": "2026-09-15",
+    "descripcion": "Cómo destacar texto con <strong> y <em>, organizar información con listas ordenadas y anidadas, y conectar páginas con enlaces y anclas.",
+    "contenido": "<h2>Texto importante y texto enfatizado</h2>\n<pre><code><span class='et'>&lt;p&gt;</span>Esto es <span class='et'>&lt;strong&gt;</span>muy importante<span class='et'>&lt;/strong&gt;</span> y esto está <span class='et'>&lt;em&gt;</span>enfatizado<span class='et'>&lt;/em&gt;</span>.<span class='et'>&lt;/p&gt;</span></code></pre>\n<ul>\n<li><code>&lt;strong&gt;</code> → el texto es importante (normalmente en <strong>negrita</strong>).</li>\n<li><code>&lt;em&gt;</code> → énfasis (normalmente en cursiva).</li>\n</ul>\n<p>Existen <code>&lt;b&gt;</code> y <code>&lt;i&gt;</code>, pero solo cambian el aspecto visual sin decir <em>por qué</em> ese texto es especial — importa, por ejemplo, para lectores de pantalla. Usamos <code>&lt;strong&gt;</code>/<code>&lt;em&gt;</code> como norma en esta asignatura.</p>\n<div class=\"nota\">⚠️ La etiqueta <code>&lt;font&gt;</code> está eliminada de HTML moderno. El aspecto del texto lo controlaremos con CSS, no con etiquetas HTML.</div>\n\n<h2>Comentarios</h2>\n<pre><code><span class='co'>&lt;!-- Esto es un comentario, no se muestra en el navegador --&gt;</span></code></pre>\n\n<h2>Listas</h2>\n<h3>No ordenadas (con viñetas)</h3>\n<pre><code><span class='et'>&lt;ul&gt;</span>\n    <span class='et'>&lt;li&gt;</span>Elemento 1<span class='et'>&lt;/li&gt;</span>\n    <span class='et'>&lt;li&gt;</span>Elemento 2<span class='et'>&lt;/li&gt;</span>\n<span class='et'>&lt;/ul&gt;</span></code></pre>\n<h3>Ordenadas (numeradas)</h3>\n<pre><code><span class='et'>&lt;ol&gt;</span>\n    <span class='et'>&lt;li&gt;</span>Primer paso<span class='et'>&lt;/li&gt;</span>\n    <span class='et'>&lt;li&gt;</span>Segundo paso<span class='et'>&lt;/li&gt;</span>\n<span class='et'>&lt;/ol&gt;</span></code></pre>\n<h3>Listas anidadas</h3>\n<p>La lista anidada va <strong>dentro</strong> de la etiqueta <code>&lt;li&gt;</code>, no después:</p>\n<pre><code><span class='et'>&lt;ul&gt;</span>\n    <span class='et'>&lt;li&gt;</span>Frontend\n        <span class='et'>&lt;ul&gt;</span>\n            <span class='et'>&lt;li&gt;</span>HTML<span class='et'>&lt;/li&gt;</span>\n            <span class='et'>&lt;li&gt;</span>CSS<span class='et'>&lt;/li&gt;</span>\n        <span class='et'>&lt;/ul&gt;</span>\n    <span class='et'>&lt;/li&gt;</span>\n    <span class='et'>&lt;li&gt;</span>Backend<span class='et'>&lt;/li&gt;</span>\n<span class='et'>&lt;/ul&gt;</span></code></pre>\n\n<h2>Enlaces</h2>\n<pre><code><span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>\"https://www.google.com\"</span><span class='et'>&gt;</span>Ir a Google<span class='et'>&lt;/a&gt;</span></code></pre>\n<p>Para abrir en pestaña nueva de forma segura, añade <code>target=\"_blank\" rel=\"noopener\"</code>.</p>\n<p>Enlace local a otro archivo tuyo: <code>&lt;a href=\"sobre-mi.html\"&gt;Sobre mí&lt;/a&gt;</code></p>\n<p>Ancla dentro de la misma página:</p>\n<pre><code><span class='et'>&lt;h2</span> <span class='at'>id</span>=<span class='ca'>\"css\"</span><span class='et'>&gt;</span>CSS<span class='et'>&lt;/h2&gt;</span>\n...\n<span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>\"#css\"</span><span class='et'>&gt;</span>Ir a la sección CSS<span class='et'>&lt;/a&gt;</span></code></pre>\n\n<h2>Práctica</h2>\n<ul class=\"checklist\">\n<li>Una lista <code>&lt;ul&gt;</code> con al menos 3 temas de la asignatura, y una <code>&lt;ol&gt;</code> anidada dentro de uno de ellos.</li>\n<li>Un enlace externo a alguna web relacionada con lo que estás estudiando.</li>\n<li>Un enlace tipo ancla que salte a una sección de tu propia página.</li>\n</ul>",
+    "materiales": [
+          {
+                  "tipo": "enlace",
+                  "titulo": "MDN: la etiqueta <a>",
+                  "url": "https://developer.mozilla.org/es/docs/Web/HTML/Element/a"
+          }
+    ],
+    "actividades": [
+          {
+                  "tipo": "quiz",
+                  "titulo": "Autoevaluación rápida",
+                  "preguntas": [
+                            {
+                                        "pregunta": "¿Por qué usamos <strong> en vez de <b>?",
+                                        "opciones": [
+                                                      "<strong> es más corto de escribir",
+                                                      "<strong> indica significado, no solo aspecto visual",
+                                                      "<b> ya no funciona en navegadores modernos"
+                                        ],
+                                        "correcta": 1
+                            },
+                            {
+                                        "pregunta": "¿Dónde debe ir una lista <ul> anidada?",
+                                        "opciones": [
+                                                      "Después del <li> padre",
+                                                      "Dentro del <li> padre",
+                                                      "Al principio de la lista principal"
+                                        ],
+                                        "correcta": 1
+                            },
+                            {
+                                        "pregunta": "¿Qué atributo añadimos a un enlace con target=\"_blank\" por seguridad?",
+                                        "opciones": [
+                                                      "rel=\"noopener\"",
+                                                      "safe=\"true\"",
+                                                      "external=\"true\""
+                                        ],
+                                        "correcta": 0
+                            }
+                  ]
+          },
+          {
+                  "tipo": "relacionar",
+                  "titulo": "Relaciona cada etiqueta con su función",
+                  "pares": [
+                            {
+                                        "izquierda": "<strong>",
+                                        "derecha": "Marca texto importante"
+                            },
+                            {
+                                        "izquierda": "<em>",
+                                        "derecha": "Marca texto con énfasis"
+                            },
+                            {
+                                        "izquierda": "<ul>",
+                                        "derecha": "Lista sin orden, con viñetas"
+                            },
+                            {
+                                        "izquierda": "<ol>",
+                                        "derecha": "Lista numerada"
+                            },
+                            {
+                                        "izquierda": "<a href=\"#id\">",
+                                        "derecha": "Enlace ancla dentro de la misma página"
+                            }
+                  ]
+          }
+    ]
+}

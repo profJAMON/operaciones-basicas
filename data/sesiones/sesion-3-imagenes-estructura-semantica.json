@@ -1,0 +1,70 @@
+{
+    "id": "sesion-3-imagenes-estructura-semantica",
+    "titulo": "Sesión 3 — Imágenes y estructura semántica",
+    "fecha": "2026-09-22",
+    "descripcion": "Cómo insertar imágenes correctamente, y cómo organizar tu página en bloques con significado: header, nav, main, section, article y footer.",
+    "contenido": "<h2>Insertar imágenes</h2>\n<pre><code><span class='et'>&lt;img</span> <span class='at'>src</span>=<span class='ca'>\"foto.jpg\"</span> <span class='at'>alt</span>=<span class='ca'>\"Descripción de la imagen\"</span><span class='et'>&gt;</span></code></pre>\n<ul>\n<li><code>src</code> → dónde está la imagen.</li>\n<li><code>alt</code> → texto alternativo (lectores de pantalla, y aparece si la imagen no carga). No lo dejes vacío si aporta información.</li>\n</ul>\n<p><code>&lt;img&gt;</code> no se cierra — no existe <code>&lt;/img&gt;</code>.</p>\n<div class=\"nota\">Si cambias <code>width</code> y <code>height</code> sin mantener la proporción, la imagen sale deformada. Mejor indicar solo uno de los dos.</div>\n\n<h2>Estructura semántica</h2>\n<p>Hasta ahora todo el contenido está \"suelto\" dentro de <code>&lt;body&gt;</code>. HTML tiene etiquetas para dar significado a cada parte de la página:</p>\n<table>\n<tr><th>Etiqueta</th><th>Para qué sirve</th></tr>\n<tr><td><code>&lt;header&gt;</code></td><td>Cabecera de la página (título, logo...)</td></tr>\n<tr><td><code>&lt;nav&gt;</code></td><td>Menú de navegación</td></tr>\n<tr><td><code>&lt;main&gt;</code></td><td>Contenido principal (solo uno por página)</td></tr>\n<tr><td><code>&lt;section&gt;</code></td><td>Un bloque temático dentro del contenido</td></tr>\n<tr><td><code>&lt;article&gt;</code></td><td>Contenido independiente, con sentido por sí solo</td></tr>\n<tr><td><code>&lt;footer&gt;</code></td><td>Pie de página</td></tr>\n<tr><td><code>&lt;div&gt;</code></td><td>Contenedor genérico, sin significado propio</td></tr>\n</table>\n<div class=\"nota\"><strong>Regla práctica:</strong> antes de usar <code>&lt;div&gt;</code>, pregúntate si alguna etiqueta semántica describe mejor ese contenido. <code>&lt;div&gt;</code> es el último recurso, no el primero.</div>\n\n<h2>Plantilla de estructura</h2>\n<pre><code><span class='et'>&lt;body&gt;</span>\n\n    <span class='et'>&lt;header&gt;</span>\n        <span class='et'>&lt;h1&gt;</span>Tu nombre<span class='et'>&lt;/h1&gt;</span>\n    <span class='et'>&lt;/header&gt;</span>\n\n    <span class='et'>&lt;nav&gt;</span>\n        <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>\"#sobre-mi\"</span><span class='et'>&gt;</span>Sobre mí<span class='et'>&lt;/a&gt;</span>\n    <span class='et'>&lt;/nav&gt;</span>\n\n    <span class='et'>&lt;main&gt;</span>\n        <span class='et'>&lt;section</span> <span class='at'>id</span>=<span class='ca'>\"sobre-mi\"</span><span class='et'>&gt;</span>\n            <span class='et'>&lt;h2&gt;</span>Sobre mí<span class='et'>&lt;/h2&gt;</span>\n            <span class='et'>&lt;p&gt;</span>...<span class='et'>&lt;/p&gt;</span>\n        <span class='et'>&lt;/section&gt;</span>\n    <span class='et'>&lt;/main&gt;</span>\n\n    <span class='et'>&lt;footer&gt;</span>\n        <span class='et'>&lt;p&gt;</span>Página creada por [tu nombre]<span class='et'>&lt;/p&gt;</span>\n    <span class='et'>&lt;/footer&gt;</span>\n\n<span class='et'>&lt;/body&gt;</span></code></pre>\n\n<h2>Práctica</h2>\n<ul class=\"checklist\">\n<li>Todo tu contenido está dentro de <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code> o <code>&lt;footer&gt;</code> — nada suelto directamente en <code>&lt;body&gt;</code>.</li>\n<li>Tu <code>&lt;nav&gt;</code> tiene enlaces tipo ancla que funcionan.</li>\n<li>Tu imagen está bien colocada dentro de alguna sección con sentido.</li>\n</ul>",
+    "materiales": [
+          {
+                  "tipo": "enlace",
+                  "titulo": "MDN: elementos semánticos de HTML5",
+                  "url": "https://developer.mozilla.org/es/docs/Web/HTML/Reference/Elements"
+          }
+    ],
+    "actividades": [
+          {
+                  "tipo": "relacionar",
+                  "titulo": "Relaciona cada etiqueta semántica con su función",
+                  "pares": [
+                            {
+                                        "izquierda": "<header>",
+                                        "derecha": "Cabecera de la página"
+                            },
+                            {
+                                        "izquierda": "<nav>",
+                                        "derecha": "Menú de navegación"
+                            },
+                            {
+                                        "izquierda": "<main>",
+                                        "derecha": "Contenido principal (solo uno por página)"
+                            },
+                            {
+                                        "izquierda": "<section>",
+                                        "derecha": "Bloque temático dentro del contenido"
+                            },
+                            {
+                                        "izquierda": "<article>",
+                                        "derecha": "Contenido independiente con sentido propio"
+                            },
+                            {
+                                        "izquierda": "<div>",
+                                        "derecha": "Contenedor genérico sin significado"
+                            }
+                  ]
+          },
+          {
+                  "tipo": "quiz",
+                  "titulo": "Autoevaluación rápida",
+                  "preguntas": [
+                            {
+                                        "pregunta": "¿Qué atributo de <img> describe la imagen para lectores de pantalla?",
+                                        "opciones": [
+                                                      "title",
+                                                      "alt",
+                                                      "desc"
+                                        ],
+                                        "correcta": 1
+                            },
+                            {
+                                        "pregunta": "¿Cuál es el último recurso cuando ninguna etiqueta semántica encaja?",
+                                        "opciones": [
+                                                      "<section>",
+                                                      "<div>",
+                                                      "<article>"
+                                        ],
+                                        "correcta": 1
+                            }
+                  ]
+          }
+    ]
+}

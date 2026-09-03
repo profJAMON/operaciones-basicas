@@ -8,16 +8,19 @@
 </head>
 <body>
 
-<header class="pizarra">
-  <div class="pizarra__marco">
-    <a class="volver" href="index.html">&larr; Todas las unidades</a>
-    <p class="pizarra__asignatura" id="tema-unidad">Operaciones Básicas</p>
-    <h1 class="pizarra__titulo" id="tema-titulo" style="font-size: clamp(1.6rem, 4vw, 2.4rem); max-width: none;">Cargando…</h1>
-  </div>
-</header>
+<nav class="sidebar">
+  <h2 class="sidebar__titulo">Temario</h2>
+  <div id="indice-temas"></div>
+</nav>
 
-<main class="contenedor" id="tema-raiz">
-  <p class="tema-detalle__descripcion" id="tema-descripcion"></p>
+<main class="main-content" id="tema-raiz">
+  <a class="volver" href="index.html">&larr; Todas las unidades</a>
+
+  <header class="card">
+    <span class="badge" id="tema-unidad">Operaciones Básicas</span>
+    <h1 id="tema-titulo">Cargando…</h1>
+    <p id="tema-descripcion"></p>
+  </header>
 
   <section class="seccion" id="seccion-leccion" hidden>
     <div class="leccion" id="leccion-contenido"></div>
@@ -32,10 +35,11 @@
     <h2 class="seccion__titulo">Actividades</h2>
     <div id="lista-actividades"></div>
   </section>
+
+  <footer class="pie">Operaciones Básicas · contenido publicado por el profesor/a</footer>
 </main>
 
-<footer class="pie">Operaciones Básicas · contenido publicado por el profesor/a</footer>
-
+<script src="js/sidebar.js"></script>
 <script src="js/actividades.js"></script>
 <script src="js/tema.js"></script>
 </body>

@@ -1,7 +1,8 @@
 /* Pinta tema.html a partir del parámetro ?id=.
    1. Pinta la barra lateral (Temario), marcando esta sesión como activa.
    2. Busca en data/curso.json a qué unidad pertenece.
-   3. Carga el contenido completo desde data/unidades/<unidad>/<id>.json. */
+   3. Carga el contenido completo desde data/unidades/<unidad>/<id>.json.
+   4. Genera el índice "En esta página" a partir de los h2/h3 del contenido. */
 
 const ICONOS = { pdf: 'PDF', enlace: 'WEB', video: 'VID' };
 
@@ -42,6 +43,7 @@ async function cargarTema() {
     pintarLeccion(tema.contenido);
     pintarMateriales(tema.materiales || []);
     pintarActividades(tema.actividades || []);
+    pintarIndicePagina();
   } catch (error) {
     raiz.innerHTML = '<p class="vacio">No se ha podido cargar la sesión. Si estás probando el sitio en tu ordenador, recuerda abrirlo con un servidor local (ver README).</p>';
     console.error(error);
@@ -96,6 +98,31 @@ function pintarActividades(actividades) {
   }
 
   actividades.forEach(actividad => renderActividad(contenedor, actividad));
+}
+
+function pintarIndicePagina() {
+  const aside = document.getElementById('indice-pagina');
+  if (!aside) return;
+
+  const encabezados = document.querySelectorAll('#leccion-contenido h2, #leccion-contenido h3');
+  if (encabezados.length === 0) {
+    aside.hidden = true;
+    return;
+  }
+
+  const titulo = document.createElement('p');
+  titulo.className = 'indice__titulo';
+  titulo.textContent = 'En esta página';
+  aside.appendChild(titulo);
+
+  encabezados.forEach((h, i) => {
+    if (!h.id) h.id = `seccion-${i}`;
+    const enlace = document.createElement('a');
+    enlace.href = `#${h.id}`;
+    enlace.textContent = h.textContent;
+    if (h.tagName === 'H3') enlace.classList.add('indice__sub');
+    aside.appendChild(enlace);
+  });
 }
 
 cargarTema();

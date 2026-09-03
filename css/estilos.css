@@ -1,8 +1,9 @@
 /* ============================================================
    Operaciones Básicas — hoja de estilos
-   Sigue la guía de estilo del proyecto (estilo-web-materiales_1.md):
+   Sigue la guía de estilo del proyecto (estilo-web-materiales_2.md):
    modo oscuro tipo VS Code Dark+, minimalista, sin sombras.
-   Layout: menú (200px) | contenido (máx. 800px) | índice de página (180px).
+   Layout: menú (200px) | contenido elástico (760-1100px) | índice de página (180px).
+   Jerarquía de encabezados de sesión: numerada y con sangría por subsección.
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
@@ -174,7 +175,7 @@ h1, h2, h3 {
 
 .main-content {
   min-width: 0;
-  max-width: 800px;
+  max-width: clamp(760px, 62vw, 1100px);
   margin: 0 auto;
   padding: 28px 34px;
 }
@@ -371,25 +372,37 @@ footer.pie {
 
 /* ---------- Contenido de la sesión (prosa, código, tablas) ---------- */
 
-.leccion { max-width: 68ch; }
+.leccion { max-width: 68ch; counter-reset: h2count; }
 
 .leccion h2 {
+  counter-reset: h3count;
+  counter-increment: h2count;
   font-family: var(--font-mono);
-  font-size: 1.05rem;
-  color: var(--text);
-  margin: 2.2rem 0 0.9rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 2.4rem 0 0.9rem;
   padding-top: 1.4rem;
   border-top: 1px solid var(--border);
 }
 .leccion h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+.leccion h2::before { content: counter(h2count) ". "; }
+
+.leccion .subseccion {
+  border-left: 2px solid var(--border);
+  padding-left: 1.1rem;
+  margin: 1.6rem 0;
+}
 
 .leccion h3 {
+  counter-increment: h3count;
   font-family: var(--font-mono);
-  font-size: 1rem;
+  font-size: 0.92rem;
   font-weight: 600;
-  color: var(--text);
-  margin: 1.6rem 0 0.6rem;
+  color: var(--text-dim);
+  margin: 0 0 0.6rem;
 }
+.leccion h3::before { content: counter(h2count) "." counter(h3count) " "; }
 
 .leccion p { margin: 0 0 1rem; color: var(--text); }
 .leccion ul, .leccion ol { margin: 0 0 1rem; padding-left: 1.3rem; color: var(--text); }

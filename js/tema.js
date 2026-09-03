@@ -2,7 +2,8 @@
    1. Pinta la barra lateral (Temario), marcando esta sesión como activa.
    2. Busca en data/curso.json a qué unidad pertenece.
    3. Carga el contenido completo desde data/unidades/<unidad>/<id>.json.
-   4. Genera el índice "En esta página" a partir de los h2/h3 del contenido. */
+   4. Agrupa cada h3 y su contenido en un contenedor "subseccion" (sangría visual).
+   5. Genera el índice "En esta página" a partir de los h2/h3 del contenido. */
 
 const ICONOS = { pdf: 'PDF', enlace: 'WEB', video: 'VID' };
 
@@ -52,8 +53,26 @@ async function cargarTema() {
 
 function pintarLeccion(contenidoHtml) {
   if (!contenidoHtml) return;
-  document.getElementById('leccion-contenido').innerHTML = contenidoHtml;
+  const contenedor = document.getElementById('leccion-contenido');
+  contenedor.innerHTML = contenidoHtml;
+  agruparSubsecciones(contenedor);
   document.getElementById('seccion-leccion').hidden = false;
+}
+
+function agruparSubsecciones(raiz) {
+  let grupoActual = null;
+  Array.from(raiz.children).forEach(nodo => {
+    if (nodo.tagName === 'H3') {
+      grupoActual = document.createElement('div');
+      grupoActual.className = 'subseccion';
+      nodo.parentNode.insertBefore(grupoActual, nodo);
+      grupoActual.appendChild(nodo);
+    } else if (nodo.tagName === 'H2') {
+      grupoActual = null;
+    } else if (grupoActual) {
+      grupoActual.appendChild(nodo);
+    }
+  });
 }
 
 function pintarMateriales(materiales) {

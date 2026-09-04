@@ -137,7 +137,7 @@ h1, h2, h3 {
   font-weight: 600;
 }
 
-/* ---------- Índice de la página (columna derecha) ---------- */
+/* ---------- Indice de la pagina (columna derecha) ---------- */
 
 .indice {
   padding: 1.6rem 1rem;
@@ -369,7 +369,7 @@ footer.pie {
   color: var(--text-faint);
 }
 
-/* ---------- Contenido de la sesión (prosa, código, tablas) ---------- */
+/* ---------- Contenido de la sesion (prosa, codigo, tablas) ---------- */
 
 .leccion { max-width: 68ch; counter-reset: h2count; }
 
@@ -467,13 +467,13 @@ footer.pie {
 .leccion .checklist li::before { content: "☐ "; color: var(--accent); }
 
 /* Anulaciones responsive (van al final para ganar a las reglas base
-   de .sidebar y .main-content, que se declaran más arriba en el archivo). */
+   de .sidebar y .main-content, que se declaran mas arriba en el archivo). */
 @media (max-width: 760px) {
   .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
   .main-content { padding: 1.6rem 1.2rem; max-width: none; }
 }
 
-/* ---------- Índice de portada (index.html) ---------- */
+/* ---------- Indice de portada (index.html) ---------- */
 
 .unidad-card {
   border: 1px solid var(--border);

@@ -472,3 +472,82 @@ footer.pie {
   .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
   .main-content { padding: 1.6rem 1.2rem; max-width: none; }
 }
+
+/* ---------- Índice de portada (index.html) ---------- */
+
+.unidad-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+}
+
+.unidad-card summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 1.1rem 1.4rem;
+}
+.unidad-card summary::-webkit-details-marker { display: none; }
+.unidad-card summary::before {
+  content: "▸";
+  color: var(--text-faint);
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+  margin-top: 0.3rem;
+}
+.unidad-card[open] summary::before { transform: rotate(90deg); }
+.unidad-card summary:hover { background: var(--surface-2); }
+
+.unidad-card__titulo {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text);
+  margin: 0 0 0.3rem;
+}
+
+.unidad-card__descripcion {
+  color: var(--text-dim);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+.sesiones-portada { border-top: 1px solid var(--border); }
+
+.sesion-portada {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 1rem;
+  padding: 1rem 1.4rem;
+  border-top: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  align-items: baseline;
+  transition: background-color 0.12s ease;
+}
+.sesiones-portada .sesion-portada:first-child { border-top: none; }
+.sesion-portada:hover { background: var(--surface-2); }
+.sesion-portada:hover .sesion-portada__titulo { color: var(--accent); }
+
+.sesion-portada__fecha {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-faint);
+}
+
+.sesion-portada__titulo { font-weight: 600; margin: 0 0 0.3rem; }
+.sesion-portada__descripcion { color: var(--text-dim); margin: 0 0 0.4rem; font-size: 0.92rem; }
+.sesion-portada__meta {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-warm);
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  .sesion-portada { grid-template-columns: 4rem 1fr; }
+}

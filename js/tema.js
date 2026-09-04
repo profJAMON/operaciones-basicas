@@ -1,9 +1,13 @@
 /* Pinta tema.html a partir del parámetro ?id=.
    1. Pinta la barra lateral (Temario), marcando esta sesión como activa.
    2. Busca en data/curso.json a qué unidad pertenece.
-   3. Carga el contenido completo desde data/unidades/<unidad>/<id>.json.
-   4. Agrupa cada h3 y su contenido en un contenedor "subseccion" (sangría visual).
-   5. Genera el índice "En esta página" a partir de los h2/h3 del contenido. */
+   3. Carga los datos desde data/unidades/<unidad>/<id>.json.
+   4. El contenido de la lección vive en un archivo .html hermano
+      (data/unidades/<unidad>/<id>.html) — así se puede editar como HTML
+      normal, con saltos de línea reales. Si ese archivo no existe,
+      se usa el campo "contenido" del json como respaldo (formato antiguo).
+   5. Agrupa cada h3 y su contenido en un contenedor "subseccion" (sangría visual).
+   6. Genera el índice "En esta página" a partir de los h2/h3 del contenido. */
 
 const ICONOS = { pdf: 'PDF', enlace: 'WEB', video: 'VID' };
 
@@ -36,12 +40,19 @@ async function cargarTema() {
     }
     const tema = await sesionResp.json();
 
+    let contenidoHtml = tema.contenido || '';
+    if (!contenidoHtml) {
+      // Formato nuevo: el contenido vive en un archivo .html hermano del .json.
+      const leccionResp = await fetch(`data/unidades/${unidadDeLaSesion.id}/${id}.html`);
+      if (leccionResp.ok) contenidoHtml = await leccionResp.text();
+    }
+
     document.title = `${tema.titulo} · Operaciones Básicas`;
     document.getElementById('tema-unidad').textContent = unidadDeLaSesion.titulo;
     document.getElementById('tema-titulo').textContent = tema.titulo;
     document.getElementById('tema-descripcion').textContent = tema.descripcion || '';
 
-    pintarLeccion(tema.contenido);
+    pintarLeccion(contenidoHtml);
     pintarMateriales(tema.materiales || []);
     pintarActividades(tema.actividades || []);
     pintarIndicePagina();

@@ -32,7 +32,7 @@ async function cargarIndicePortada() {
       const cabecera = document.createElement('div');
       const tituloUnidad = document.createElement('p');
       tituloUnidad.className = 'unidad-card__titulo';
-      tituloUnidad.textContent = `Unidad ${indiceUnidad + 1} · ${unidad.titulo}`;
+      tituloUnidad.textContent = unidad.titulo;
       cabecera.appendChild(tituloUnidad);
       if (unidad.descripcion) {
         const descUnidad = document.createElement('p');

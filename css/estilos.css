@@ -1,8 +1,9 @@
+@charset "UTF-8";
 /* ============================================================
    Operaciones Básicas — hoja de estilos
    Sigue la guía de estilo del proyecto (estilo-web-materiales_2.md):
    modo oscuro tipo VS Code Dark+, minimalista, sin sombras.
-   Layout: menú (200px) | contenido elástico (760-1100px) | índice de página (180px).
+   Layout: menú (200px) | contenido elástico (hasta 1100px) | índice de página (180px).
    Jerarquía de encabezados de sesión: numerada y con sangría por subsección.
    ============================================================ */
 
@@ -67,9 +68,7 @@ h1, h2, h3 {
 
 @media (max-width: 760px) {
   body { grid-template-columns: 1fr; }
-  .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
   .indice { display: none; }
-  .main-content { padding: 1.6rem 1.2rem; max-width: none; }
 }
 
 /* ---------- Barra lateral (Temario) ---------- */
@@ -175,7 +174,7 @@ h1, h2, h3 {
 
 .main-content {
   min-width: 0;
-  max-width: clamp(760px, 62vw, 1100px);
+  max-width: min(1100px, 92%);
   margin: 0 auto;
   padding: 28px 34px;
 }
@@ -466,3 +465,10 @@ footer.pie {
 
 .leccion .checklist { list-style: none; padding-left: 0; }
 .leccion .checklist li::before { content: "☐ "; color: var(--accent); }
+
+/* Anulaciones responsive (van al final para ganar a las reglas base
+   de .sidebar y .main-content, que se declaran más arriba en el archivo). */
+@media (max-width: 760px) {
+  .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+  .main-content { padding: 1.6rem 1.2rem; max-width: none; }
+}

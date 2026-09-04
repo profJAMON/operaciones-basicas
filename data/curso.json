@@ -2,7 +2,7 @@
     "unidades": [
           {
                   "id": "html-css-practico",
-                  "titulo": "Tema 1. Introducción a HTML/CSS",
+                  "titulo": "UNIDAD 1. Introducción a HTML/CSS",
                   "descripcion": "Etiquetas, estructura y estilos: construyes tu propia web personal desde la primera sesión.",
                   "sesiones": [
                             "sesion-1-primeros-pasos-html",

@@ -1,7 +1,7 @@
 /* Página de inicio.
    1. Pinta la barra lateral (Temario) — la hace js/sidebar.js.
    2. Pinta el índice de portada: una tarjeta desplegable por unidad,
-      con sus sesiones dentro (fecha, título, descripción y cuántos
+      con sus sesiones dentro (título, descripción y cuántos
       materiales/actividades tiene). La primera unidad se abre sola;
       el resto quedan colapsadas para no saturar la portada cuando
       haya muchas unidades. */
@@ -84,10 +84,6 @@ function crearFilaSesionPortada(sesion) {
   fila.className = 'sesion-portada';
   fila.href = `tema.html?id=${encodeURIComponent(sesion.id)}`;
 
-  const fecha = document.createElement('span');
-  fecha.className = 'sesion-portada__fecha';
-  fecha.textContent = formatearFecha(sesion.fecha);
-
   const cuerpo = document.createElement('div');
   const tituloSesion = document.createElement('p');
   tituloSesion.className = 'sesion-portada__titulo';
@@ -105,13 +101,6 @@ function crearFilaSesionPortada(sesion) {
   cuerpo.appendChild(tituloSesion);
   cuerpo.appendChild(descripcionSesion);
   cuerpo.appendChild(meta);
-  fila.appendChild(fecha);
   fila.appendChild(cuerpo);
   return fila;
-}
-
-function formatearFecha(iso) {
-  const [anio, mes, dia] = iso.split('-');
-  const meses = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
-  return `${dia} ${meses[parseInt(mes, 10) - 1]}`;
 }

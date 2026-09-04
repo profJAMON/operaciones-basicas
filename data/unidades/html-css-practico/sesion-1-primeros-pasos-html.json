@@ -1,72 +1,71 @@
 {
-    "id": "sesion-1-primeros-pasos-html",
-    "titulo": "Sesión 1 — Primeros pasos en HTML",
-    "fecha": "2026-09-08",
-    "descripcion": "Primeros pasos con VS Code y Live Server, la estructura mínima de toda página HTML, las etiquetas de encabezado y tu primera página guardada y corregida.",
-    "contenido": "<h2>Conociendo VS Code</h2>\n<p>Antes de escribir código, vamos a aprender a movernos por el programa que vas a usar todo el curso.</p>\n\n<h3>Abrir una carpeta de proyecto</h3>\n<p>A diferencia de un procesador de textos, en programación <strong>no trabajas con un archivo suelto, sino con una carpeta de proyecto</strong> que puede contener varios archivos relacionados (HTML, CSS, imágenes...).</p>\n<ol>\n<li>Crea en tu escritorio (o donde tu profesor indique) una carpeta llamada <code>mi-web</code>.</li>\n<li>Abre VS Code.</li>\n<li>Ve a <strong>Archivo → Abrir carpeta...</strong> y selecciona <code>mi-web</code>.</li>\n<li>Fíjate en el panel de la izquierda: es el <strong>explorador de archivos</strong>. Ahora mismo está vacío.</li>\n</ol>\n\n<h3>Crear tu primer archivo</h3>\n<ol>\n<li>En el explorador de archivos, pasa el ratón sobre el nombre de tu carpeta y pulsa el icono de \"nuevo archivo\".</li>\n<li>Escribe el nombre exacto: <code>index.html</code></li>\n<li><code>index</code> es el nombre que usan por convención los navegadores para la página principal de un sitio web. <code>.html</code> es la extensión que indica que es un archivo HTML.</li>\n</ol>\n<div class=\"nota\">💡 Si escribes <code>!</code> y pulsas la tecla Tab nada más crear un archivo <code>.html</code> vacío, VS Code te genera automáticamente toda la estructura básica de una página. Lo usaremos más adelante — hoy la escribiremos a mano para entender qué hace cada parte.</div>\n\n<h3>La extensión Live Server</h3>\n<p>Para ver tu página en el navegador, en vez de abrir el archivo a mano cada vez, vamos a instalar una herramienta que la actualiza sola cada vez que guardas.</p>\n<ol>\n<li>En la barra lateral izquierda, busca el icono de piezas de puzle (Extensiones).</li>\n<li>Busca <strong>\"Live Server\"</strong> (de Ritwick Dey) e instálala.</li>\n<li>Con tu <code>index.html</code> abierto, haz clic derecho sobre el archivo y elige <strong>\"Open with Live Server\"</strong>.</li>\n<li>Se abrirá tu navegador en una dirección tipo <code>127.0.0.1:5500</code> mostrando tu página. Cada vez que guardes (<code>Ctrl+S</code>), la página se actualizará sola.</li>\n</ol>\n<div class=\"nota\">✏️ Compruébalo ahora: abre Live Server con el archivo vacío, escribe cualquier palabra dentro, guarda, y observa qué pasa en el navegador sin tocar nada más.</div>\n\n<h2>¿Qué es HTML?</h2>\n<p>HTML es el lenguaje que usan todas las páginas web para definir <strong>qué contenido hay y cómo está organizado</strong> (no cómo se ve — eso lo veremos con CSS más adelante).</p>\n<p>Se basa en <strong>etiquetas</strong>, que casi siempre van en pareja: una de apertura y una de cierre.</p>\n<pre><code><span class='et'>&lt;p&gt;</span>Esto es un párrafo.<span class='et'>&lt;/p&gt;</span></code></pre>\n<div class=\"nota\">🤔 Antes de seguir: ¿qué diferencia hay entre <code>&lt;p&gt;</code> y <code>&lt;/p&gt;</code>? ¿Qué crees que pasaría si te olvidas del <code>&lt;/p&gt;</code>?</div>\n\n<h2>La estructura mínima de toda página HTML</h2>\n<p>Cualquier página HTML empieza siempre igual:</p>\n<pre><code><span class='et'>&lt;!DOCTYPE html&gt;</span>\n<span class='et'>&lt;html&gt;</span>\n<span class='et'>&lt;head&gt;</span>\n    <span class='et'>&lt;title&gt;</span>Mi primera página<span class='et'>&lt;/title&gt;</span>\n<span class='et'>&lt;/head&gt;</span>\n<span class='et'>&lt;body&gt;</span>\n\n    <span class='co'>&lt;!-- Aquí va todo el contenido visible --&gt;</span>\n\n<span class='et'>&lt;/body&gt;</span>\n<span class='et'>&lt;/html&gt;</span></code></pre>\n<ul>\n<li><code>&lt;!DOCTYPE html&gt;</code> → le dice al navegador que esto es HTML moderno.</li>\n<li><code>&lt;html&gt;</code> → envuelve toda la página.</li>\n<li><code>&lt;head&gt;</code> → información sobre la página (no se ve en pantalla). Aquí ponemos el <code>&lt;title&gt;</code>, que aparece en la pestaña del navegador.</li>\n<li><code>&lt;body&gt;</code> → todo lo que SÍ se ve en pantalla va aquí.</li>\n</ul>\n<div class=\"nota\">🤔 Antes de seguir: si quisieras cambiar el texto de la pestaña del navegador, ¿qué etiqueta modificarías? ¿Por qué crees que <code>&lt;head&gt;</code> y <code>&lt;body&gt;</code> están separados en vez de ir todo junto?</div>\n\n<h2>Ejercicio guiado 1 — Tu primera página</h2>\n<ol>\n<li>En tu <code>index.html</code>, escribe la estructura mínima de arriba.</li>\n<li>Dentro de <code>&lt;body&gt;</code>, añade:</li>\n</ol>\n<pre><code><span class='et'>&lt;h1&gt;</span>¡Hola, soy [tu nombre]!<span class='et'>&lt;/h1&gt;</span>\n<span class='et'>&lt;p&gt;</span>Esta es mi primera página web.<span class='et'>&lt;/p&gt;</span></code></pre>\n<ol start=\"3\">\n<li>Guarda el archivo (<code>Ctrl+S</code>) y abre Live Server si no lo tienes ya abierto.</li>\n<li>Comprueba: ¿aparece tu texto? ¿Qué título tiene la pestaña del navegador?</li>\n<li>Cambia el texto del <code>&lt;title&gt;</code> y guarda otra vez. ¿Se ha actualizado la pestaña sin recargar tú manualmente?</li>\n</ol>\n\n<h2>Las etiquetas de encabezado</h2>\n<p>HTML tiene 6 niveles de encabezado, del más importante al menos importante:</p>\n<pre><code><span class='et'>&lt;h1&gt;</span>Título principal<span class='et'>&lt;/h1&gt;</span>\n<span class='et'>&lt;h2&gt;</span>Subtítulo<span class='et'>&lt;/h2&gt;</span>\n<span class='et'>&lt;h3&gt;</span>Un subtítulo más pequeño<span class='et'>&lt;/h3&gt;</span>\n<span class='co'>&lt;!-- ... hasta h6 --&gt;</span></code></pre>\n<p><strong>Regla de oro:</strong> en una página normalmente hay <strong>un solo <code>&lt;h1&gt;</code></strong>, y el resto de encabezados organizan secciones de mayor a menor importancia — como el índice de un libro, no como \"letras más grandes o más pequeñas\".</p>\n\n<h3>Un error típico</h3>\n<p>Esto <strong>funciona</strong> (el navegador no da error), pero está <strong>mal hecho</strong>:</p>\n<pre><code><span class='et'>&lt;h1&gt;</span>Mi web<span class='et'>&lt;/h1&gt;</span>\n<span class='et'>&lt;h1&gt;</span>Sobre mí<span class='et'>&lt;/h1&gt;</span>\n<span class='et'>&lt;h4&gt;</span>Mis hobbies<span class='et'>&lt;/h4&gt;</span>\n<span class='et'>&lt;h2&gt;</span>Contacto<span class='et'>&lt;/h2&gt;</span></code></pre>\n<p>Hay dos <code>&lt;h1&gt;</code>, y se salta del <code>&lt;h1&gt;</code> directo a un <code>&lt;h4&gt;</code> sin pasar por <code>&lt;h2&gt;</code> ni <code>&lt;h3&gt;</code>. Es como si el índice de un libro tuviera dos \"Capítulo 1\" y luego un subapartado sin decir de qué capítulo es.</p>\n<div class=\"nota\">🤔 Antes de seguir: ¿por qué es un problema tener dos <code>&lt;h1&gt;</code>, si visualmente el navegador los muestra igual de grandes? Reordena el ejemplo para que la jerarquía tenga sentido.</div>\n\n<h2>Práctica</h2>\n<ul class=\"checklist\">\n<li>Un <code>&lt;h1&gt;</code> con tu nombre.</li>\n<li>Un <code>&lt;h2&gt;</code> que diga \"Sobre mí\".</li>\n<li>Dos o tres <code>&lt;p&gt;</code> contando brevemente quién eres.</li>\n<li>Un <code>&lt;h2&gt;</code> que diga \"Esta asignatura\".</li>\n<li>Un <code>&lt;p&gt;</code> explicando qué esperas aprender este curso.</li>\n<li>Comprueba con Live Server que no hay dos <code>&lt;h1&gt;</code> ni saltos de nivel.</li>\n</ul>\n\n<h2>Ejercicio guiado 2 — Detectar y corregir</h2>\n<p>Copia este código en un archivo nuevo llamado <code>prueba.html</code>:</p>\n<pre><code><span class='et'>&lt;!DOCTYPE html&gt;</span>\n<span class='et'>&lt;html&gt;</span>\n<span class='et'>&lt;head&gt;</span>\n<span class='et'>&lt;/head&gt;</span>\n<span class='et'>&lt;body&gt;</span>\n\n<span class='et'>&lt;h1&gt;</span>Mi rincón de videojuegos<span class='et'>&lt;/h1&gt;</span>\n<span class='et'>&lt;h1&gt;</span>Mis juegos favoritos<span class='et'>&lt;/h1&gt;</span>\n<span class='et'>&lt;p&gt;</span>Aquí hablo de los juegos que más me gustan.\n<span class='et'>&lt;h3&gt;</span>Estrategia<span class='et'>&lt;/h3&gt;</span>\n<span class='et'>&lt;p&gt;</span>Me gustan los juegos de estrategia por turnos.<span class='et'>&lt;/p&gt;</span>\n<span class='et'>&lt;h4&gt;</span>Acción<span class='et'>&lt;/h4&gt;</span>\n\n<span class='et'>&lt;/body&gt;</span>\n<span class='et'>&lt;/html&gt;</span></code></pre>\n<p>Ábrelo con Live Server y, sin mirar la solución, encuentra y corrige:</p>\n<ol>\n<li>Un <code>&lt;title&gt;</code> que falta dentro del <code>&lt;head&gt;</code>.</li>\n<li>Un <code>&lt;p&gt;</code> al que le falta la etiqueta de cierre.</li>\n<li>El problema de jerarquía de encabezados de arriba.</li>\n</ol>\n\n<h2>Reto (elige uno)</h2>\n<h3>Opción A — Libre</h3>\n<p>Prueba a añadir más párrafos y encabezados sin mirar los apuntes, solo recordando la sintaxis. Intenta también:</p>\n<ul>\n<li>Añadir un comentario en tu código usando <code>&lt;!-- así --&gt;</code>.</li>\n<li>Buscar en internet qué hace la etiqueta <code>&lt;br&gt;</code> y usarla en algún punto de tu página.</li>\n</ul>\n<h3>Opción B — Guiada</h3>\n<p>Añade a tu <code>index.html</code> un tercer bloque con:</p>\n<ul>\n<li>Un <code>&lt;h2&gt;</code> que diga \"Mis asignaturas favoritas\".</li>\n<li>Un <code>&lt;p&gt;</code> por cada asignatura que te guste, con un <code>&lt;h3&gt;</code> con el nombre antes de cada <code>&lt;p&gt;</code>.</li>\n<li>Comprueba que la jerarquía queda ordenada (h1 → h2 → h3, sin saltos).</li>\n</ul>\n\n<div class=\"nota\">Guarda este archivo — será la primera versión de tu página personal. En las próximas sesiones la iremos ampliando (enlaces, imágenes, estilos...). Y ya sabes usar Live Server: tenlo siempre abierto mientras trabajas.</div>",
-    "materiales": [
-          {
-                  "tipo": "enlace",
-                  "titulo": "Referencia de etiquetas HTML (MDN)",
-                  "url": "https://developer.mozilla.org/es/docs/Web/HTML/Element"
-          },
-          {
-                  "tipo": "enlace",
-                  "titulo": "Extensión Live Server (VS Code Marketplace)",
-                  "url": "https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer"
-          }
-    ],
-    "actividades": [
-          {
-                  "tipo": "quiz",
-                  "titulo": "Autoevaluación rápida",
-                  "preguntas": [
-                            {
-                                        "pregunta": "¿Qué etiqueta contiene todo el contenido que SÍ se ve en pantalla?",
-                                        "opciones": [
-                                                      "<head>",
-                                                      "<body>",
-                                                      "<html>"
-                                        ],
-                                        "correcta": 1
-                            },
-                            {
-                                        "pregunta": "¿Cuántos <h1> debería tener normalmente una página?",
-                                        "opciones": [
-                                                      "Uno",
-                                                      "Tantos como secciones",
-                                                      "Ninguno, es opcional"
-                                        ],
-                                        "correcta": 0
-                            },
-                            {
-                                        "pregunta": "¿Qué hace <!DOCTYPE html>?",
-                                        "opciones": [
-                                                      "Añade un título a la pestaña",
-                                                      "Le dice al navegador que es HTML moderno",
-                                                      "Crea un comentario"
-                                        ],
-                                        "correcta": 1
-                            },
-                            {
-                                        "pregunta": "¿Qué hace Live Server cuando guardas un cambio?",
-                                        "opciones": [
-                                                      "Nada, hay que recargar a mano",
-                                                      "Actualiza el navegador automáticamente",
-                                                      "Sube el archivo a internet"
-                                        ],
-                                        "correcta": 1
-                            },
-                            {
-                                        "pregunta": "¿Qué falla en este código: <h1>Título</h1><h1>Otro</h1><h4>Sub</h4>?",
-                                        "opciones": [
-                                                      "Nada, es correcto",
-                                                      "Hay dos <h1> y se salta del h1 al h4",
-                                                      "Falta el <body>"
-                                        ],
-                                        "correcta": 1
-                            }
-                  ]
-          }
-    ]
+  "id": "sesion-1-primeros-pasos-html",
+  "titulo": "Sesión 1 — Primeros pasos en HTML",
+  "fecha": "2026-09-08",
+  "descripcion": "Primeros pasos con VS Code y Live Server, la estructura mínima de toda página HTML, las etiquetas de encabezado y tu primera página guardada y corregida.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "Referencia de etiquetas HTML (MDN)",
+      "url": "https://developer.mozilla.org/es/docs/Web/HTML/Element"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "Extensión Live Server (VS Code Marketplace)",
+      "url": "https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "¿Qué etiqueta contiene todo el contenido que SÍ se ve en pantalla?",
+          "opciones": [
+            "<head>",
+            "<body>",
+            "<html>"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuántos <h1> debería tener normalmente una página?",
+          "opciones": [
+            "Uno",
+            "Tantos como secciones",
+            "Ninguno, es opcional"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué hace <!DOCTYPE html>?",
+          "opciones": [
+            "Añade un título a la pestaña",
+            "Le dice al navegador que es HTML moderno",
+            "Crea un comentario"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué hace Live Server cuando guardas un cambio?",
+          "opciones": [
+            "Nada, hay que recargar a mano",
+            "Actualiza el navegador automáticamente",
+            "Sube el archivo a internet"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué falla en este código: <h1>Título</h1><h1>Otro</h1><h4>Sub</h4>?",
+          "opciones": [
+            "Nada, es correcto",
+            "Hay dos <h1> y se salta del h1 al h4",
+            "Falta el <body>"
+          ],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
 }

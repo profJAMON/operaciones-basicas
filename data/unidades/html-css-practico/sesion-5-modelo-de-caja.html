@@ -41,14 +41,16 @@
 </div>
 <p>Con dos valores, el primero manda arriba/abajo y el segundo izquierda/derecha:</p>
 <pre><code><span class='et'>.tarjeta</span> {
-    <span class='at'>padding</span>: <span class='ca'>10px 30px</span>; <span class='co'>/* arriba/abajo: 10px — izquierda/derecha: 30px */</span>
+    <span class='co'>/* arriba/abajo: 10px, izquierda/derecha: 30px */</span>
+    <span class='at'>padding</span>: <span class='ca'>10px 30px</span>;
 }</code></pre>
 <div class="salida" style="display:flex; gap:20px; flex-wrap:wrap;">
 <div style="background:#e8e8e8;color:#1e1e1e;border:3px solid #800000;padding:10px 30px;">padding: 10px 30px;</div>
 </div>
 <p>Y con cuatro valores controlas cada lado por separado, sin necesidad de usar <code>padding-top</code>, <code>padding-right</code>, etc. uno a uno:</p>
 <pre><code><span class='et'>.tarjeta</span> {
-    <span class='at'>padding</span>: <span class='ca'>6px 24px 30px 6px</span>; <span class='co'>/* arriba - derecha - abajo - izquierda */</span>
+    <span class='co'>/* arriba - derecha - abajo - izquierda */</span>
+    <span class='at'>padding</span>: <span class='ca'>6px 24px 30px 6px</span>;
 }</code></pre>
 <div class="salida" style="display:flex; gap:20px; flex-wrap:wrap;">
 <div style="background:#e8e8e8;color:#1e1e1e;border:3px solid #800000;padding:6px 24px 30px 6px;">padding: 6px 24px 30px 6px;</div>

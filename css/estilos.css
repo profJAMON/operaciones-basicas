@@ -173,7 +173,8 @@ h1, h2, h3 {
 /* ---------- Contenido principal ---------- */
 
 .main-content {
-  min-width: 0;
+  width: 100%;
+   min-width: 0;
   max-width: min(1100px, 92%);
   margin: 0 auto;
   padding: 28px 34px;

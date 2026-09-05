@@ -2,14 +2,22 @@
 <p>Una imagen se inserta con una única etiqueta que no se cierra:</p>
 <pre><code><span class='et'>&lt;img</span> <span class='at'>src</span>=<span class='ca'>"gato.jpg"</span> <span class='at'>alt</span>=<span class='ca'>"Un gato gris durmiendo en un sofá"</span><span class='et'>&gt;</span></code></pre>
 <div class="salida" style="display:flex; gap:24px; flex-wrap:wrap; align-items:flex-start;">
-  <div style="flex:0 0 auto;">
-    <p style="margin:0 0 6px;"><strong>✅ Esta imagen carga bien</strong></p>
-    <img src="https://picsum.photos/id/237/320/200" alt="Foto de ejemplo: un perro negro tumbado" width="260" height="163" style="width:260px;max-width:100%;border-radius:4px;display:block;">
-  </div>
-  <div style="flex:0 0 auto;">
-    <p style="margin:0 0 6px;"><strong>❌ Esta imagen no carga (ruta rota a propósito)</strong></p>
-    <img src="https://picsum.phot" alt="Foto de ejemplo: un perro negro tumbado" width="260" height="50" style="width:260px;max-width:100%;border-radius:4px;display:block;">
-  </div>
+  <table>
+    <tr>
+      <td>
+        <div style="flex:0 0 auto;">
+          <p style="margin:0 0 6px;"><strong>✅ Esta imagen carga bien</strong></p>
+          <img src="https://picsum.photos/id/237/320/200" alt="Foto de ejemplo: un perro negro tumbado" width="260" height="163" style="width:260px;max-width:100%;border-radius:4px;display:block;">
+        </div>
+      </td>
+      <td>
+        <div style="flex:0 0 auto;">
+          <p style="margin:0 0 6px;"><strong>❌ Esta imagen no carga (ruta rota a propósito)</strong></p>
+          <img src="https://picsum.phot" alt="Foto de ejemplo: un perro negro tumbado" width="260" height="50" style="width:260px;max-width:100%;border-radius:4px;display:block;">
+        </div>
+      </td>
+    </tr>
+  </table>
   <p>En esta imagen, el <code>"alt"</code> es <code>"un perro negro tumbado"</code>. Fíjate en que, cuando la imagen no carga, el navegador muestra ese texto en su lugar — por eso importa que describa de verdad lo que se ve.</p>
 </div>
 

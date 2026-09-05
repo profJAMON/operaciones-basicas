@@ -447,6 +447,35 @@ footer.pie {
   color: var(--text);
 }
 
+.leccion .salida {
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  padding: 0.9rem 1.1rem;
+  margin: 0 0 1.2rem;
+  background: var(--surface);
+}
+.leccion .salida > *:last-child { margin-bottom: 0; }
+.leccion .salida a { color: var(--accent); }
+
+.leccion details {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  margin: 0 0 1.2rem;
+  background: var(--surface);
+}
+.leccion details[open] { padding-bottom: 1rem; }
+.leccion details summary {
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+.leccion details summary::-webkit-details-marker { display: none; }
+.leccion details summary::before { content: "▸ "; }
+.leccion details[open] summary::before { content: "▾ "; }
+.leccion details pre:last-child { margin-bottom: 0; margin-top: 0.8rem; }
+
 .leccion table {
   width: 100%;
   border-collapse: collapse;

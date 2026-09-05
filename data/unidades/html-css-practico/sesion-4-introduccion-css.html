@@ -1,0 +1,157 @@
+<h2>¿Qué es CSS?</h2>
+<p>Hasta ahora tu página tiene contenido y estructura (HTML), pero no aspecto propio: el navegador la pinta con sus valores por defecto. <strong>CSS</strong> (Cascading Style Sheets) es el lenguaje que decide cómo se ve cada cosa: colores, tipografía, tamaños, espaciados...</p>
+<p>Una regla CSS siempre tiene la misma forma: un <strong>selector</strong> (a qué le aplicas el estilo) y, entre llaves, una o varias parejas de <strong>propiedad</strong> y <strong>valor</strong>:</p>
+<pre><code><span class='et'>selector</span> {
+    <span class='at'>propiedad</span>: <span class='ca'>valor</span>;
+}</code></pre>
+<div class="nota">🤔 Fíjate en la sintaxis: cada propiedad termina en punto y coma <code>;</code>, y el bloque entero va entre llaves <code>{ }</code>. Olvidar el <code>;</code> es el error más común al empezar con CSS — puede hacer que el navegador ignore la propiedad siguiente.</div>
+
+<h2>Tu primera regla: el estilo interno</h2>
+<p>Para probar CSS rápido, se puede escribir dentro de una etiqueta <code>&lt;style&gt;</code>, colocada en el <code>&lt;head&gt;</code> del documento:</p>
+<pre><code><span class='et'>&lt;head&gt;</span>
+    <span class='et'>&lt;title&gt;</span>Mi página<span class='et'>&lt;/title&gt;</span>
+    <span class='et'>&lt;style&gt;</span>
+        <span class='et'>h1</span> {
+            <span class='at'>color</span>: <span class='ca'>darkblue</span>;
+        }
+    <span class='et'>&lt;/style&gt;</span>
+<span class='et'>&lt;/head&gt;</span></code></pre>
+<p>Ese <code>h1</code> es el selector: significa "aplica esto a <strong>todas</strong> las etiquetas <code>&lt;h1&gt;</code> de la página".</p>
+<div class="salida">
+<p style="margin:0 0 6px;"><strong>Antes</strong> (sin CSS)</p>
+<h1 style="font-size:1.6em;margin:0 0 18px;color:#1e1e1e;font-family:sans-serif;">Mi página</h1>
+<p style="margin:0 0 6px;"><strong>Después</strong> (con la regla de arriba)</p>
+<h1 style="font-size:1.6em;margin:0;color:darkblue;font-family:sans-serif;">Mi página</h1>
+</div>
+
+<h2>Ejercicio guiado 1 — Tu primer <code>&lt;style&gt;</code></h2>
+<ol>
+<li>Crea un archivo nuevo <code>prueba-css.html</code> con la estructura básica de siempre (<code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>).</li>
+<li>Dentro del <code>&lt;body&gt;</code>, escribe un <code>&lt;h1&gt;</code> con tu nombre y dos <code>&lt;p&gt;</code> con lo que quieras.</li>
+<li>En el <code>&lt;head&gt;</code>, añade una etiqueta <code>&lt;style&gt;</code> con una regla que ponga el <code>&lt;h1&gt;</code> de color <code>darkblue</code>.</li>
+<li>Guarda y comprueba con Live Server que solo el <code>&lt;h1&gt;</code> cambia de color — los párrafos no.</li>
+</ol>
+
+<h2>Selectores: etiqueta, clase e id</h2>
+<p>El selector <code>h1</code> afecta a <strong>todos</strong> los <code>&lt;h1&gt;</code> de la página. Para ser más concreto hay dos herramientas más:</p>
+<table>
+<tr><th>Selector</th><th>Se escribe</th><th>Afecta a</th></tr>
+<tr><td>Etiqueta</td><td><code>p { }</code></td><td>Todos los <code>&lt;p&gt;</code> de la página</td></tr>
+<tr><td>Clase</td><td><code>.destacado { }</code></td><td>Todo elemento con <code>class="destacado"</code>, sean el que sean y estén donde estén</td></tr>
+<tr><td>Id</td><td><code>#cabecera { }</code></td><td>El único elemento con <code>id="cabecera"</code> (un id no se repite en la página)</td></tr>
+</table>
+<pre><code><span class='et'>&lt;p</span> <span class='at'>class</span>=<span class='ca'>"destacado"</span><span class='et'>&gt;</span>Este párrafo es especial<span class='et'>&lt;/p&gt;</span>
+
+<span class='et'>.destacado</span> {
+    <span class='at'>color</span>: <span class='ca'>darkred</span>;
+}</code></pre>
+<div class="nota">Regla práctica: usa <strong>etiqueta</strong> cuando quieras afectar a todos por igual, <strong>clase</strong> cuando quieras reutilizar el mismo estilo en varios sitios sueltos, e <strong>id</strong> solo para ese elemento único (por ejemplo, tu cabecera principal).</div>
+
+<h2>Ejercicio guiado 2 — Distingue clase e id</h2>
+<ol>
+<li>En tu <code>prueba-css.html</code>, añade <code>class="destacado"</code> a uno de los dos párrafos.</li>
+<li>En el <code>&lt;style&gt;</code>, crea la regla <code>.destacado</code> con <code>color: darkred;</code>.</li>
+<li>Comprueba que solo ese párrafo cambia, no el otro.</li>
+<li>Ahora añade <code>id="titulo-principal"</code> a tu <code>&lt;h1&gt;</code> y crea una regla <code>#titulo-principal</code> que le cambie el tamaño con <code>font-size: 2.5em;</code>.</li>
+</ol>
+
+<h2>Colores</h2>
+<p>Un color en CSS se puede escribir de varias formas — de momento con dos te sobra:</p>
+<table>
+<tr><th>Forma</th><th>Ejemplo</th></tr>
+<tr><td>Nombre en inglés</td><td><code>color: tomato;</code></td></tr>
+<tr><td>Código hexadecimal</td><td><code>color: #ff6347;</code></td></tr>
+</table>
+<p>Las dos propiedades de color más usadas:</p>
+<pre><code><span class='et'>.caja</span> {
+    <span class='at'>color</span>: <span class='ca'>white</span>;
+    <span class='at'>background-color</span>: <span class='ca'>#2d2d30</span>;
+}</code></pre>
+<div class="salida" style="display:flex; gap:16px; flex-wrap:wrap;">
+<div style="background:#2d2d30;color:white;padding:14px 18px;border-radius:4px;">color + background-color</div>
+<div style="background:tomato;color:white;padding:14px 18px;border-radius:4px;">background-color: tomato</div>
+<div style="background:#fff;color:#1e1e1e;border:1px solid #ccc;padding:14px 18px;border-radius:4px;">sin background-color (blanco por defecto)</div>
+</div>
+<div class="nota">⚠️ Cuidado con el contraste: si pones un <code>background-color</code> oscuro y no cambias también el <code>color</code> del texto, este puede quedar casi ilegible (por defecto el texto es negro).</div>
+
+<h2>Ejercicio guiado 3 — Colorea tu página de prueba</h2>
+<ol>
+<li>Añade una tercera etiqueta a tu <code>prueba-css.html</code>: un <code>&lt;div&gt;</code> con <code>class="caja"</code> y algo de texto dentro.</li>
+<li>Crea la regla <code>.caja</code> con un <code>background-color</code> oscuro (a tu elección) y un <code>color</code> claro para el texto.</li>
+<li>Prueba a cambiar el <code>background-color</code> por un color con nombre (<code>tomato</code>, <code>teal</code>...) y luego por un código hexadecimal.</li>
+</ol>
+
+<h2>Tipografía</h2>
+<p>Cuatro propiedades para controlar cómo se ve el texto:</p>
+<table>
+<tr><th>Propiedad</th><th>Para qué sirve</th></tr>
+<tr><td><code>font-family</code></td><td>La tipografía (letra) a usar</td></tr>
+<tr><td><code>font-size</code></td><td>El tamaño del texto</td></tr>
+<tr><td><code>font-weight</code></td><td>El grosor: <code>normal</code> o <code>bold</code></td></tr>
+<tr><td><code>text-align</code></td><td>La alineación: <code>left</code>, <code>center</code>, <code>right</code></td></tr>
+</table>
+<pre><code><span class='et'>h1</span> {
+    <span class='at'>font-family</span>: <span class='ca'>Georgia, serif</span>;
+    <span class='at'>font-size</span>: <span class='ca'>2em</span>;
+    <span class='at'>font-weight</span>: <span class='ca'>bold</span>;
+    <span class='at'>text-align</span>: <span class='ca'>center</span>;
+}</code></pre>
+<div class="salida">
+<h1 style="font-family:Georgia, serif;font-size:2em;font-weight:bold;text-align:center;color:#1e1e1e;margin:0;">Así se ve</h1>
+</div>
+<div class="nota">🤔 <code>font-family</code> acepta varios nombres separados por comas: si el navegador no tiene el primero, prueba el siguiente. Por eso casi siempre se termina con una familia genérica (<code>serif</code>, <code>sans-serif</code>) como último recurso, por si ninguna de las anteriores está instalada.</div>
+
+<h2>Ejercicio guiado 4 — Tipografía en tu página de prueba</h2>
+<ol>
+<li>A tu <code>#titulo-principal</code>, añade <code>font-family</code>, <code>text-align: center;</code> y <code>font-weight: bold;</code>.</li>
+<li>A la etiqueta <code>p</code> (todos los párrafos), añade <code>font-size: 1.1em;</code>.</li>
+<li>Prueba dos o tres tipografías distintas en <code>font-family</code> (por ejemplo <code>Georgia, serif</code>, luego <code>"Courier New", monospace</code>) y quédate con la que más te guste.</li>
+</ol>
+
+<h2>Estilo externo: tu propia hoja de estilos</h2>
+<p>Escribir el CSS dentro de <code>&lt;style&gt;</code> está bien para probar rápido, pero tu web personal (la que llevas construyendo desde la sesión 1) va a tener varias páginas y muchas reglas — repetirlas en cada archivo sería un desastre de mantener. La solución: un <strong>archivo <code>.css</code> aparte</strong>, enlazado desde el HTML:</p>
+<pre><code><span class='et'>&lt;head&gt;</span>
+    <span class='et'>&lt;title&gt;</span>Mi página<span class='et'>&lt;/title&gt;</span>
+    <span class='et'>&lt;link</span> <span class='at'>rel</span>=<span class='ca'>"stylesheet"</span> <span class='at'>href</span>=<span class='ca'>"estilos.css"</span><span class='et'>&gt;</span>
+<span class='et'>&lt;/head&gt;</span></code></pre>
+<p>El archivo <code>estilos.css</code> lleva <strong>solo</strong> las reglas, sin <code>&lt;style&gt;</code> ni ninguna otra etiqueta HTML alrededor:</p>
+<pre><code><span class='et'>h1</span> {
+    <span class='at'>color</span>: <span class='ca'>darkblue</span>;
+}</code></pre>
+<div class="nota">Ventaja de separarlo: si mañana cambias un color, lo cambias <strong>una vez</strong> en <code>estilos.css</code> y se actualiza en todas las páginas que lo enlacen — no tienes que tocar cada <code>.html</code> uno a uno.</div>
+
+<h2>Ejercicio guiado 5 — Pasa tu web a un archivo externo</h2>
+<ol>
+<li>En tu carpeta <code>mi-web</code>, crea un archivo nuevo llamado <code>estilos.css</code>.</li>
+<li>En tu <code>index.html</code>, añade dentro del <code>&lt;head&gt;</code> la línea <code>&lt;link rel="stylesheet" href="estilos.css"&gt;</code>.</li>
+<li>Copia dentro de <code>estilos.css</code> las reglas que has ido probando en <code>prueba-css.html</code> (adapta los selectores a las clases e ids que ya tengas en tu <code>index.html</code>: tu <code>&lt;header&gt;</code>, tus <code>&lt;section&gt;</code>...).</li>
+<li>Aplica al menos: un color de fondo para el <code>&lt;body&gt;</code> o el <code>&lt;header&gt;</code>, una tipografía para los títulos, y una clase reutilizada en dos sitios distintos de tu página.</li>
+<li>Guarda todo y comprueba con Live Server que tu web ya no se ve "a pelo": tiene tus colores y tu tipografía.</li>
+</ol>
+<div class="nota">⚠️ Si al recargar no ves ningún cambio, revisa que el nombre del archivo en <code>href</code> coincida exactamente con <code>estilos.css</code> (el mismo fallo que con las imágenes: mayúsculas, extensión...).</div>
+
+<h2>Retos</h2>
+<p>Los tres retos son obligatorios, en orden: cada uno se apoya en el anterior. Si te atascas en alguno, dilo — es normal no encontrar la solución a la primera y para eso estoy yo.</p>
+
+<h3>Reto 1 — Una paleta de dos colores</h3>
+<p>Elige dos colores que combinen bien entre sí (uno de fondo, otro de texto o acento) y aplícalos de forma <strong>consistente</strong> en toda tu web: mismo color de fondo para el <code>&lt;header&gt;</code> y el <code>&lt;footer&gt;</code>, mismo color de acento para los títulos. Nada de colores distintos en cada sección "porque sí".</p>
+
+<h3>Reto 2 — Investiga: <code>:hover</code></h3>
+<p>Esta propiedad no la hemos explicado en clase. Busca en la <a href="https://developer.mozilla.org/es/docs/Web/CSS/:hover" target="_blank" rel="noopener">referencia de MDN</a> qué hace el selector <code>:hover</code> y úsalo para que tus enlaces cambien de color cuando pases el ratón por encima.</p>
+<details><summary>Pista si te atascas</summary>
+<pre><code><span class='et'>a:hover</span> {
+    <span class='at'>color</span>: <span class='ca'>tomato</span>;
+}</code></pre>
+</details>
+
+<h3>Reto 3 — Todo junto</h3>
+<p>Revisa tu web completa y comprueba que cumple todo esto a la vez:</p>
+<ul class="checklist">
+<li>Todo el CSS está en tu archivo <code>estilos.css</code> externo — nada de <code>&lt;style&gt;</code> ni <code>style="..."</code> sueltos en el HTML.</li>
+<li>Usas al menos una clase reutilizada en dos o más elementos distintos.</li>
+<li>Tu paleta de colores es consistente (Reto 1).</li>
+<li>Tus títulos tienen una tipografía y una alineación decididas por ti, no las que trae el navegador por defecto.</li>
+<li>El enlace con <code>:hover</code> del Reto 2 funciona.</li>
+</ul>
+
+<div class="nota">Guarda esta versión — ya tienes una web con estructura semántica (sesión 3) y estilo propio (hoy). En la próxima sesión llega el modelo de caja: <code>margin</code>, <code>padding</code> y <code>border</code>, para controlar el espacio alrededor de cada elemento.</div>

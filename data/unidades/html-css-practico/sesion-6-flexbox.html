@@ -1,0 +1,274 @@
+<h2>Antes de organizar: ¿y las tablas?</h2>
+<p>Es una pregunta habitual: si HTML tiene una etiqueta pensada para filas y columnas, ¿por qué no usarla para colocar el menú a un lado y el contenido al otro? La respuesta corta: <code>&lt;table&gt;</code> existe para <strong>datos reales</strong> organizados en filas y columnas — un horario, una lista de precios, una tabla de resultados — no para decidir dónde va cada bloque de tu página.</p>
+<p>Así se escribe una tabla de datos de verdad:</p>
+<pre><code><span class='et'>&lt;table&gt;</span>
+  <span class='et'>&lt;tr&gt;</span>
+    <span class='et'>&lt;th&gt;</span>Asignatura<span class='et'>&lt;/th&gt;</span>
+    <span class='et'>&lt;th&gt;</span>Horas/semana<span class='et'>&lt;/th&gt;</span>
+  <span class='et'>&lt;/tr&gt;</span>
+  <span class='et'>&lt;tr&gt;</span>
+    <span class='et'>&lt;td&gt;</span>Operaciones básicas<span class='et'>&lt;/td&gt;</span>
+    <span class='et'>&lt;td&gt;</span>5<span class='et'>&lt;/td&gt;</span>
+  <span class='et'>&lt;/tr&gt;</span>
+  <span class='et'>&lt;tr&gt;</span>
+    <span class='et'>&lt;td&gt;</span>Ofimática<span class='et'>&lt;/td&gt;</span>
+    <span class='et'>&lt;td&gt;</span>3<span class='et'>&lt;/td&gt;</span>
+  <span class='et'>&lt;/tr&gt;</span>
+<span class='et'>&lt;/table&gt;</span></code></pre>
+<div class="salida">
+<table style="border-collapse:collapse;width:auto;">
+<tr><th style="border:1px solid #6a7280;padding:6px 14px;background:#e8e8e8;color:#1e1e1e;">Asignatura</th><th style="border:1px solid #6a7280;padding:6px 14px;background:#e8e8e8;color:#1e1e1e;">Horas/semana</th></tr>
+<tr><td style="border:1px solid #6a7280;padding:6px 14px;background:#fff;color:#1e1e1e;">Operaciones básicas</td><td style="border:1px solid #6a7280;padding:6px 14px;background:#fff;color:#1e1e1e;">5</td></tr>
+<tr><td style="border:1px solid #6a7280;padding:6px 14px;background:#fff;color:#1e1e1e;">Ofimática</td><td style="border:1px solid #6a7280;padding:6px 14px;background:#fff;color:#1e1e1e;">3</td></tr>
+</table>
+</div>
+<p><code>&lt;th&gt;</code> es una celda de cabecera (el navegador la pone en negrita y centrada por defecto); <code>&lt;td&gt;</code> es una celda normal; cada <code>&lt;tr&gt;</code> es una fila completa. El navegador dibuja filas y columnas solo, alineando automáticamente todas las celdas de una misma columna.</p>
+<div class="nota">⚠️ Hace años era habitual maquetar páginas enteras con <code>&lt;table&gt;</code> (una fila para la cabecera, una fila con dos celdas para menú y contenido...). Hoy se considera mala práctica: mezcla la estructura de tus datos con el diseño visual, no se adapta bien a pantallas distintas, y complica la vida a quien navega con lector de pantalla, que espera que una tabla contenga datos, no el esqueleto de la página. La herramienta correcta para organizar bloques de una página es la que vas a aprender ahora: <strong>Flexbox</strong>.</div>
+<div class="nota">🤔 Antes de seguir: quieres poner tu foto a la izquierda y tu texto de presentación a la derecha, uno junto al otro. ¿Es trabajo para una tabla?</div>
+<details><summary>Ver la respuesta</summary>
+<p>No. Tu foto y tu texto no son "datos en filas y columnas" — son dos bloques de tu página que quieres colocar uno junto al otro. Eso es exactamente lo que resuelve Flexbox, no <code>&lt;table&gt;</code>. Reserva <code>&lt;table&gt;</code> para cuando el contenido en sí mismo sea tabular: un horario, una lista de precios, resultados de un experimento.</p>
+</details>
+
+<h2>Ejercicio guiado 1 — Una tabla con datos tuyos</h2>
+<ol>
+<li>En tu <code>index.html</code>, añade una nueva <code>&lt;section&gt;</code> (por ejemplo, "Mis asignaturas" o "Mis herramientas favoritas").</li>
+<li>Dentro, crea una <code>&lt;table&gt;</code> con al menos dos columnas y tres filas de datos reales tuyos, usando <code>&lt;th&gt;</code> para la fila de cabecera y <code>&lt;td&gt;</code> para el resto.</li>
+</ol>
+<p>Si lo has hecho bien: verás una cuadrícula con tu fila de cabecera resaltada y el resto de filas debajo, cada dato en su columna — aunque todavía sin ningún estilo de <code>estilos.css</code>, el navegador ya la muestra organizada en filas y columnas.</p>
+
+<h3>Dale estilo con CSS</h3>
+<p>Por defecto, una tabla no lleva bordes visibles entre celdas (o, en algunos navegadores, un doble borde con un pequeño espacio entre celdas). El estilo se aplica igual que a cualquier otro elemento — con selectores de etiqueta, sobre <code>table</code>, <code>th</code> y <code>td</code>:</p>
+<pre><code><span class='et'>table</span> {
+    <span class='at'>border-collapse</span>: <span class='ca'>collapse</span>; <span class='co'>/* funde los bordes de celdas vecinas en uno solo */</span>
+    <span class='at'>width</span>: <span class='ca'>100%</span>;
+}
+<span class='et'>th</span>, <span class='et'>td</span> {
+    <span class='at'>border</span>: <span class='ca'>1px solid #3c3c3c</span>;
+    <span class='at'>padding</span>: <span class='ca'>8px 12px</span>;
+    <span class='at'>text-align</span>: <span class='ca'>left</span>;
+}
+<span class='et'>th</span> {
+    <span class='at'>background-color</span>: <span class='ca'>#e8e8e8</span>;
+}</code></pre>
+<div class="salida" style="display:flex; gap:24px; flex-wrap:wrap;">
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">Sin estilo</p>
+<table style="border-spacing:4px;">
+<tr><th style="padding:4px 10px;background:#fff;color:#1e1e1e;font-weight:bold;">Asignatura</th><th style="padding:4px 10px;background:#fff;color:#1e1e1e;font-weight:bold;">Horas</th></tr>
+<tr><td style="padding:4px 10px;background:#fff;color:#1e1e1e;">Op. básicas</td><td style="padding:4px 10px;background:#fff;color:#1e1e1e;">5</td></tr>
+</table>
+</div>
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">Con el CSS de arriba</p>
+<table style="border-collapse:collapse;">
+<tr><th style="border:1px solid #3c3c3c;padding:8px 12px;background:#e8e8e8;color:#1e1e1e;text-align:left;">Asignatura</th><th style="border:1px solid #3c3c3c;padding:8px 12px;background:#e8e8e8;color:#1e1e1e;text-align:left;">Horas</th></tr>
+<tr><td style="border:1px solid #3c3c3c;padding:8px 12px;background:#fff;color:#1e1e1e;">Op. básicas</td><td style="border:1px solid #3c3c3c;padding:8px 12px;background:#fff;color:#1e1e1e;">5</td></tr>
+</table>
+</div>
+</div>
+<p>Sin <code>border-collapse: collapse;</code>, cada celda tiene su propio borde y queda un hueco entre ellas (a veces un doble borde). Con <code>collapse</code>, los bordes de celdas vecinas se funden en una sola línea, que es como se ve una tabla "normal".</p>
+
+<h3>colspan y rowspan — fusionar celdas</h3>
+<p>A veces una celda tiene que ocupar el espacio de varias columnas o varias filas — por ejemplo, el recreo en un horario ocupa todos los días a la vez, y una asignatura de dos horas seguidas ocupa dos filas del mismo día. Para eso están <code>colspan</code> y <code>rowspan</code>: son <strong>atributos HTML</strong> (van en la etiqueta, no en el CSS) que se escriben en la celda que quieres agrandar.</p>
+<pre><code><span class='co'>&lt;!-- colspan: esta celda ocupa 3 columnas --&gt;</span>
+<span class='et'>&lt;td</span> <span class='at'>colspan</span>=<span class='ca'>"3"</span><span class='et'>&gt;</span>RECREO<span class='et'>&lt;/td&gt;</span>
+
+<span class='co'>&lt;!-- rowspan: esta celda ocupa 2 filas --&gt;</span>
+<span class='et'>&lt;td</span> <span class='at'>rowspan</span>=<span class='ca'>"2"</span><span class='et'>&gt;</span>Matemáticas<span class='et'>&lt;/td&gt;</span></code></pre>
+<div class="salida" style="display:flex; gap:24px; flex-wrap:wrap;">
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">Sin fusionar (repetido)</p>
+<table style="border-collapse:collapse;">
+<tr><th style="border:1px solid #3c3c3c;padding:6px 10px;background:#e8e8e8;color:#1e1e1e;">Lunes</th><th style="border:1px solid #3c3c3c;padding:6px 10px;background:#e8e8e8;color:#1e1e1e;">Martes</th></tr>
+<tr><td style="border:1px solid #3c3c3c;padding:6px 10px;background:#fff;color:#1e1e1e;">RECREO</td><td style="border:1px solid #3c3c3c;padding:6px 10px;background:#fff;color:#1e1e1e;">RECREO</td></tr>
+</table>
+</div>
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">Con colspan="2"</p>
+<table style="border-collapse:collapse;">
+<tr><th style="border:1px solid #3c3c3c;padding:6px 10px;background:#e8e8e8;color:#1e1e1e;">Lunes</th><th style="border:1px solid #3c3c3c;padding:6px 10px;background:#e8e8e8;color:#1e1e1e;">Martes</th></tr>
+<tr><td colspan="2" style="border:1px solid #3c3c3c;padding:6px 10px;background:#fff;color:#1e1e1e;text-align:center;">RECREO</td></tr>
+</table>
+</div>
+</div>
+<div class="nota">⚠️ Al fusionar celdas, esa fila (o esas filas) tiene <strong>menos <code>&lt;td&gt;</code> de los que parece</strong>. Si una fila normal tiene 5 celdas (una por día) y fusionas dos con <code>colspan="2"</code>, esa fila solo lleva 4 <code>&lt;td&gt;</code> en el HTML, no 5 — la celda fusionada ya "vale por dos". Si te olvidas de quitar la celda de más, la tabla se descuadra y las columnas de las filas siguientes dejan de alinearse.</div>
+
+<h2>Ejercicio guiado 2 — Recrea tu horario de clases</h2>
+<ol>
+<li>Crea una tabla con una columna para la hora y una columna por cada día que tengas clase (por ejemplo, Lunes a Viernes).</li>
+<li>Rellena las filas con tus asignaturas reales de este curso, hora a hora.</li>
+<li>Si alguna asignatura ocupa dos horas seguidas el mismo día, usa <code>rowspan="2"</code> en esa celda en vez de escribir su nombre dos veces — y recuerda quitar la celda de esa asignatura en la fila de abajo (ver el aviso de arriba).</li>
+<li>Añade una fila para el recreo que ocupe todas las columnas de los días con <code>colspan</code>.</li>
+<li>Aplica a esta tabla el CSS de <code>border-collapse</code>, <code>border</code>, <code>padding</code> y <code>text-align</code> que has visto en el apartado anterior.</li>
+</ol>
+<p>Si lo has hecho bien: tu horario se verá como una tabla real, con bordes limpios sin dobles líneas; la fila del recreo ocupará todo el ancho en una única celda; y ninguna asignatura de dos horas aparecerá repetida en dos filas seguidas.</p>
+<details><summary>Pista si se te descuadra la tabla</summary>
+<p>Cuenta, fila por fila, cuántas celdas (<code>&lt;td&gt;</code> o <code>&lt;th&gt;</code>) tiene cada una contando también las fusionadas. Todas las filas tienen que "sumar" el mismo número de columnas — una celda con <code>colspan="2"</code> cuenta como 2, no como 1.</p>
+</details>
+
+<h2>Ejercicio guiado 3 — Presupuesto para montar tu PC ideal</h2>
+<p>Vas a crear una tabla de tres columnas: <strong>Categoría</strong>, <strong>Componente</strong> y <strong>Precio</strong>. Puedes cambiar el tema (el material para un escritorio gaming, la lista de la compra de una fiesta, el equipo de tus sueños...) pero mantén esta misma estructura de tres columnas.</p>
+<ol>
+<li>Elige entre 3 y 5 categorías, cada una con dos o tres elementos (por ejemplo, categoría "Núcleo" con "Procesador" y "Tarjeta gráfica"; categoría "Periféricos" con "Teclado" y "Ratón").</li>
+<li>Crea la tabla con las tres columnas y todas las filas de datos.</li>
+<li>En cada categoría con más de un elemento, fusiona su celda de categoría con <code>rowspan</code> en vez de repetir su nombre en cada fila.</li>
+<li>Añade una última fila "Total" que fusione las columnas de Categoría y Componente con <code>colspan="2"</code>, con la suma de todos los precios en la celda de Precio.</li>
+<li>Aplica el mismo CSS de tablas del ejercicio anterior.</li>
+</ol>
+<p>Si lo has hecho bien: cada categoría aparecerá una sola vez, ocupando visualmente todas las filas de sus elementos; y la fila "Total" tendrá una única celda ancha con la palabra "Total", seguida de una celda con la suma — no tres celdas sueltas.</p>
+
+<h2>Flexbox: organiza varias cajas a la vez</h2>
+<p>Hasta ahora, cada bloque de tu página (una tarjeta, una sección, un párrafo) se coloca solo, uno debajo de otro — así se comportan por defecto los elementos de bloque. <strong>Flexbox</strong> cambia esto: conviertes un contenedor en "flex" y sus hijos directos pasan a organizarse en fila automáticamente, y tú decides cómo se reparten y se alinean.</p>
+<p>Compara el mismo HTML con y sin <code>display: flex;</code> en el contenedor:</p>
+<pre><code><span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"fila"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;div&gt;</span>Uno<span class='et'>&lt;/div&gt;</span>
+    <span class='et'>&lt;div&gt;</span>Dos<span class='et'>&lt;/div&gt;</span>
+    <span class='et'>&lt;div&gt;</span>Tres<span class='et'>&lt;/div&gt;</span>
+<span class='et'>&lt;/div&gt;</span></code></pre>
+<div class="salida" style="display:flex; gap:24px; flex-wrap:wrap;">
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">Sin display: flex;</p>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:10px;border:2px solid #3c3c3c;margin-bottom:6px;">Uno</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:10px;border:2px solid #3c3c3c;margin-bottom:6px;">Dos</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:10px;border:2px solid #3c3c3c;">Tres</div>
+</div>
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">Con .fila { display: flex; gap: 10px; }</p>
+<div style="display:flex; gap:10px;">
+<div style="background:#e8e8e8;color:#1e1e1e;padding:10px;border:2px solid #3c3c3c;">Uno</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:10px;border:2px solid #3c3c3c;">Dos</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:10px;border:2px solid #3c3c3c;">Tres</div>
+</div>
+</div>
+</div>
+<p>Con <code>.fila { display: flex; }</code>, "Uno", "Dos" y "Tres" dejan de apilarse y pasan a colocarse en fila, uno junto a otro. Nada más cambia en el HTML — solo el CSS del contenedor.</p>
+
+<h3>flex-direction — fila o columna</h3>
+<p>Por defecto, flex coloca los hijos en fila (<code>row</code>). Con <code>flex-direction: column;</code> vuelven a apilarse verticalmente, pero siguen siendo una caja flex (y podrás usar el resto de propiedades de esta sesión igual):</p>
+<pre><code><span class='et'>.fila</span> {
+    <span class='at'>display</span>: <span class='ca'>flex</span>;
+    <span class='at'>flex-direction</span>: <span class='ca'>column</span>; <span class='co'>/* row es el valor por defecto */</span>
+    <span class='at'>gap</span>: <span class='ca'>10px</span>;
+}</code></pre>
+<div class="salida" style="display:flex; flex-direction:column; gap:10px; width:120px;">
+<div style="background:#e8e8e8;color:#1e1e1e;padding:10px;border:2px solid #3c3c3c;text-align:center;">Uno</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:10px;border:2px solid #3c3c3c;text-align:center;">Dos</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:10px;border:2px solid #3c3c3c;text-align:center;">Tres</div>
+</div>
+
+<h3>justify-content — repartir el espacio en la fila</h3>
+<p><code>justify-content</code> decide cómo se reparten las cajas a lo largo de la fila, cuando sobra espacio:</p>
+<div class="salida" style="display:flex; gap:24px; flex-wrap:wrap;">
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">flex-start (por defecto)</p>
+<div style="display:flex; justify-content:flex-start; gap:8px; width:220px; border:1px dashed #6a7280; padding:6px;">
+<div style="background:#e8e8e8;color:#1e1e1e;padding:8px 12px;border:2px solid #3c3c3c;">A</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:8px 12px;border:2px solid #3c3c3c;">B</div>
+</div>
+</div>
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">center</p>
+<div style="display:flex; justify-content:center; gap:8px; width:220px; border:1px dashed #6a7280; padding:6px;">
+<div style="background:#e8e8e8;color:#1e1e1e;padding:8px 12px;border:2px solid #3c3c3c;">A</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:8px 12px;border:2px solid #3c3c3c;">B</div>
+</div>
+</div>
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">space-between</p>
+<div style="display:flex; justify-content:space-between; width:220px; border:1px dashed #6a7280; padding:6px;">
+<div style="background:#e8e8e8;color:#1e1e1e;padding:8px 12px;border:2px solid #3c3c3c;">A</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:8px 12px;border:2px solid #3c3c3c;">B</div>
+</div>
+</div>
+</div>
+<p>Con <code>space-between</code>, la primera caja se pega al borde izquierdo, la última al derecho, y el espacio sobrante se reparte entre las de en medio — justo lo que necesitas para "logo a la izquierda, enlaces a la derecha" en una barra de navegación.</p>
+
+<h3>align-items — alineación en el eje cruzado</h3>
+<p>Si <code>flex-direction</code> es <code>row</code>, el eje cruzado es el <strong>vertical</strong>. <code>align-items</code> decide cómo se alinean las cajas en ese eje, dentro de un contenedor con altura de sobra:</p>
+<div class="salida" style="display:flex; gap:24px; flex-wrap:wrap;">
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">flex-start</p>
+<div style="display:flex; align-items:flex-start; gap:8px; height:100px; border:1px dashed #6a7280; padding:6px; width:160px;">
+<div style="background:#e8e8e8;color:#1e1e1e;padding:6px 10px;border:2px solid #3c3c3c;">A</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:16px 10px;border:2px solid #3c3c3c;">B</div>
+</div>
+</div>
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">center</p>
+<div style="display:flex; align-items:center; gap:8px; height:100px; border:1px dashed #6a7280; padding:6px; width:160px;">
+<div style="background:#e8e8e8;color:#1e1e1e;padding:6px 10px;border:2px solid #3c3c3c;">A</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:16px 10px;border:2px solid #3c3c3c;">B</div>
+</div>
+</div>
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">stretch (por defecto)</p>
+<div style="display:flex; align-items:stretch; gap:8px; height:100px; border:1px dashed #6a7280; padding:6px; width:160px;">
+<div style="background:#e8e8e8;color:#1e1e1e;padding:6px 10px;border:2px solid #3c3c3c;">A</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:16px 10px;border:2px solid #3c3c3c;">B</div>
+</div>
+</div>
+</div>
+<div class="nota">🤔 Antes de seguir: si combinas <code>justify-content: center;</code> y <code>align-items: center;</code> en el mismo contenedor flex, ¿qué consigues?</div>
+<details><summary>Ver la respuesta</summary>
+<p>Centras las cajas a la vez en horizontal y en vertical — algo que con <code>margin: 0 auto;</code> (sesión anterior) no podías hacer, porque eso solo centra en horizontal. Es una de las combinaciones más usadas de Flexbox, por ejemplo para centrar un bloque de bienvenida en toda la pantalla.</p>
+</details>
+
+<h3>flex-wrap — cuando las cajas no caben</h3>
+<p>¿Te acuerdas de las dos tarjetas de la sesión anterior que no cabían en su fila? Por defecto (<code>flex-wrap: nowrap</code>), las cajas de una fila flex se encogen o se desbordan si no caben. Con <code>flex-wrap: wrap;</code>, las que no caben pasan directamente a una nueva línea:</p>
+<pre><code><span class='et'>.fila-tarjetas</span> {
+    <span class='at'>display</span>: <span class='ca'>flex</span>;
+    <span class='at'>flex-wrap</span>: <span class='ca'>wrap</span>;
+    <span class='at'>gap</span>: <span class='ca'>16px</span>;
+}</code></pre>
+<div class="salida" style="overflow-x:auto;">
+<div style="display:flex; flex-wrap:wrap; gap:16px; width:280px; border:2px dashed red; padding:10px;">
+<div style="width:120px; padding:14px; border:2px solid #3c3c3c; background:#e8e8e8; color:#1e1e1e; box-sizing:border-box;">Tarjeta A</div>
+<div style="width:120px; padding:14px; border:2px solid #3c3c3c; background:#e8e8e8; color:#1e1e1e; box-sizing:border-box;">Tarjeta B</div>
+<div style="width:120px; padding:14px; border:2px solid #3c3c3c; background:#e8e8e8; color:#1e1e1e; box-sizing:border-box;">Tarjeta C</div>
+</div>
+</div>
+<p>El contenedor mide 280px y cada tarjeta ocupa 120px + gap: solo caben dos por línea. Con <code>flex-wrap: wrap;</code>, la tercera no se sale del recuadro rojo ni se encoge — baja a una segunda línea, sin que tengas que calcular nada a mano.</p>
+
+<h3>gap — separación entre cajas</h3>
+<p>Ya lo has usado en los ejemplos de arriba: <code>gap</code> pone un hueco fijo entre las cajas de un contenedor flex, en todas direcciones (también entre líneas, si hay <code>flex-wrap: wrap;</code>). Es más cómodo que poner <code>margin</code> a cada caja hija, porque no añade espacio de más en los bordes exteriores del contenedor.</p>
+
+<h2>Ejercicio guiado 4 — Tu menú en fila</h2>
+<ol>
+<li>Localiza en tu <code>estilos.css</code> la regla de tu <code>&lt;nav&gt;</code> (si no tienes ninguna todavía, créala apuntando a la etiqueta <code>nav</code> o a la clase que uses en tu menú).</li>
+<li>Añade <code>display: flex;</code> y <code>gap: 16px;</code> a esa regla.</li>
+<li>Prueba a añadir también <code>justify-content: space-between;</code> si quieres separar, por ejemplo, tu nombre a la izquierda de los enlaces a la derecha (necesitarás que ambos sean hijos directos del <code>&lt;nav&gt;</code>).</li>
+</ol>
+<p>Si lo has hecho bien: los enlaces de tu menú, que antes aparecían uno debajo de otro, quedarán en una sola fila horizontal, separados por el <code>gap</code> que hayas puesto.</p>
+
+<h2>Ejercicio guiado 5 — Tus tarjetas, en fila y sin desbordarse</h2>
+<ol>
+<li>Busca en tu <code>estilos.css</code> el contenedor que envuelve tus bloques de "tarjeta" (de la sesión anterior). Si tus tarjetas no tienen un contenedor común todavía, envuélvelas ahora en un <code>&lt;div class="fila-tarjetas"&gt;</code>.</li>
+<li>A esa regla del contenedor añade <code>display: flex;</code>, <code>flex-wrap: wrap;</code> y un <code>gap</code> a tu gusto.</li>
+<li>Reduce el ancho de la ventana del navegador poco a poco y observa qué pasa cuando ya no caben todas las tarjetas en una fila.</li>
+</ol>
+<p>Si lo has hecho bien: tus tarjetas se colocarán en fila mientras quepan, y la que no quepa saltará a una nueva línea en vez de desbordarse o encogerse — el mismo problema de la sesión anterior, resuelto sin tocar ningún <code>width</code> ni <code>box-sizing</code>.</p>
+<div class="nota">⚠️ <code>display: flex;</code> va en el <strong>contenedor</strong> (el padre), nunca en las tarjetas mismas. Es un error habitual ponerlo en la clase equivocada y no entender por qué "no hace nada".</div>
+
+<h2>Retos</h2>
+<p>Los tres retos son obligatorios, en orden: cada uno se apoya en el anterior. Si te atascas en alguno, dilo — es normal no encontrar la solución a la primera y para eso estoy yo.</p>
+
+<h3>Reto 1 — Centra un bloque, en las dos direcciones</h3>
+<p>Elige un bloque de tu web que tenga sentido centrar por completo (por ejemplo, un mensaje de bienvenida o tu foto de presentación). Dale una altura con <code>height</code> y, usando <code>display: flex;</code>, <code>justify-content: center;</code> y <code>align-items: center;</code> en su contenedor, consigue que su contenido quede centrado tanto en horizontal como en vertical.</p>
+
+<h3>Reto 2 — Investiga: <code>align-self</code></h3>
+<p>Esta propiedad no la hemos explicado en clase. Entra en la <a href="https://developer.mozilla.org/es/docs/Web/CSS/align-self" target="_blank" rel="noopener">referencia de MDN sobre <code>align-self</code></a> y descubre para qué sirve y en qué elemento se aplica (pista: no va en el contenedor flex, va en uno de sus hijos). Úsala para que una sola caja de una de tus filas flex se alinee de forma distinta a sus hermanas.</p>
+<details><summary>Pista si te atascas</summary>
+<p><code>align-items</code> alinea <strong>todos</strong> los hijos a la vez, desde el contenedor. <code>align-self</code> hace lo mismo pero para <strong>un solo hijo</strong>, y se escribe en la regla de ese hijo, no en la del contenedor — piensa en ella como "la excepción a la regla de <code>align-items</code>".</p>
+</details>
+
+<h3>Reto 3 — Todo junto</h3>
+<p>Revisa tu web completa y comprueba que cumple todo esto a la vez:</p>
+<ul class="checklist">
+<li>Tu <code>&lt;nav&gt;</code> usa <code>display: flex;</code> y sus enlaces están en fila, no uno debajo de otro.</li>
+<li>Tus tarjetas están en un contenedor con <code>display: flex; flex-wrap: wrap;</code> y no se desbordan aunque encojas la ventana.</li>
+<li>Al menos un bloque de tu página está centrado en las dos direcciones con Flexbox (Reto 1).</li>
+<li>Sigues aplicando <code>box-sizing: border-box</code> a tus tarjetas (sesión anterior) — Flexbox no sustituye al modelo de caja, trabaja junto a él.</li>
+<li>Tus tablas de datos (horario y presupuesto) siguen en tu página tal cual, con su estilo de <code>border-collapse</code>/<code>border</code>/<code>padding</code> aplicado y sus celdas fusionadas donde correspondía — una tabla de datos no se toca con Flexbox.</li>
+</ul>
+
+<div class="nota">Guarda esta versión — tu web ya sabe organizarse sola en fila o columna, y sabes cuándo una tabla es la herramienta correcta y cuándo no lo es. En la próxima sesión no hay contenido nuevo: una batería de ejercicios que repasa todo lo visto desde la primera sesión, HTML y CSS incluidos, antes de meterte de lleno en el proyecto de tu página personal.</div>

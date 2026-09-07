@@ -18,6 +18,14 @@
         "sesion-10-repaso-ejercicios-2",
         "glosario"
       ]
+    },
+    {
+      "id": "fundamentos-internet",
+      "titulo": "Unidad 2. Fundamentos de Internet",
+      "descripcion": "Cómo funciona la web por dentro: navegador, direcciones y protocolos, antes de publicar tu propia página.",
+      "sesiones": [
+        "sesion-1-cliente-servidor-ip-dns"
+      ]
     }
   ]
 }

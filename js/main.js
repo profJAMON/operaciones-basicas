@@ -22,10 +22,10 @@ async function cargarIndicePortada() {
       return;
     }
 
-    unidades.forEach((unidad, indiceUnidad) => {
+    unidades.forEach(unidad => {
       const detalles = document.createElement('details');
       detalles.className = 'unidad-card';
-      if (indiceUnidad === 0) detalles.open = true;
+      
 
       const resumen = document.createElement('summary');
 

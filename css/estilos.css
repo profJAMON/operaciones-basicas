@@ -372,9 +372,14 @@ footer.pie {
 
 /* ---------- Contenido de la sesión (prosa, código, tablas) ---------- */
 
-.leccion {
+:root {
+  --ancho-lectura: 1000px;   /* ajusta a tu gusto */
+}
+
+.leccion,
+.cabecera {              /* pon aquí el selector real de tu cabecera */
   width: 100%;
-  max-width: 1200px; 
+  max-width: var(--ancho-lectura);
   margin: 0 auto;
 }
 

@@ -175,7 +175,7 @@ h1, h2, h3 {
 .main-content {
   width: 100%;
    min-width: 0;
-  max-width: min(100%);
+  /*max-width: min(100%);*/
   margin: 0 auto;
   padding: 28px 34px;
 }

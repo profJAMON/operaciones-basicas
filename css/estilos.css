@@ -372,7 +372,11 @@ footer.pie {
 
 /* ---------- Contenido de la sesión (prosa, código, tablas) ---------- */
 
-.leccion { max-width: 68ch; counter-reset: h2count; }
+.leccion {
+  width: 100%;
+  max-width: 1200px; 
+  margin: 0 auto;
+}
 
 .leccion h2 {
   counter-reset: h3count;

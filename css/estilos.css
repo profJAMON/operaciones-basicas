@@ -35,7 +35,7 @@
 
   /* Ancho máximo de la columna de lectura. Cámbialo aquí y se mueve
      toda la página a la vez: cabecera, lección y pie. */
-  --ancho-lectura: 1100px;
+  --ancho-lectura: none;
 
   /* Anchos de las columnas laterales. */
   --ancho-menu: 200px;

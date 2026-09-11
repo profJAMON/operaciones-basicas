@@ -1,12 +1,30 @@
 {
   "unidades": [
     {
+      "id": "antes-de-empezar",
+      "titulo": "Antes de empezar",
+      "descripcion": "Cómo se evalúa esta asignatura: el peso de cada parte, las entregas, las faltas y la rúbrica de los resúmenes.",
+      "sesiones": [
+        "formas-de-evaluar"
+      ]
+    },
+    {
+      "id": "el-ordenador-y-tus-archivos",
+      "titulo": "Unidad 0. El ordenador y tus archivos",
+      "descripcion": "Lo básico antes de programar: el teclado, el explorador de archivos, las rutas, las descargas, las propiedades de un archivo, las unidades del equipo y las copias de seguridad.",
+      "sesiones": [
+        "sesion-1-teclado-explorador",
+        "sesion-2-rutas-descargas",
+        "sesion-3-propiedades-este-equipo",
+        "sesion-4-copia-seguridad-drive"
+      ]
+    },
+    {
       "id": "html-css-practico",
       "titulo": "UNIDAD 1. Introducción a HTML/CSS",
       "descripcion": "Etiquetas, estructura y estilos: construyes tu propia web personal desde la primera sesión.",
       "sesiones": [
         "sesion-1-primeros-pasos-html",
-        "copia-seguridad-drive",
         "sesion-2-texto-listas-enlaces",
         "sesion-3-imagenes-estructura-semantica",
         "sesion-4-introduccion-css",

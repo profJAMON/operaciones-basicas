@@ -30,8 +30,8 @@
 </svg>
 </div>
 
-<div class="nota">🤔 Antes de seguir: hasta ahora abrías tu web haciendo doble clic en <code>index.html</code> y se abría en tu navegador. ¿En qué se diferencia eso de lo que vas a hacer ahora?</div>
-<details><summary>Ver respuesta</summary>Cuando abres el archivo con doble clic, solo tú la ves, en tu propio ordenador: no hay ningún servidor de por medio, es un archivo local. Cuando la subes con Cloudflare Drop, un servidor real la guarda y responde a cualquiera que pida esa URL, esté donde esté — es justo lo que viste en la Unidad 2 sobre cliente-servidor y hosting, pero ahora ocurriendo de verdad con tu propia web.</details>
+<div class="nota">🤔 Antes de seguir: hasta ahora veías tu web con Live Server, en una dirección tipo <code>127.0.0.1:5500</code>. ¿En qué se diferencia eso de lo que vas a hacer ahora?</div>
+<details><summary>Ver respuesta</summary>Live Server es un pequeño servidor que funciona <strong>dentro de tu propio ordenador</strong>: la dirección <code>127.0.0.1</code> significa "este mismo ordenador", así que solo tú puedes ver tu web ahí. Cuando la subes con Cloudflare Drop, un servidor real la guarda y responde a cualquiera que pida esa URL, esté donde esté — es justo lo que viste en la Unidad 2 sobre cliente-servidor y hosting, pero ahora ocurriendo de verdad con tu propia web.</details>
 
 <h2>Por qué esta y no otra</h2>
 
@@ -63,8 +63,21 @@
 <p>Antes de subir nada, abre la carpeta de tu web en tu ordenador y comprueba que están <strong>todos</strong> los archivos juntos, en la misma carpeta: <code>index.html</code>, <code>estilos.css</code> y todas las imágenes que uses. Si alguno vive en otra carpeta (por ejemplo, sigue en "Descargas"), muévelo ahora.</p>
 
 <div class="nota">Esto no es un detalle menor: si subes solo el <code>.html</code> sin el CSS o sin las imágenes, tu web se publicará, pero se verá rota — sin estilos, con las imágenes caídas. La causa es la misma de siempre: una ruta que apunta a un archivo que no está donde toca.</div>
+<div class="nota">⚠️ Cuidado con las <strong>mayúsculas</strong>. En tu ordenador, Windows no distingue entre <code>Foto.JPG</code> y <code>foto.jpg</code>: tu web se ve bien con Live Server aunque en el HTML hayas escrito el nombre de otra forma. El servidor de Internet <strong>sí</strong> los distingue, y allí esa imagen dará un error 404. Antes de subir, comprueba que cada <code>src</code> y cada <code>href</code> escribe el nombre del archivo exactamente igual, mayúsculas incluidas. Por eso la norma de clase de la Unidad 0: nombres en minúsculas, sin espacios ni tildes.</div>
 
-<h3>Paso 2 — sube tu carpeta</h3>
+<h3>Paso 2 — comprueba que no hay datos personales</h3>
+<p>Vas a publicar <strong>toda</strong> la carpeta, también los archivos de práctica (<code>prueba.html</code>, <code>prueba-css.html</code>, <code>reto-final.html</code>...). Aunque no estén enlazados desde tu <code>index.html</code>, se publican igual y cualquiera que conozca su dirección puede abrirlos.</p>
+<p>Abre cada <code>.html</code> de tu carpeta y comprueba:</p>
+<ul class="checklist">
+<li>No aparece tu nombre real ni tus apellidos: solo tu alias (mira también el <code>&lt;title&gt;</code>, el <code>&lt;footer&gt;</code> y la <code>meta description</code>).</li>
+<li>No hay fotos tuyas ni de otras personas.</li>
+<li>No aparece tu instituto, tu pueblo, tu dirección, tu teléfono ni tus redes sociales.</li>
+<li>No hay ningún horario real.</li>
+<li>Los nombres de los archivos tampoco dicen quién eres (nada de <code>foto-marc-garcia.jpg</code>).</li>
+</ul>
+<p>Si encuentras algo, cámbialo <strong>antes</strong> de subir la carpeta. Una vez publicada, cualquiera puede verla (y guardarla).</p>
+
+<h3>Paso 3 — sube tu carpeta</h3>
 <ol>
 <li>Abre <code>cloudflare.com/drop</code> en tu navegador.</li>
 <li>Arrastra la carpeta completa de tu web (o selecciónala) hasta el recuadro de la página.</li>
@@ -72,7 +85,7 @@
 </ol>
 <p><strong>Comprobación observable:</strong> aparece una URL nueva, con <code>https://</code> y un nombre que no habías escrito tú.</p>
 
-<h3>Paso 3 — compruébalo desde fuera</h3>
+<h3>Paso 4 — compruébalo desde fuera</h3>
 <ol start="4">
 <li>Copia esa URL.</li>
 <li>Pídele a un compañero que la abra en su móvil, usando datos móviles (no la wifi del instituto).</li>
@@ -82,7 +95,7 @@
 <div class="nota">🤔 Antes de seguir: si tu compañero solo estuviera conectado a la wifi del instituto, en vez de a datos móviles, ¿habría alguna diferencia?</div>
 <details><summary>Ver respuesta</summary>No debería haberla: tu web ya no depende de tu ordenador ni de tu red — está en un servidor de Cloudflare, accesible desde cualquier conexión a Internet. Se pide con datos precisamente para comprobar eso con seguridad: que no la ve solo porque está en la misma red que tú.</details>
 
-<h3>Paso 4 — decide qué hacer con la cuenta atrás</h3>
+<h3>Paso 5 — decide qué hacer con la cuenta atrás</h3>
 <p>Verás un aviso con el tiempo que queda antes de que tu web desaparezca. Tienes dos opciones: dejar que pase el tiempo (tu web se borra sola, sin que tengas que hacer nada) o pulsar "Claim"/"Reclamar" y crear una cuenta gratuita si quieres conservarla más tiempo. Ninguna de las dos es obligatoria para la actividad de hoy.</p>
 
 <h2>Repaso: qué acabas de hacer</h2>
@@ -90,6 +103,7 @@
 <ul class="checklist">
 <li>Subiste tu web a un servidor real con un servicio "arrastra y publica" (Cloudflare Drop).</li>
 <li>Obtuviste una URL pública con HTTPS, sin configurar nada tú mismo.</li>
+<li>Comprobaste que tu web no tenía datos personales antes de publicarla.</li>
 <li>Comprobaste desde otra red que la web responde a cualquiera, no solo a ti.</li>
 <li>Viste la diferencia entre una publicación temporal (sin reclamar) y una permanente (reclamada con una cuenta).</li>
 </ul>
@@ -104,8 +118,10 @@ Responde estas preguntas en tu cuaderno, a mano. Cuando el profesor las corrija,
 
 <ol>
 <li>Explica con tus palabras qué hace un servicio como Cloudflare Drop cuando arrastras tu carpeta.</li>
-<li>(V/F) Publicar tu web con Cloudflare Drop es lo mismo que abrirla con doble clic en tu ordenador.</li>
+<li>(V/F) Publicar tu web con Cloudflare Drop es lo mismo que verla con Live Server en tu ordenador.</li>
 <li>¿Por qué es importante que <code>index.html</code>, <code>estilos.css</code> y las imágenes estén todos dentro de la misma carpeta antes de subirla?</li>
+<li>(V/F) Si un archivo de práctica de tu carpeta (por ejemplo <code>prueba.html</code>) tiene tu nombre real, no pasa nada, porque no está enlazado desde tu <code>index.html</code>.</li>
+<li>(V/F) Si en tu HTML escribes <code>src="foto.jpg"</code> pero el archivo se llama <code>Foto.JPG</code>, la imagen se verá igual en tu ordenador que en la web publicada.</li>
 <li>(ABC) Si subes solo el archivo <code>index.html</code>, sin el CSS ni las imágenes, tu web publicada se verá:
   <ul>
     <li>a) exactamente igual que en tu ordenador</li>

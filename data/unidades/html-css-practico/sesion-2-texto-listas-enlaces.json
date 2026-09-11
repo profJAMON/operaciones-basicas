@@ -39,11 +39,11 @@
           "correcta": 1
         },
         {
-          "pregunta": "¿Qué atributo añadimos a un enlace con target=\"_blank\" por seguridad?",
+          "pregunta": "Quieres que tu enlace a MDN se abra en una pestaña nueva del navegador. ¿Qué atributo añades a la etiqueta <a>?",
           "opciones": [
-            "rel=\"noopener\"",
-            "safe=\"true\"",
-            "external=\"true\""
+            "target=\"_blank\"",
+            "href=\"_blank\"",
+            "new=\"tab\""
           ],
           "correcta": 0
         },
@@ -89,12 +89,30 @@
       "tipo": "relacionar",
       "titulo": "Relaciona cada etiqueta con su función",
       "pares": [
-        { "izquierda": "<strong>", "derecha": "Marca texto importante" },
-        { "izquierda": "<em>", "derecha": "Marca texto con énfasis" },
-        { "izquierda": "<ul>", "derecha": "Lista sin orden, con viñetas" },
-        { "izquierda": "<ol>", "derecha": "Lista numerada" },
-        { "izquierda": "<a href=\"#id\">", "derecha": "Enlace ancla dentro de la misma página" },
-        { "izquierda": "<!-- ... -->", "derecha": "Comentario, no se muestra en el navegador" }
+        {
+          "izquierda": "<strong>",
+          "derecha": "Marca texto importante"
+        },
+        {
+          "izquierda": "<em>",
+          "derecha": "Marca texto con énfasis"
+        },
+        {
+          "izquierda": "<ul>",
+          "derecha": "Lista sin orden, con viñetas"
+        },
+        {
+          "izquierda": "<ol>",
+          "derecha": "Lista numerada"
+        },
+        {
+          "izquierda": "<a href=\"#id\">",
+          "derecha": "Enlace ancla dentro de la misma página"
+        },
+        {
+          "izquierda": "<!-- ... -->",
+          "derecha": "Comentario, no se muestra en el navegador"
+        }
       ]
     }
   ]

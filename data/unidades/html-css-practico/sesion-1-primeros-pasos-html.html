@@ -32,6 +32,15 @@
 <p>HTML es el lenguaje que usan todas las páginas web para definir <strong>qué contenido hay y cómo está organizado</strong> (no cómo se ve — eso lo veremos con CSS más adelante).</p>
 <p>Se basa en <strong>etiquetas</strong>, que casi siempre van en pareja: una de apertura y una de cierre.</p>
 <pre><code><span class='et'>&lt;p&gt;</span>Esto es un párrafo.<span class='et'>&lt;/p&gt;</span></code></pre>
+<p>Así se llama cada parte:</p>
+<div class="salida" style="background:#fff;color:#1e1e1e;border-radius:6px;padding:14px 18px;font-family:monospace;">
+<div style="display:flex;flex-wrap:wrap;gap:4px;align-items:flex-start;font-size:1.05em;">
+<div style="text-align:center;"><div style="background:#dbeafe;padding:4px 8px;border-radius:4px;white-space:pre;">&lt;p&gt;</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">etiqueta de<br>apertura</div></div>
+<div style="text-align:center;"><div style="background:#dcfce7;padding:4px 8px;border-radius:4px;white-space:pre;">Esto es un párrafo.</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">contenido</div></div>
+<div style="text-align:center;"><div style="background:#dbeafe;padding:4px 8px;border-radius:4px;white-space:pre;">&lt;/p&gt;</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">etiqueta de<br>cierre (con /)</div></div>
+</div>
+</div>
+<p>Las tres partes juntas forman un <strong>elemento</strong>: en este caso, un párrafo.</p>
 <div class="nota">🤔 Antes de seguir: ¿qué diferencia hay entre <code>&lt;p&gt;</code> y <code>&lt;/p&gt;</code>? ¿Qué crees que pasaría si te olvidas del <code>&lt;/p&gt;</code>?</div>
 <details><summary>Ver la respuesta</summary>
 <p><code>&lt;p&gt;</code> es la etiqueta de <strong>apertura</strong>: le dice al navegador "a partir de aquí empieza un párrafo". <code>&lt;/p&gt;</code> es la de <strong>cierre</strong> (con la barra <code>/</code>): le dice "aquí termina". Si olvidas el cierre, en muchos casos el navegador es "tolerante" y da el párrafo por terminado en cuanto empieza la siguiente etiqueta de bloque — pero no siempre acierta, y con etiquetas más complejas (como las listas de la sesión 2) un cierre olvidado sí puede desordenar visualmente toda la página.</p>
@@ -71,12 +80,30 @@
 <p>Cambiarías el texto dentro de <code>&lt;title&gt;</code>, que vive en el <code>&lt;head&gt;</code>. Están separados porque son dos tipos de información distintos: el <code>&lt;head&gt;</code> es información <em>sobre</em> la página (su título, y más adelante también su CSS), mientras que el <code>&lt;body&gt;</code> es la página en sí, lo que de verdad lee o mira quien la visita. El navegador necesita distinguir "datos sobre la página" de "contenido de la página" para saber qué mostrar y dónde.</p>
 </details>
 
+<h2>Tu alias: una web sin datos personales</h2>
+<p>Más adelante (Unidad 3) vas a publicar tu web en Internet, y cualquiera podrá verla. Por eso, desde hoy, en tu web <strong>no aparece nada que diga quién eres</strong>.</p>
+<p>En vez de tu nombre vas a usar un <strong>alias</strong>: un apodo inventado, el mismo durante todo el curso. Por ejemplo: <code>PixelRojo</code>, <code>LaNube23</code>, <code>ZetaGamer</code>.</p>
+<table>
+<tr><th>✅ Sí puedes poner</th><th>❌ No pongas nunca</th></tr>
+<tr><td>Tu alias</td><td>Tu nombre y apellidos</td></tr>
+<tr><td>Tus aficiones: música, videojuegos, deporte...</td><td>Fotos tuyas o de otras personas</td></tr>
+<tr><td>Qué te gusta y qué quieres aprender</td><td>Tu instituto, tu pueblo o tu dirección</td></tr>
+<tr><td>Imágenes de cosas: un juego, un paisaje, un dibujo</td><td>Tu horario, tu teléfono o tus redes sociales</td></tr>
+</table>
+<div class="nota">🤔 Antes de seguir: un compañero escribe en su web: "Soy Marc García, voy a 1º de FP Básica en el instituto de mi pueblo y los martes salgo a las 14:00". ¿Qué datos sobran y por qué?</div>
+<details><summary>Ver la respuesta</summary>
+<p>Sobran el nombre y el apellido, el curso con el instituto y el horario. Por separado parecen poca cosa, pero juntos permiten saber quién es y dónde encontrarlo a una hora concreta. Con un alias y sus aficiones, la web sigue siendo suya, pero nadie sabe quién es.</p>
+</details>
+<ul class="checklist">
+<li>Elige tu alias y apúntalo en tu cuaderno: lo usarás durante todo el curso.</li>
+</ul>
+
 <h2>Ejercicio guiado 1 — Tu primera página</h2>
 <ol>
 <li>En tu <code>index.html</code>, escribe la estructura mínima de arriba.</li>
 <li>Dentro de <code>&lt;body&gt;</code>, añade:</li>
 </ol>
-<pre><code><span class='et'>&lt;h1&gt;</span>¡Hola, soy [tu nombre]!<span class='et'>&lt;/h1&gt;</span>
+<pre><code><span class='et'>&lt;h1&gt;</span>¡Hola, soy [tu alias]!<span class='et'>&lt;/h1&gt;</span>
 <span class='et'>&lt;p&gt;</span>Esta es mi primera página web.<span class='et'>&lt;/p&gt;</span></code></pre>
 <ol start="3">
 <li>Guarda el archivo (<code>Ctrl+S</code>) y abre Live Server si no lo tienes ya abierto.</li>
@@ -132,9 +159,9 @@
 
 <h2>Práctica</h2>
 <ul class="checklist">
-<li>Un <code>&lt;h1&gt;</code> con tu nombre.</li>
+<li>Un <code>&lt;h1&gt;</code> con tu alias.</li>
 <li>Un <code>&lt;h2&gt;</code> que diga "Sobre mí".</li>
-<li>Dos o tres <code>&lt;p&gt;</code> contando brevemente quién eres.</li>
+<li>Dos o tres <code>&lt;p&gt;</code> contando cosas sobre ti que no te identifiquen: qué te gusta, a qué juegas, qué música escuchas... (repasa la tabla del alias).</li>
 <li>Un <code>&lt;h2&gt;</code> que diga "Esta asignatura".</li>
 <li>Un <code>&lt;p&gt;</code> explicando qué esperas aprender este curso.</li>
 </ul>
@@ -193,7 +220,14 @@
 <li>Un único <code>&lt;h1&gt;</code>, sin saltos de nivel en el resto de encabezados.</li>
 <li>Al menos un comentario <code>&lt;!-- --&gt;</code> en el código.</li>
 <li>La etiqueta <code>&lt;br&gt;</code> usada en algún punto con sentido.</li>
-<li>Tres bloques de contenido: sobre ti, esta asignatura, y tus asignaturas favoritas.</li>
+<li>Tres bloques de contenido: sobre ti (sin datos personales), esta asignatura, y tus asignaturas favoritas.</li>
 </ul>
 
 <div class="nota">Guarda este archivo — será la primera versión de tu página personal. En las próximas sesiones la iremos ampliando (enlaces, imágenes, estilos...). Y ya sabes usar Live Server: tenlo siempre abierto mientras trabajas.</div>
+
+<h2>Antes de irte: copia de seguridad</h2>
+<p>Tu usuario del ordenador se puede borrar (por ejemplo, con una actualización) o tu ordenador se puede estropear. Si pasa y no tienes copia, <strong>pierdes tu web entera</strong>.</p>
+<p>Por eso, al acabar <strong>cada</strong> sesión, guardarás una copia de tu carpeta <code>mi-web</code> en tu Drive. Los pasos están en la ficha <a href="tema.html?id=copia-seguridad-drive">Copia de seguridad en Drive</a> (en el menú de la izquierda, justo debajo de esta sesión).</p>
+<ul class="checklist">
+<li>Hoy haces tu primera copia: abre la ficha y sigue los pasos.</li>
+</ul>

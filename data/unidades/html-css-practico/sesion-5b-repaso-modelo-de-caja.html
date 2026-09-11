@@ -35,8 +35,10 @@
     <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta-repaso"</span><span class='et'>&gt;</span>Tarjeta B<span class='et'>&lt;/div&gt;</span>
 <span class='et'>&lt;/div&gt;</span></code></pre>
 <pre><code><span class='et'>.fila-tarjetas</span> {
-    <span class='co'>/* display: flex las pone en la misma fila — todavía no hace falta que sepas cómo funciona, lo verás en la próxima sesión */</span>
+    <span class='co'>/* display: flex las pone en la misma fila — todavía no hace falta que sepas cómo funciona, lo verás en la sesión 7 */</span>
     <span class='at'>display</span>: <span class='ca'>flex</span>;
+    <span class='co'>/* si una tarjeta no cabe, baja a la fila de abajo */</span>
+    <span class='at'>flex-wrap</span>: <span class='ca'>wrap</span>;
     <span class='at'>gap</span>: <span class='ca'>20px</span>;
     <span class='at'>width</span>: <span class='ca'>520px</span>;
     <span class='at'>border</span>: <span class='ca'>2px dashed red</span>; <span class='co'>/* solo para que veas el límite del contenedor */</span>
@@ -55,7 +57,7 @@
 <div style="width:250px; padding:30px; border:4px solid #3c3c3c; background:#e8e8e8; color:#1e1e1e; box-sizing:content-box;">Tarjeta B</div>
 </div>
 </div>
-<p>¿Por qué? Corrige el cálculo de arriba y luego arregla el CSS para que las dos tarjetas quepan de verdad en la fila, sin reducir ningún valor de <code>width</code>, <code>padding</code> o <code>border</code>.</p>
+<p>¿Por qué? Corrige el cálculo de arriba y luego arregla el CSS para que las dos tarjetas quepan de verdad en la fila, sin reducir ningún valor de <code>width</code>, <code>padding</code> o <code>border</code> y sin borrar ninguna línea.</p>
 <details><summary>Pista 1</summary>
 <p>Suma <code>width + padding (los dos lados) + border (los dos lados)</code> de <strong>una sola</strong> tarjeta. ¿Te sigue dando 250px?</p>
 </details>
@@ -80,7 +82,9 @@
 <p>Comprobación: con <code>box-sizing: border-box</code> ya aplicado, cambia el <code>padding</code> de una tarjeta a un valor distinto. Si todo está bien configurado, el ancho de la tarjeta en pantalla <strong>no cambiará</strong> — solo cambiará el aire que queda dentro, alrededor del texto.</p>
 
 <h2>Lo que viene</h2>
-<p>Ya controlas el espacio dentro de una caja: cuánto aire tiene por dentro (<code>padding</code>), cuánto borde la rodea (<code>border</code>) y cuánto espacio la separa de sus vecinas (<code>margin</code>). Lo que todavía no puedes hacer es decidir <strong>cómo se organizan varias cajas entre sí</strong> — ponerlas en fila en vez de una debajo de otra, repartir el espacio sobrante entre ellas, o centrarlas verticalmente. Eso es exactamente lo que resuelve <strong>Flexbox</strong>, en la próxima sesión.</p>
+<p>Ya controlas el espacio dentro de una caja: cuánto aire tiene por dentro (<code>padding</code>), cuánto borde la rodea (<code>border</code>) y cuánto espacio la separa de sus vecinas (<code>margin</code>). Lo que todavía no puedes hacer es decidir <strong>cómo se organizan varias cajas entre sí</strong> — ponerlas en fila en vez de una debajo de otra, repartir el espacio sobrante entre ellas, o centrarlas verticalmente. Eso es exactamente lo que resuelve <strong>Flexbox</strong>, en la sesión 7. Antes, en la sesión 6, verás las tablas de datos.</p>
+
+<div class="nota">💾 Antes de irte: haz tu copia de seguridad de <code>mi-web</code> en Drive. Si no recuerdas los pasos, están en la ficha <a href="tema.html?id=copia-seguridad-drive">Copia de seguridad en Drive</a>.</div>
 
 <h2>Autoevaluación y relaciona conceptos</h2>
 <p>Antes de cerrar, comprueba con las actividades de abajo si el modelo de caja te ha quedado claro del todo.</p>

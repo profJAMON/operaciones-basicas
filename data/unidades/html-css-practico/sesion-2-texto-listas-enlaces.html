@@ -48,6 +48,17 @@
 <ol type="I"><li>números romanos</li></ol>
 </div>
 <pre><code><span class='et'>&lt;ol</span> <span class='at'>type</span>=<span class='ca'>"a"</span><span class='et'>&gt;</span>...<span class='et'>&lt;/ol&gt;</span></code></pre>
+<p>Un <strong>atributo</strong> es información extra que le das a una etiqueta. Siempre va <strong>dentro de la etiqueta de apertura</strong>, con la forma <code>atributo="valor"</code>:</p>
+<div class="salida" style="background:#fff;color:#1e1e1e;border-radius:6px;padding:14px 18px;font-family:monospace;">
+<div style="display:flex;flex-wrap:wrap;gap:4px;align-items:flex-start;font-size:1.05em;">
+<div style="text-align:center;"><div style="background:#dbeafe;padding:4px 8px;border-radius:4px;white-space:pre;">&lt;ol</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">etiqueta</div></div>
+<div style="text-align:center;"><div style="background:#dcfce7;padding:4px 8px;border-radius:4px;white-space:pre;"> type</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">atributo<br>(qué ajustas)</div></div>
+<div style="text-align:center;"><div style="background:#f1f1f1;padding:4px 8px;border-radius:4px;white-space:pre;">=</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">&nbsp;</div></div>
+<div style="text-align:center;"><div style="background:#fef3c7;padding:4px 8px;border-radius:4px;white-space:pre;">"a"</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">valor, entre<br>comillas</div></div>
+<div style="text-align:center;"><div style="background:#dbeafe;padding:4px 8px;border-radius:4px;white-space:pre;">&gt;</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">&nbsp;</div></div>
+</div>
+</div>
+<p>Irás viendo más atributos (por ejemplo, <code>href</code> en los enlaces, más abajo). Todos se escriben igual: dentro de la etiqueta de apertura y con el valor entre comillas.</p>
 
 <h3>Listas anidadas</h3>
 <p>La lista anidada va <strong>dentro</strong> de la etiqueta <code>&lt;li&gt;</code>, no después. Compara estos dos ejemplos:</p>
@@ -96,7 +107,7 @@
 <h2>Enlaces</h2>
 <pre><code><span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"https://www.google.com"</span><span class='et'>&gt;</span>Ir a Google<span class='et'>&lt;/a&gt;</span></code></pre>
 <div class="salida"><a href="https://www.google.com" target="_blank" rel="noopener">Ir a Google</a></div>
-<p>Para abrir en pestaña nueva de forma segura, añade <code>target="_blank" rel="noopener"</code>.</p>
+<p>Para que el enlace se abra en una pestaña nueva, añade <code>target="_blank"</code>.</p>
 <p>Enlace local a otro archivo tuyo: <code>&lt;a href="sobre-mi.html"&gt;Sobre mí&lt;/a&gt;</code></p>
 <p>Ancla dentro de la misma página:</p>
 <pre><code><span class='et'>&lt;h2</span> <span class='at'>id</span>=<span class='ca'>"css"</span><span class='et'>&gt;</span>CSS<span class='et'>&lt;/h2&gt;</span>
@@ -151,3 +162,4 @@
 <p>Añade a tu página un pequeño índice al principio: una lista <code>&lt;ol&gt;</code> con un enlace ancla por cada <code>&lt;h2&gt;</code> que ya tengas, de modo que al hacer clic en cada uno salte a esa sección.</p>
 
 <div class="nota">Guarda esta versión de tu página. En la próxima sesión llegan las imágenes y la estructura semántica (<code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>...), así que tenla organizada por bloques claros.</div>
+<div class="nota">💾 Antes de irte: haz tu copia de seguridad de <code>mi-web</code> en Drive. Si no recuerdas los pasos, están en la ficha <a href="tema.html?id=copia-seguridad-drive">Copia de seguridad en Drive</a>.</div>

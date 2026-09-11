@@ -4,6 +4,19 @@
 <pre><code><span class='et'>selector</span> {
     <span class='at'>propiedad</span>: <span class='ca'>valor</span>;
 }</code></pre>
+<p>Así se llama cada parte en una regla de verdad:</p>
+<div class="salida" style="background:#fff;color:#1e1e1e;border-radius:6px;padding:14px 18px;font-family:monospace;">
+<div style="display:flex;flex-wrap:wrap;gap:4px;align-items:flex-start;font-size:1.05em;">
+<div style="text-align:center;"><div style="background:#dbeafe;padding:4px 8px;border-radius:4px;white-space:pre;">h1</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">selector<br>(a quién)</div></div>
+<div style="text-align:center;"><div style="background:#f1f1f1;padding:4px 8px;border-radius:4px;white-space:pre;">{</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">&nbsp;</div></div>
+<div style="text-align:center;"><div style="background:#dcfce7;padding:4px 8px;border-radius:4px;white-space:pre;">color</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">propiedad<br>(qué cambias)</div></div>
+<div style="text-align:center;"><div style="background:#f1f1f1;padding:4px 8px;border-radius:4px;white-space:pre;">:</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">&nbsp;</div></div>
+<div style="text-align:center;"><div style="background:#fef3c7;padding:4px 8px;border-radius:4px;white-space:pre;">darkblue</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">valor<br>(cómo queda)</div></div>
+<div style="text-align:center;"><div style="background:#f1f1f1;padding:4px 8px;border-radius:4px;white-space:pre;">;</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">fin de la<br>propiedad</div></div>
+<div style="text-align:center;"><div style="background:#f1f1f1;padding:4px 8px;border-radius:4px;white-space:pre;">}</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">&nbsp;</div></div>
+</div>
+</div>
+<div class="nota">⚠️ No confundas un <strong>atributo</strong> de HTML con una <strong>propiedad</strong> de CSS. El atributo va dentro de la etiqueta, con la forma <code>atributo="valor"</code> (<code>&lt;img width="200"&gt;</code>). La propiedad va dentro de las llaves de una regla, con la forma <code>propiedad: valor;</code> (<code>img { width: 200px; }</code>). Algunos se llaman igual, como <code>width</code>, pero no son lo mismo ni se escriben igual.</div>
 <div class="nota">🤔 Antes de seguir: fíjate en la sintaxis, ¿qué símbolo termina cada propiedad, y qué símbolos envuelven el bloque entero?</div>
 <details><summary>Ver la respuesta</summary>
 <p>Cada propiedad termina en punto y coma <code>;</code>, y el bloque entero de declaraciones va entre llaves <code>{ }</code>. Olvidar el <code>;</code> es el error más común al empezar con CSS — en algunos casos puede hacer que el navegador ignore también la propiedad siguiente, así que si una regla "no hace nada", repasa primero los puntos y coma.</p>
@@ -30,7 +43,7 @@
 <h2>Ejercicio guiado 1 — Tu primer <code>&lt;style&gt;</code></h2>
 <ol>
 <li>Crea un archivo nuevo <code>prueba-css.html</code> con la estructura básica de siempre (<code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>).</li>
-<li>Dentro del <code>&lt;body&gt;</code>, escribe un <code>&lt;h1&gt;</code> con tu nombre y dos <code>&lt;p&gt;</code> con lo que quieras.</li>
+<li>Dentro del <code>&lt;body&gt;</code>, escribe un <code>&lt;h1&gt;</code> con tu alias y dos <code>&lt;p&gt;</code> con lo que quieras.</li>
 <li>En el <code>&lt;head&gt;</code>, añade una etiqueta <code>&lt;style&gt;</code> con una regla que ponga el <code>&lt;h1&gt;</code> de color <code>darkblue</code>.</li>
 </ol>
 <p>Si lo has hecho bien: al abrir Live Server, solo tu <code>&lt;h1&gt;</code> cambiará de color — los dos párrafos seguirán en negro, porque la regla usa el selector <code>h1</code>, que no afecta a <code>&lt;p&gt;</code>.</p>
@@ -89,6 +102,12 @@
 <li>Ahora añade <code>id="titulo-principal"</code> a tu <code>&lt;h1&gt;</code> y crea una regla <code>#titulo-principal</code> que le cambie el tamaño con <code>font-size: 2.5em;</code>.</li>
 </ol>
 <p>Si lo has hecho bien: solo el párrafo con <code>class="destacado"</code> se verá en rojo oscuro (el otro párrafo sigue en negro), y solo tu <code>&lt;h1&gt;</code> crecerá de tamaño.</p>
+<div class="nota">📏 ¿Qué es <code>em</code>? Es una medida relativa al tamaño de letra normal: <code>1em</code> es el tamaño normal, <code>2em</code> el doble y <code>0.5em</code> la mitad. También existe <code>px</code> (píxeles, por ejemplo <code>24px</code>), que es un tamaño fijo.</div>
+<div class="salida" style="background:#fff;color:#1e1e1e;border-radius:6px;padding:14px 18px;display:flex;gap:24px;align-items:baseline;flex-wrap:wrap;">
+<span style="font-size:1em;">Hola (1em)</span>
+<span style="font-size:1.5em;">Hola (1.5em)</span>
+<span style="font-size:2.5em;">Hola (2.5em)</span>
+</div>
 
 <h2>Colores</h2>
 <p>Un color en CSS se puede escribir de varias formas — de momento con dos te sobra:</p>
@@ -97,6 +116,14 @@
 <tr><td>Nombre en inglés</td><td><code>color: tomato;</code></td></tr>
 <tr><td>Código hexadecimal</td><td><code>color: #ff6347;</code></td></tr>
 </table>
+<p>Un código hexadecimal empieza por <code>#</code> y lleva seis cifras o letras (del <code>0</code> al <code>9</code> y de la <code>a</code> a la <code>f</code>): las dos primeras dicen cuánto <strong>rojo</strong> lleva el color, las dos siguientes cuánto <strong>verde</strong> y las dos últimas cuánto <strong>azul</strong>. No hace falta aprenderlos de memoria:</p>
+<div class="nota">💡 En VS Code, cuando escribes un color en CSS aparece a su izquierda un cuadradito con ese color. Pasa el ratón por encima: se abre un selector donde eliges el color a ojo y VS Code escribe el código por ti.</div>
+<div class="salida" style="display:flex; gap:12px; flex-wrap:wrap;font-family:monospace;">
+<div style="background:#ff0000;color:#fff;padding:10px 14px;border-radius:4px;">#ff0000 · todo rojo</div>
+<div style="background:#00aa00;color:#fff;padding:10px 14px;border-radius:4px;">#00aa00 · verde</div>
+<div style="background:#0000ff;color:#fff;padding:10px 14px;border-radius:4px;">#0000ff · todo azul</div>
+<div style="background:#ff6347;color:#fff;padding:10px 14px;border-radius:4px;">#ff6347 · tomato</div>
+</div>
 <p>Las dos propiedades de color más usadas:</p>
 <pre><code><span class='et'>.caja</span> {
     <span class='at'>color</span>: <span class='ca'>white</span>;
@@ -182,6 +209,47 @@
 </ol>
 <p>Si lo has hecho bien: al recargar con Live Server, tu web ya no se verá "a pelo" — tendrá tus colores y tu tipografía. Si no cambia nada, comprueba primero el nombre del archivo en <code>href</code> (mayúsculas, extensión...), tal y como avisa la nota de arriba.</p>
 
+<h2>Comprueba tu CSS con "Inspeccionar"</h2>
+<p>Cuando una regla "no hace nada", no hace falta adivinar: el propio navegador te enseña qué CSS le está llegando a cada elemento. Se llama <strong>Inspeccionar</strong> (o <strong>DevTools</strong>, las herramientas de desarrollador de Chrome). En la Unidad 2 las verás más a fondo; hoy solo necesitas esto:</p>
+<ol>
+<li>Con tu página abierta en Chrome (con Live Server), haz <strong>clic derecho</strong> sobre el elemento que quieras revisar y elige <strong>Inspeccionar</strong>. También puedes pulsar <code>F12</code>.</li>
+<li>Se abre un panel. A la izquierda (pestaña <strong>Elements</strong>) aparece tu HTML con ese elemento marcado.</li>
+<li>A la derecha o debajo (pestaña <strong>Styles</strong>) aparecen las reglas CSS que se le aplican, con el nombre del archivo del que vienen.</li>
+</ol>
+<div class="salida" style="background:#fff;color:#1e1e1e;border-radius:6px;padding:0;font-family:monospace;font-size:0.85em;display:flex;flex-wrap:wrap;overflow:hidden;">
+<div style="flex:1 1 220px;padding:12px 14px;border-right:1px solid #ccc;line-height:1.7;">
+<div style="font-family:sans-serif;color:#555;margin-bottom:6px;">Elements</div>
+&lt;body&gt;<br>
+<span style="background:#cfe8fc;padding:0 4px;">&nbsp;&nbsp;&lt;h1 id="titulo-principal"&gt;</span><br>
+&nbsp;&nbsp;&lt;p class="destacado"&gt;<br>
+&lt;/body&gt;
+</div>
+<div style="flex:1 1 220px;padding:12px 14px;line-height:1.7;">
+<div style="font-family:sans-serif;color:#555;margin-bottom:6px;">Styles</div>
+#titulo-principal { <span style="color:#888;">estilos.css:5</span><br>
+&nbsp;&nbsp;font-size: 2.5em;<br>
+}<br>
+h1 { <span style="color:#888;">estilos.css:1</span><br>
+&nbsp;&nbsp;color: darkblue;<br>
+&nbsp;&nbsp;<span style="text-decoration:line-through;color:#888;">font-size: 2em;</span><br>
+}
+</div>
+</div>
+<p>Fíjate en la propiedad <strong>tachada</strong>: es una que no se está aplicando. O la ha anulado otra regla (aquí, la del <code>id</code>, que manda más), o está mal escrita — en ese caso Chrome además le pone un triángulo de aviso ⚠️.</p>
+
+<h2>Ejercicio guiado 6 — Inspecciona tu propia web</h2>
+<ol>
+<li>Abre tu <code>index.html</code> con Live Server, haz clic derecho sobre tu <code>&lt;h1&gt;</code> y elige <strong>Inspeccionar</strong>.</li>
+<li>En <strong>Styles</strong>, busca una regla que venga de tu <code>estilos.css</code> y haz clic sobre el valor de un color. Escribe otro color y pulsa Intro.</li>
+<li>Recarga la página con <code>F5</code>.</li>
+<li>Ahora, en tu <code>estilos.css</code>, escribe mal a propósito una propiedad (por ejemplo <code>colr: red;</code>), guarda y vuelve a inspeccionar ese elemento. Después, corrígela.</li>
+</ol>
+<p>Si lo has hecho bien: en el paso 2 el color cambia al instante en la pantalla; en el paso 3 vuelve el color original, porque lo que cambias en Inspeccionar <strong>no se guarda en tu archivo</strong>; y en el paso 4 verás tu <code>colr</code> tachado y con el aviso ⚠️.</p>
+<div class="nota">🤔 Antes de seguir: inspeccionas un párrafo de tu página y en Styles no aparece <strong>ninguna</strong> regla de tu <code>estilos.css</code>, solo las del navegador. ¿Qué dos cosas revisarías?</div>
+<details><summary>Ver la respuesta</summary>
+<p>Primero, el <code>&lt;link rel="stylesheet" href="estilos.css"&gt;</code>: si la ruta o el nombre del archivo están mal, no llega ninguna regla de tu CSS. Y si el enlace está bien, que el selector coincida de verdad con ese párrafo: por ejemplo, que la clase se llame igual en el HTML (<code>class="aviso"</code>) y en el CSS (<code>.aviso</code>).</p>
+</details>
+
 <h2>Retos</h2>
 <p>Los tres retos son obligatorios, en orden: cada uno se apoya en el anterior. Si te atascas en alguno, dilo — es normal no encontrar la solución a la primera y para eso estoy yo.</p>
 
@@ -205,3 +273,4 @@
 </ul>
 
 <div class="nota">Guarda esta versión — ya tienes una web con estructura semántica (sesión 3) y estilo propio (hoy). En la próxima sesión llega el modelo de caja: <code>margin</code>, <code>padding</code> y <code>border</code>, para controlar el espacio alrededor de cada elemento.</div>
+<div class="nota">💾 Antes de irte: haz tu copia de seguridad de <code>mi-web</code> en Drive. Si no recuerdas los pasos, están en la ficha <a href="tema.html?id=copia-seguridad-drive">Copia de seguridad en Drive</a>.</div>

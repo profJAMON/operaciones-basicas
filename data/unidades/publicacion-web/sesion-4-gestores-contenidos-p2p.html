@@ -1,0 +1,165 @@
+<h2>Gestores de contenidos</h2>
+
+<p>Todo lo que llevas construyendo este curso lo has escrito tú, línea a línea, en HTML y CSS. Pero la mayoría de las webs que visitas a diario no se han hecho así: se han creado con un <strong>gestor de contenidos</strong> (CMS, de sus siglas en inglés), un programa que permite crear y mantener una web desde una interfaz visual, sin tocar el código directamente. El más extendido es <code>WordPress</code>, pero hay muchos más (Wix, Squarespace...).</p>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 480 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
+  <rect x="20" y="15" width="200" height="30" rx="6" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="120" y="35" text-anchor="middle" fill="var(--accent)" font-size="10">Tu web: código a mano</text>
+  <text x="120" y="60" text-anchor="middle" fill="var(--text-dim)" font-size="9">editas el .html directamente</text>
+
+  <rect x="260" y="15" width="200" height="30" rx="6" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1.5"/>
+  <text x="360" y="35" text-anchor="middle" fill="var(--text)" font-size="10">Web con gestor de contenidos</text>
+  <text x="360" y="60" text-anchor="middle" fill="var(--text-dim)" font-size="9">arrastras bloques en un editor visual</text>
+</svg>
+</div>
+
+<div class="nota">🤔 Antes de seguir: si un gestor de contenidos permite montar una web sin escribir código, ¿por qué crees que este curso ha empezado enseñando HTML y CSS a mano en vez de eso?</div>
+<details><summary>Ver respuesta</summary>Porque un gestor de contenidos monta la web por ti, pero sigue generando HTML y CSS por debajo — si no entiendes esa base, no puedes personalizar nada más allá de lo que el editor visual te deja, ni entender por qué algo no se ve como esperabas. Saber HTML/CSS a mano te da control total y te sirve pases lo que pases a usar después, incluido un gestor de contenidos si algún día lo necesitas.</details>
+
+<h3>Actividad — detecta si una web usa WordPress</h3>
+<p>Hay una forma sencilla de comprobar si una web está hecha con WordPress, sin iniciar sesión en ningún sitio.</p>
+<ol>
+<li>Elige una web cualquiera que conozcas (un blog, la web de un negocio pequeño...).</li>
+<li>Añade <code>/wp-admin</code> al final de la URL, en la barra de direcciones, y pulsa Intro.</li>
+<li>Si te aparece una pantalla de inicio de sesión con el logo de WordPress, esa web está construida con WordPress. Si te da un error o te redirige a la portada, probablemente no lo use (o lo tiene protegido de otra forma).</li>
+</ol>
+<p><strong>Comprobación observable:</strong> reconoces la pantalla de inicio de sesión de WordPress (aunque no vayas a iniciar sesión, claro) o confirmas que esa web no responde ahí.</p>
+
+<div class="nota">No hace falta (ni se debe) intentar iniciar sesión en ninguna de estas pantallas: la actividad termina en el momento en que confirmas si aparece o no.</div>
+
+<h2>Redes P2P (de igual a igual)</h2>
+
+<p>En la primera sesión de la unidad anterior viste el modelo <strong>cliente-servidor</strong>: un servidor central responde a muchos clientes. Las redes <strong>P2P</strong> ("peer-to-peer", de igual a igual) funcionan al revés: no hay un servidor central, cada dispositivo se conecta directamente con los demás e intercambia información con ellos.</p>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
+  <rect x="190" y="15" width="100" height="32" rx="6" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="240" y="36" text-anchor="middle" fill="var(--accent)" font-size="10">Servidor</text>
+
+  <line x1="240" y1="47" x2="80" y2="100" stroke="var(--text-faint)" stroke-width="1.5"/>
+  <line x1="240" y1="47" x2="240" y2="100" stroke="var(--text-faint)" stroke-width="1.5"/>
+  <line x1="240" y1="47" x2="400" y2="100" stroke="var(--text-faint)" stroke-width="1.5"/>
+
+  <rect x="20" y="100" width="120" height="30" rx="6" fill="var(--surface)" stroke="var(--text-faint)"/>
+  <text x="80" y="120" text-anchor="middle" fill="var(--text-dim)" font-size="9">Cliente A</text>
+  <rect x="180" y="100" width="120" height="30" rx="6" fill="var(--surface)" stroke="var(--text-faint)"/>
+  <text x="240" y="120" text-anchor="middle" fill="var(--text-dim)" font-size="9">Cliente B</text>
+  <rect x="340" y="100" width="120" height="30" rx="6" fill="var(--surface)" stroke="var(--text-faint)"/>
+  <text x="400" y="120" text-anchor="middle" fill="var(--text-dim)" font-size="9">Cliente C</text>
+
+  <text x="240" y="150" text-anchor="middle" fill="var(--text-dim)" font-size="10">Cliente-servidor (recordatorio): todo pasa por el centro</text>
+</svg>
+</div>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 480 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
+  <rect x="165" y="10" width="150" height="32" rx="6" fill="var(--surface)" stroke="var(--accent-warm)" stroke-width="1.5"/>
+  <text x="240" y="31" text-anchor="middle" fill="var(--accent-warm)" font-size="10">Tu dispositivo</text>
+
+  <line x1="240" y1="42" x2="95" y2="115" stroke="var(--text-faint)" stroke-width="1.5"/>
+  <line x1="240" y1="42" x2="385" y2="115" stroke="var(--text-faint)" stroke-width="1.5"/>
+  <line x1="170" y1="131" x2="310" y2="131" stroke="var(--text-faint)" stroke-width="1.5"/>
+
+  <rect x="20" y="115" width="150" height="32" rx="6" fill="var(--surface)" stroke="var(--accent-warm)" stroke-width="1.5"/>
+  <text x="95" y="136" text-anchor="middle" fill="var(--accent-warm)" font-size="10">Dispositivo B</text>
+
+  <rect x="310" y="115" width="150" height="32" rx="6" fill="var(--surface)" stroke="var(--accent-warm)" stroke-width="1.5"/>
+  <text x="385" y="136" text-anchor="middle" fill="var(--accent-warm)" font-size="10">Dispositivo C</text>
+
+  <text x="240" y="160" text-anchor="middle" fill="var(--text-dim)" font-size="10">P2P: cada uno habla directamente con los demás</text>
+</svg>
+</div>
+
+<p>Seguro que ya usas P2P sin saberlo: cuando envías una foto a un amigo con "compartir cercano" o AirDrop, sin pasar por Internet, es una conexión directa de igual a igual. Otro ejemplo clásico y completamente legal es descargar una distribución Linux (como Ubuntu) por BitTorrent: en vez de que un único servidor tenga que enviar el archivo a todo el mundo, cada persona que ya lo tiene descargado comparte trozos con las demás.</p>
+
+<h3>Actividad — clasifica: ¿cliente-servidor o P2P?</h3>
+<p>En tu cuaderno, clasifica cada situación como cliente-servidor o P2P, y anota por qué:</p>
+<ul class="checklist">
+<li>Ver una película en una plataforma de streaming.</li>
+<li>Enviar una foto a un amigo por Bluetooth o AirDrop, sin conexión a Internet.</li>
+<li>Cargar tu web personal en el navegador.</li>
+<li>Descargar un archivo grande por BitTorrent.</li>
+</ul>
+<details><summary>Ver respuesta</summary>Streaming: cliente-servidor (el vídeo viene de los servidores de la plataforma). Bluetooth/AirDrop: P2P (los dos dispositivos hablan directamente, sin servidor). Tu web personal: cliente-servidor (el navegador la pide a un servidor, como viste en la unidad anterior). BitTorrent: P2P (los propios usuarios se envían trozos del archivo entre sí).</details>
+
+<h2>Repaso general de la Unidad 3</h2>
+
+<div class="salida" style="background:var(--bg);padding:14px">
+<table style="border-collapse:collapse;width:100%;font-size:0.85rem">
+<tr>
+  <th style="border-bottom:1px solid var(--border);padding:6px 10px;text-align:left;color:var(--text-faint);font-weight:400">Bloque</th>
+  <th style="border-bottom:1px solid var(--border);padding:6px 10px;text-align:left;color:var(--text-faint);font-weight:400">Qué aprendiste</th>
+</tr>
+<tr>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--accent)">1. Publicar de verdad</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim)">Publicaste tu web con un servicio "arrastra y publica" (Cloudflare Drop) y comprobaste el hosting en persona.</td>
+</tr>
+<tr>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--code-inline)">2. Blogs, foros y wikis</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim)">Las generaciones de la web, y tres formas de contenido escrito por los propios usuarios.</td>
+</tr>
+<tr>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--accent-warm)">3. Redes sociales, RSS y nube</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim)">Publicar para tu círculo, enterarte de novedades sin buscarlas, y usar archivos/programas fuera de tu ordenador.</td>
+</tr>
+<tr>
+  <td style="padding:6px 10px;color:var(--text)">4. Gestores de contenidos y P2P</td>
+  <td style="padding:6px 10px;color:var(--text-dim)">Montar una web sin código, y el modelo P2P como alternativa al cliente-servidor.</td>
+</tr>
+</table>
+</div>
+
+<h2>Preguntas</h2>
+
+<div class="nota">
+Responde estas preguntas en tu cuaderno, a mano. Cuando el profesor las corrija, sube tú mismo las respuestas correctas a tu web personal.
+</div>
+
+<h3>Gestores de contenidos</h3>
+
+<ol>
+<li>Explica con tus palabras qué es un gestor de contenidos (CMS).</li>
+<li>(V/F) Una web construida con WordPress no usa HTML ni CSS por debajo, solo el editor visual.</li>
+<li>(ABC) La principal ventaja de saber HTML/CSS a mano, aunque existan gestores de contenidos, es que:
+  <ul>
+    <li>a) es obligatorio por ley para publicar una web</li>
+    <li>b) te da control total y entiendes qué está pasando de verdad</li>
+    <li>c) los gestores de contenidos ya no se usan</li>
+  </ul>
+</li>
+<li>Nombra dos gestores de contenidos distintos a WordPress.</li>
+<li>Explica qué comprobaste exactamente al añadir <code>/wp-admin</code> a una URL, y qué te indicaba el resultado.</li>
+</ol>
+
+<h3>Redes P2P</h3>
+
+<ol start="6">
+<li>Explica con tus palabras la diferencia entre el modelo cliente-servidor y el modelo P2P.</li>
+<li>(V/F) En una red P2P, todos los dispositivos que participan responden peticiones, no solo uno central.</li>
+<li>(ABC) Enviar un archivo a un compañero con AirDrop, sin conexión a Internet, es un ejemplo de:
+  <ul>
+    <li>a) cliente-servidor</li>
+    <li>b) P2P</li>
+    <li>c) computación en la nube</li>
+  </ul>
+</li>
+<li>Explica por qué descargar un archivo por BitTorrent no depende de un único servidor que lo envíe a todo el mundo.</li>
+<li>Da un ejemplo propio (no visto en la sesión) de una situación P2P y otro de una situación cliente-servidor.</li>
+</ol>
+
+<h3>Repaso general de la Unidad 3</h3>
+
+<ol start="11">
+<li>De los cuatro bloques de esta unidad, resume en una frase cada uno: publicar de verdad, blogs/foros/wikis, redes sociales/RSS/nube, gestores de contenidos/P2P.</li>
+<li>(ABC) Tu web personal, construida a mano con HTML y CSS y publicada con Cloudflare Drop, es un ejemplo de:
+  <ul>
+    <li>a) un gestor de contenidos</li>
+    <li>b) una web "Web 1.0" alojada con computación en la nube</li>
+    <li>c) una red P2P</li>
+  </ul>
+</li>
+<li>(V/F) Todos los conceptos vistos en esta unidad (hosting, blogs, foros, wikis, redes sociales, RSS, nube, gestores de contenidos, P2P) tienen algo en común: todos dependen de algún tipo de servidor.</li>
+<li>De los cuatro bloques de la unidad, ¿cuál crees que usarás más en tu día a día fuera de clase? Razona la respuesta.</li>
+<li>Escribe tú mismo una pregunta que conecte dos bloques distintos de esta unidad, y respóndela.</li>
+</ol>

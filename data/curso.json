@@ -30,6 +30,18 @@
         "sesion-4-que-hace-falta-publicar",
         "glosario"
       ]
+    },
+      {
+      "id": "publicacion-web",
+      "titulo": "Unidad 3. Publicación en la web",
+      "descripcion": "Publicas tu web de verdad, y ves qué otros tipos de webs existen: blogs, wikis, redes sociales y computación en la nube.",
+      "sesiones": [
+        "sesion-1-publicar-de-verdad",
+        "sesion-2-blogs-wikis",
+        "sesion-3-redes-sociales-nube",
+        "sesion-4-gestores-contenidos-p2p",
+        "glosario"
+      ]
     }
   ]
 }

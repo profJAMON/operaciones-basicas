@@ -6,16 +6,18 @@
       "descripcion": "Etiquetas, estructura y estilos: construyes tu propia web personal desde la primera sesión.",
       "sesiones": [
         "sesion-1-primeros-pasos-html",
+        "copia-seguridad-drive",
         "sesion-2-texto-listas-enlaces",
         "sesion-3-imagenes-estructura-semantica",
         "sesion-4-introduccion-css",
         "sesion-5-modelo-de-caja",
         "sesion-5b-repaso-modelo-de-caja",
-        "sesion-6-flexbox",
-        "sesion-7-repaso-ejercicios-1",
-        "sesion-8-proyecto-pagina-personal-parte-1",
-        "sesion-9-proyecto-pagina-personal-parte-2",
-        "sesion-10-repaso-ejercicios-2",
+        "sesion-6-tablas",
+        "sesion-7-flexbox",
+        "sesion-8-repaso-ejercicios-1",
+        "sesion-9-proyecto-pagina-personal-parte-1",
+        "sesion-10-proyecto-pagina-personal-parte-2",
+        "sesion-11-repaso-ejercicios-2",
         "glosario"
       ]
     },
@@ -31,7 +33,7 @@
         "glosario-fundamentos-internet"
       ]
     },
-      {
+    {
       "id": "publicacion-web",
       "titulo": "Unidad 3. Publicación en la web",
       "descripcion": "Publicas tu web de verdad, y ves qué otros tipos de webs existen: blogs, wikis, redes sociales y computación en la nube.",
@@ -40,7 +42,7 @@
         "sesion-2-blogs-wikis",
         "sesion-3-redes-sociales-nube",
         "sesion-4-gestores-contenidos-p2p",
-        "glosario"
+        "glosario-publicacion-web"
       ]
     }
   ]

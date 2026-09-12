@@ -682,10 +682,22 @@ footer.pie {
   display: none !important;
 }
 
-iframe.skiptranslate {
+/* IMPORTANTE: el widget cuelga su barra superior del <body> como un
+   <div class="skiptranslate"> — y el <body> de esta web es la rejilla de
+   3 columnas, así que ese div se comía la primera columna y desplazaba
+   el menú, el contenido y el índice una posición a la derecha. Fuera
+   cualquier cosa que Google cuelgue directamente del body. */
+body > .skiptranslate,
+body > iframe {
   display: none !important;
   visibility: hidden !important;
 }
+
+/* Segundo cinturón de seguridad: las tres columnas van donde van, pase
+   lo que pase con lo que inyecten scripts de terceros en el <body>. */
+.sidebar      { grid-column: 1; grid-row: 1; }
+.main-content { grid-column: 2; grid-row: 1; }
+.indice       { grid-column: 3; grid-row: 1; }
 
 /* El widget desplaza el <body> hacia abajo para hacer hueco a su barra. */
 body {
@@ -716,6 +728,14 @@ font {
    y deja de estar fijo. */
 @media (max-width: 760px) {
   body { grid-template-columns: 1fr; }
+  /* En una sola columna hay que soltar la colocación fija de arriba,
+     o el contenido intentaría irse a una segunda columna inexistente. */
+  .sidebar,
+  .main-content,
+  .indice {
+    grid-column: 1;
+    grid-row: auto;
+  }
   .sidebar {
     position: static;
     height: auto;

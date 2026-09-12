@@ -6,6 +6,26 @@
   "materiales": [
     {
       "tipo": "enlace",
+      "titulo": "Comunidad Movistar (foro de ayuda)",
+      "url": "https://comunidad.movistar.es/"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "Comunidad de ayuda de Google Chrome",
+      "url": "https://support.google.com/chrome/community?hl=es"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "Xataka (blog de tecnología)",
+      "url": "https://www.xataka.com/"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "Microsiervos (blog)",
+      "url": "https://www.microsiervos.com/"
+    },
+    {
+      "tipo": "enlace",
       "titulo": "Wikipedia: Ayuda — Ver el historial de una página",
       "url": "https://es.wikipedia.org/wiki/Ayuda:Historial"
     }

@@ -6,9 +6,24 @@
 <li>La graba <strong>el fabricante</strong> y, en teoría, es única en el mundo entero.</li>
 <li>Trabaja en la <strong>capa 2</strong> del modelo OSI, la de enlace de datos. Es la dirección que mira el switch.</li>
 </ul>
-<pre><code>1C : 39 : 47 : B2 : 0F : A8
-└──── fabricante ────┘ └── nº de serie ──┘
-      (OUI, 24 bits)        (24 bits)</code></pre>
+<div class="salida">
+<svg viewBox="0 0 560 252" width="100%" role="img" aria-label="La MAC 1C:39:47:B2:0F:A8 dividida en el identificador del fabricante y el número de serie, y un grupo desarrollado en binario" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
+.s{font-family:monospace;font-size:10px;fill:#9099a6}
+.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
+.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
+.w{font-family:monospace;font-size:11px;fill:#ce9178}
+.ok{font-family:monospace;font-size:11px;fill:#89d185}
+.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
+.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
+</style>
+<text x="280" y="30" text-anchor="middle" class="t">Una dirección MAC por dentro</text><rect x="40" y="56" width="62" height="40" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="71.0" y="83" text-anchor="middle" font-family="monospace" font-size="18" font-weight="700" fill="#4fc1ff">1C</text><text x="106" y="83" text-anchor="middle" font-family="monospace" font-size="16" fill="#6a7280">:</text><rect x="114" y="56" width="62" height="40" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="145.0" y="83" text-anchor="middle" font-family="monospace" font-size="18" font-weight="700" fill="#4fc1ff">39</text><text x="180" y="83" text-anchor="middle" font-family="monospace" font-size="16" fill="#6a7280">:</text><rect x="188" y="56" width="62" height="40" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="219.0" y="83" text-anchor="middle" font-family="monospace" font-size="18" font-weight="700" fill="#4fc1ff">47</text><text x="254" y="83" text-anchor="middle" font-family="monospace" font-size="16" fill="#6a7280">:</text><rect x="262" y="56" width="62" height="40" rx="4" fill="#252526" stroke="#ce9178"/><text x="293.0" y="83" text-anchor="middle" font-family="monospace" font-size="18" font-weight="700" fill="#ce9178">B2</text><text x="328" y="83" text-anchor="middle" font-family="monospace" font-size="16" fill="#6a7280">:</text><rect x="336" y="56" width="62" height="40" rx="4" fill="#252526" stroke="#ce9178"/><text x="367.0" y="83" text-anchor="middle" font-family="monospace" font-size="18" font-weight="700" fill="#ce9178">0F</text><text x="402" y="83" text-anchor="middle" font-family="monospace" font-size="16" fill="#6a7280">:</text><rect x="410" y="56" width="62" height="40" rx="4" fill="#252526" stroke="#ce9178"/><text x="441.0" y="83" text-anchor="middle" font-family="monospace" font-size="18" font-weight="700" fill="#ce9178">A8</text><path d="M 40 102 L 40 108 L 250 108 L 250 102" stroke="#4fc1ff" fill="none" stroke-width="1"/><text x="145.0" y="122" text-anchor="middle" class="a">OUI · quién lo fabricó (24 bits)</text><path d="M 262 102 L 262 108 L 472 108 L 472 102" stroke="#ce9178" fill="none" stroke-width="1"/><text x="367.0" y="122" text-anchor="middle" class="w">número de serie (24 bits)</text><path d="M 60 152 L 500 152" stroke="#3c3c3c"/><text x="280" y="176" text-anchor="middle" class="s">Cada grupo son 2 dígitos hexadecimales, y cada dígito vale 4 bits:</text><text x="130" y="208" text-anchor="middle" font-family="monospace" font-size="17" font-weight="700" fill="#4fc1ff">1C</text><path d="M 156 202 L 188.0 202.0" stroke="#9099a6" stroke-width="1.3" fill="none"/>
+<path d="M 196 202 L 187.7 205.5 L 187.7 198.5 z" fill="#9099a6"/><text x="270" y="208" text-anchor="middle" font-family="monospace" font-size="17" fill="#f3f3f3">0001 1100</text><text x="400" y="208" text-anchor="middle" class="s">= 8 bits = 1 byte</text><text x="280" y="236" text-anchor="middle" class="t">6 grupos × 8 bits = 48 bits   ·   12 dígitos hexadecimales en total</text>
+</svg>
+<p class="pie-figura">Los tres primeros grupos dicen quién fabricó la tarjeta; los tres últimos, cuál es.</p>
+</div>
 <p>Verás la misma dirección escrita de tres formas según el sistema; las tres son válidas y significan lo mismo:</p>
 <pre><code>1C:39:47:B2:0F:A8      (Linux, la más habitual)
 1C-39-47-B2-0F-A8      (Windows)
@@ -52,6 +67,24 @@
 <tr><td><strong>Alcance</strong></td><td>Dentro de la misma red local</td><td>Entre redes distintas, por todo Internet</td></tr>
 <tr><td><strong>Quién la usa</strong></td><td>El switch</td><td>El router</td></tr>
 </table>
+<div class="salida">
+<svg viewBox="0 0 560 232" width="100%" role="img" aria-label="El mismo portátil en casa y en el instituto: conserva la misma dirección MAC pero recibe direcciones IP distintas" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
+.s{font-family:monospace;font-size:10px;fill:#9099a6}
+.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
+.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
+.w{font-family:monospace;font-size:11px;fill:#ce9178}
+.ok{font-family:monospace;font-size:11px;fill:#89d185}
+.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
+.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
+</style>
+<rect x="14" y="30" width="250" height="150" rx="6" fill="#252526" stroke="#3c3c3c"/><text x="139" y="52" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">En casa</text><rect x="44" y="72" width="76" height="48" rx="3" fill="#1e1e1e" stroke="#9099a6"/><path d="M 36 124 L 128 124 L 120 132 L 44 132 z" fill="#2d2d30" stroke="#9099a6"/><text x="82" y="150" text-anchor="middle" class="f">el mismo portátil</text><text x="140" y="88" font-family="monospace" font-size="9.5" fill="#6a7280">MAC</text><text x="140" y="104" font-family="monospace" font-size="11" fill="#89d185">1C:39:47:B2:0F:A8</text><text x="140" y="126" font-family="monospace" font-size="9.5" fill="#6a7280">IP</text><text x="140" y="142" font-family="monospace" font-size="12" fill="#ce9178">192.168.1.25</text><rect x="296" y="30" width="250" height="150" rx="6" fill="#252526" stroke="#3c3c3c"/><text x="421" y="52" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">En el instituto</text><rect x="326" y="72" width="76" height="48" rx="3" fill="#1e1e1e" stroke="#9099a6"/><path d="M 318 124 L 410 124 L 402 132 L 326 132 z" fill="#2d2d30" stroke="#9099a6"/><text x="364" y="150" text-anchor="middle" class="f">el mismo portátil</text><text x="422" y="88" font-family="monospace" font-size="9.5" fill="#6a7280">MAC</text><text x="422" y="104" font-family="monospace" font-size="11" fill="#89d185">1C:39:47:B2:0F:A8</text><text x="422" y="126" font-family="monospace" font-size="9.5" fill="#6a7280">IP</text><text x="422" y="142" font-family="monospace" font-size="12" fill="#ce9178">10.20.3.187</text><path d="M 268 105 L 284.0 105.0" stroke="#9099a6" stroke-width="1.4" fill="none"/>
+<path d="M 292 105 L 283.7 108.5 L 283.7 101.5 z" fill="#9099a6"/><text x="280" y="204" text-anchor="middle" class="s">La MAC (verde) es la misma en los dos sitios: va grabada en la tarjeta.</text><text x="280" y="220" text-anchor="middle" class="s">La IP (naranja) cambia: dice dónde estás, no quién eres.</text>
+</svg>
+<p class="pie-figura">El mismo portátil en dos redes: la MAC no se mueve, la IP sí.</p>
+</div>
 <div class="salida">
 <p><strong>La comparación que funciona:</strong> la MAC es como el <strong>número de bastidor</strong> de un coche —va grabado, no cambia nunca y es único—; la IP es como la <strong>plaza de aparcamiento</strong> que ocupa hoy: dice dónde está, sirve para encontrarlo, y mañana puede ser otra. Para llevarle algo al coche necesitas saber en qué plaza está (IP); para saber que <em>ese</em> coche es el suyo, el bastidor (MAC).</p>
 </div>

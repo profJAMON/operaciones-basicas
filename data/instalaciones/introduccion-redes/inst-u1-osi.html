@@ -69,6 +69,25 @@
 </svg>
 </div>
 <div class="nota">Este ir bajando añadiendo etiquetas se llama <strong>encapsulación</strong>, y funciona como los sobres de una carta: metes la carta en un sobre, ese sobre en otro más grande con otra dirección, y así. El receptor va abriendo sobres en orden inverso hasta llegar a la carta. Ninguna capa necesita saber qué hay dentro del sobre de la capa de arriba.</div>
+<div class="salida">
+<svg viewBox="0 0 600 248" width="100%" role="img" aria-label="Cuatro cajas anidadas: los datos dentro del segmento TCP, dentro del paquete IP, dentro de la trama Ethernet" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
+.s{font-family:monospace;font-size:10px;fill:#9099a6}
+.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
+.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
+.w{font-family:monospace;font-size:11px;fill:#ce9178}
+.ok{font-family:monospace;font-size:11px;fill:#89d185}
+.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
+.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
+</style>
+<rect x="16" y="46" width="568" height="150" rx="5" fill="none" stroke="#4fc1ff" stroke-width="1.4"/><text x="26" y="63" font-family="monospace" font-size="11" font-weight="700" fill="#4fc1ff">TRAMA</text><text x="576" y="63" text-anchor="end" font-family="monospace" font-size="9.5" fill="#6a7280">capa 2 · Ethernet · MAC</text><rect x="92" y="68" width="476" height="106" rx="5" fill="none" stroke="#ce9178" stroke-width="1.4"/><text x="102" y="85" font-family="monospace" font-size="11" font-weight="700" fill="#ce9178">PAQUETE</text><text x="560" y="85" text-anchor="end" font-family="monospace" font-size="9.5" fill="#6a7280">capa 3 · IP</text><rect x="168" y="90" width="384" height="62" rx="5" fill="none" stroke="#89d185" stroke-width="1.4"/><text x="178" y="107" font-family="monospace" font-size="11" font-weight="700" fill="#89d185">SEGMENTO</text><text x="544" y="107" text-anchor="end" font-family="monospace" font-size="9.5" fill="#6a7280">capa 4 · TCP</text><rect x="244" y="112" width="232" height="28" rx="4" fill="#2d2d30" stroke="#f3f3f3"/><text x="360" y="131" text-anchor="middle" class="t">DATOS</text><text x="490" y="131" font-family="monospace" font-size="9.5" fill="#6a7280">capa 7</text><text x="300" y="28" text-anchor="middle" class="t">Cada capa mete lo de la de arriba en su propio sobre</text><path d="M 40 214 L 162.0 214.0" stroke="#ce9178" stroke-width="1.4" fill="none"/>
+<path d="M 170 214 L 161.7 217.5 L 161.7 210.5 z" fill="#ce9178"/><text x="105" y="234" text-anchor="middle" class="s">el emisor mete sobres</text><path d="M 560 214 L 438.0 214.0" stroke="#89d185" stroke-width="1.4" fill="none"/>
+<path d="M 430 214 L 438.3 210.5 L 438.3 217.5 z" fill="#89d185"/><text x="468" y="234" text-anchor="middle" class="s">el receptor los abre al revés</text>
+</svg>
+<p class="pie-figura">La encapsulación: los datos viajan dentro de un sobre, ese sobre dentro de otro, y así hasta el cable.</p>
+</div>
 
 <h3>Qué hace cada capa</h3>
 <table>
@@ -91,6 +110,35 @@
 <tr><td><strong>Garantiza el orden</strong></td><td>Sí</td><td>No: un paquete puede adelantar a otro</td></tr>
 <tr><td><strong>Se usa en</strong></td><td>Web, correo, FTP… casi todo</td><td>Vídeo y audio en directo, juegos, DNS</td></tr>
 </table>
+<div class="salida">
+<svg viewBox="0 0 580 300" width="100%" role="img" aria-label="Dos paneles: con TCP el dato perdido se reclama y se reenvía; con UDP se pierde y la transmisión continúa" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
+.s{font-family:monospace;font-size:10px;fill:#9099a6}
+.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
+.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
+.w{font-family:monospace;font-size:11px;fill:#ce9178}
+.ok{font-family:monospace;font-size:11px;fill:#89d185}
+.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
+.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
+</style>
+<rect x="12" y="14" width="266" height="276" rx="6" fill="#252526" stroke="#3c3c3c"/><text x="145" y="36" text-anchor="middle" font-family="monospace" font-size="13" font-weight="700" fill="#89d185">TCP · entrega segura</text><text x="46" y="56" text-anchor="middle" class="f">emisor</text><text x="244" y="56" text-anchor="middle" class="f">receptor</text><line x1="46" y1="64" x2="46" y2="240" stroke="#3c3c3c" stroke-dasharray="3 3"/><line x1="244" y1="64" x2="244" y2="240" stroke="#3c3c3c" stroke-dasharray="3 3"/><path d="M 46 86 L 236.0 86.0" stroke="#89d185" stroke-width="1.3" fill="none"/>
+<path d="M 244 86 L 235.7 89.5 L 235.7 82.5 z" fill="#89d185"/><text x="145" y="79" text-anchor="middle" font-family="monospace" font-size="10" fill="#89d185">dato 1</text><path d="M 244 116 L 54.0 116.0" stroke="#9099a6" stroke-width="1.3" fill="none"/>
+<path d="M 46 116 L 54.3 112.5 L 54.3 119.5 z" fill="#9099a6"/><text x="145" y="109" text-anchor="middle" font-family="monospace" font-size="10" fill="#9099a6">recibido</text><path d="M 46 146 L 136.0 150.6" stroke="#f14c4c" stroke-width="1.3" fill="none"/>
+<path d="M 144 151 L 135.5 154.1 L 135.9 147.1 z" fill="#f14c4c"/><path d="M 150 146 l 10 10 M 160 146 l -10 10" stroke="#f14c4c" stroke-width="2"/><text x="145" y="139" text-anchor="middle" font-family="monospace" font-size="10" fill="#f14c4c">dato 2</text><path d="M 244 176 L 54.0 176.0" stroke="#9099a6" stroke-width="1.3" fill="none"/>
+<path d="M 46 176 L 54.3 172.5 L 54.3 179.5 z" fill="#9099a6"/><text x="145" y="169" text-anchor="middle" font-family="monospace" font-size="10" fill="#9099a6">¿y el dato 2?</text><path d="M 46 206 L 236.0 206.0" stroke="#89d185" stroke-width="1.3" fill="none"/>
+<path d="M 244 206 L 235.7 209.5 L 235.7 202.5 z" fill="#89d185"/><text x="145" y="199" text-anchor="middle" font-family="monospace" font-size="10" fill="#89d185">dato 2 otra vez</text><path d="M 244 236 L 54.0 236.0" stroke="#9099a6" stroke-width="1.3" fill="none"/>
+<path d="M 46 236 L 54.3 232.5 L 54.3 239.5 z" fill="#9099a6"/><text x="145" y="229" text-anchor="middle" font-family="monospace" font-size="10" fill="#9099a6">recibido</text><text x="145" y="262" text-anchor="middle" class="s">Lo que se pierde se pide de nuevo.</text><text x="145" y="278" text-anchor="middle" class="s">Llega todo y en orden, aunque tarde más.</text><rect x="302" y="14" width="266" height="276" rx="6" fill="#252526" stroke="#3c3c3c"/><text x="435" y="36" text-anchor="middle" font-family="monospace" font-size="13" font-weight="700" fill="#ce9178">UDP · entrega rápida</text><text x="336" y="56" text-anchor="middle" class="f">emisor</text><text x="534" y="56" text-anchor="middle" class="f">receptor</text><line x1="336" y1="64" x2="336" y2="240" stroke="#3c3c3c" stroke-dasharray="3 3"/><line x1="534" y1="64" x2="534" y2="240" stroke="#3c3c3c" stroke-dasharray="3 3"/><path d="M 336 86 L 526.0 86.0" stroke="#89d185" stroke-width="1.3" fill="none"/>
+<path d="M 534 86 L 525.7 89.5 L 525.7 82.5 z" fill="#89d185"/><text x="435" y="79" text-anchor="middle" font-family="monospace" font-size="10" fill="#89d185">dato 1</text><path d="M 336 116 L 526.0 116.0" stroke="#89d185" stroke-width="1.3" fill="none"/>
+<path d="M 534 116 L 525.7 119.5 L 525.7 112.5 z" fill="#89d185"/><text x="435" y="109" text-anchor="middle" font-family="monospace" font-size="10" fill="#89d185">dato 2</text><path d="M 336 146 L 426.0 150.6" stroke="#f14c4c" stroke-width="1.3" fill="none"/>
+<path d="M 434 151 L 425.5 154.1 L 425.9 147.1 z" fill="#f14c4c"/><path d="M 440 146 l 10 10 M 450 146 l -10 10" stroke="#f14c4c" stroke-width="2"/><text x="435" y="139" text-anchor="middle" font-family="monospace" font-size="10" fill="#f14c4c">dato 3</text><path d="M 336 176 L 526.0 176.0" stroke="#89d185" stroke-width="1.3" fill="none"/>
+<path d="M 534 176 L 525.7 179.5 L 525.7 172.5 z" fill="#89d185"/><text x="435" y="169" text-anchor="middle" font-family="monospace" font-size="10" fill="#89d185">dato 4</text><path d="M 336 206 L 526.0 206.0" stroke="#89d185" stroke-width="1.3" fill="none"/>
+<path d="M 534 206 L 525.7 209.5 L 525.7 202.5 z" fill="#89d185"/><text x="435" y="199" text-anchor="middle" font-family="monospace" font-size="10" fill="#89d185">dato 5</text><path d="M 336 236 L 526.0 236.0" stroke="#89d185" stroke-width="1.3" fill="none"/>
+<path d="M 534 236 L 525.7 239.5 L 525.7 232.5 z" fill="#89d185"/><text x="435" y="229" text-anchor="middle" font-family="monospace" font-size="10" fill="#89d185">dato 6</text><text x="435" y="262" text-anchor="middle" class="s">Nadie reclama lo que falta.</text><text x="435" y="278" text-anchor="middle" class="s">Se pierde el 3 y la transmisión sigue.</text>
+</svg>
+<p class="pie-figura">La misma pérdida con los dos protocolos: TCP reclama el dato que falta, UDP sigue adelante sin él.</p>
+</div>
 <p>¿Por qué existe UDP si es peor? Porque no siempre lo importante es que llegue todo. En una videollamada, repetir un trozo perdido llegaría tarde y solo serviría para cortar la imagen. Es mejor perderlo y seguir. <strong>UDP no es peor: es otro compromiso.</strong></p>
 
 <h3>ARP: la bisagra entre la capa 3 y la 2</h3>

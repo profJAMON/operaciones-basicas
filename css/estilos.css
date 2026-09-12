@@ -560,6 +560,14 @@ footer.pie {
   background: var(--surface);
 }
 .leccion .salida > *:last-child { margin-bottom: 0; }
+.leccion .salida svg { display: block; margin: 0 auto 0.6rem; }
+.leccion .pie-figura {
+  font-size: 0.82rem;
+  color: var(--text-faint);
+  text-align: center;
+  margin: 0.4rem 0 0;
+  line-height: 1.5;
+}
 .leccion .salida a { color: var(--accent); }
 
 .leccion details {

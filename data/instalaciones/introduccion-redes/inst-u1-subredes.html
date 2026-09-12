@@ -37,6 +37,23 @@
 <tr><td>/30</td><td>2</td><td>4</td><td>2</td></tr>
 </table>
 <p>Fíjate en el patrón: cada bit que le quitas al host <strong>parte la red en dos</strong>. Y el /30, con solo 2 equipos, no es un error: se usa para unir dos routers entre sí, donde no hace falta nada más.</p>
+<div class="salida">
+<svg viewBox="0 0 660 246" width="100%" role="img" aria-label="Una red /24 partida en dos /25 y después en cuatro /26, con el número de equipos que caben en cada caso" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
+.s{font-family:monospace;font-size:10px;fill:#9099a6}
+.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
+.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
+.w{font-family:monospace;font-size:11px;fill:#ce9178}
+.ok{font-family:monospace;font-size:11px;fill:#89d185}
+.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
+.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
+</style>
+<text x="300" y="24" text-anchor="middle" class="t">Cada bit que le quitas al host parte la red en dos</text><rect x="30" y="44" width="514" height="36" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="287" y="67" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">/24</text><text x="562" y="67" font-family="monospace" font-size="10" fill="#9099a6">254 equipos</text><rect x="30" y="104" width="254" height="36" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="157" y="127" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">/25</text><rect x="290" y="104" width="254" height="36" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="417" y="127" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">/25</text><text x="562" y="127" font-family="monospace" font-size="10" fill="#9099a6">126 equipos</text><rect x="30" y="164" width="124" height="36" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="92" y="187" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">/26</text><rect x="160" y="164" width="124" height="36" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="222" y="187" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">/26</text><rect x="290" y="164" width="124" height="36" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="352" y="187" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">/26</text><rect x="420" y="164" width="124" height="36" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="482" y="187" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">/26</text><text x="562" y="187" font-family="monospace" font-size="10" fill="#9099a6">62 equipos</text><text x="300" y="216" text-anchor="middle" class="s">Una red de 254 huecos para una oficina de 20 equipos es tirar 234 direcciones.</text><text x="300" y="232" text-anchor="middle" class="s">Partirla también separa departamentos y reduce el tráfico a todos.</text>
+</svg>
+<p class="pie-figura">Cada bit que pasa de host a red duplica el número de subredes y parte por la mitad los equipos que caben.</p>
+</div>
 
 <h2>El método del salto</h2>
 <p>Aquí está el truco que hace que esto se pueda resolver mentalmente. Mira la tercera columna de la tabla: 256, 128, 64, 32, 16, 8, 4. A ese número lo vamos a llamar <strong>el salto</strong>, y es el tamaño de cada bloque.</p>
@@ -54,6 +71,24 @@ Primera utilizable   192.168.1.65
 Broadcast            192.168.1.127
 Caben                62 equipos</code></pre>
 <p>La de broadcast es siempre <strong>la anterior al siguiente bloque</strong> (128 − 1 = 127), y la última utilizable, la anterior a esa.</p>
+</div>
+<div class="salida">
+<svg viewBox="0 0 560 244" width="100%" role="img" aria-label="El rango 0 a 255 partido en cuatro bloques de 64 por la máscara /26, con el bloque del 64 detallado" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
+.s{font-family:monospace;font-size:10px;fill:#9099a6}
+.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
+.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
+.w{font-family:monospace;font-size:11px;fill:#ce9178}
+.ok{font-family:monospace;font-size:11px;fill:#89d185}
+.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
+.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
+</style>
+<text x="280" y="24" text-anchor="middle" class="t">El último octeto con máscara /26: el salto es 64</text><text x="280" y="42" text-anchor="middle" class="f">los bloques empiezan siempre en múltiplos del salto: 0, 64, 128, 192</text><rect x="26" y="56" width="122" height="40" rx="3" fill="#1e1e1e" stroke="#3c3c3c"/><text x="88" y="80" text-anchor="middle" font-family="monospace" font-size="12" fill="#9099a6">0 – 63</text><rect x="151" y="56" width="122" height="40" rx="3" fill="#252526" stroke="#4fc1ff"/><text x="214" y="80" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">64 – 127</text><rect x="276" y="56" width="122" height="40" rx="3" fill="#1e1e1e" stroke="#3c3c3c"/><text x="338" y="80" text-anchor="middle" font-family="monospace" font-size="12" fill="#9099a6">128 – 191</text><rect x="401" y="56" width="122" height="40" rx="3" fill="#1e1e1e" stroke="#3c3c3c"/><text x="464" y="80" text-anchor="middle" font-family="monospace" font-size="12" fill="#9099a6">192 – 255</text><path d="M 211.0 100 L 211.0 118.0" stroke="#4fc1ff" stroke-width="1.3" fill="none"/>
+<path d="M 211.0 126 L 207.5 117.7 L 214.5 117.7 z" fill="#4fc1ff"/><rect x="26" y="132" width="497" height="76" rx="5" fill="#252526" stroke="#4fc1ff"/><text x="280" y="154" text-anchor="middle" class="a">192.168.1.100/26  cae en el bloque que empieza en 64</text><text x="42" y="180" font-family="monospace" font-size="13" font-weight="700" fill="#f14c4c">.64</text><text x="42" y="196" font-family="monospace" font-size="8.5" fill="#6a7280">dirección de RED</text><text x="162" y="180" font-family="monospace" font-size="13" font-weight="700" fill="#89d185">.65</text><text x="162" y="196" font-family="monospace" font-size="8.5" fill="#6a7280">primera utilizable</text><text x="282" y="180" font-family="monospace" font-size="13" font-weight="700" fill="#89d185">.126</text><text x="282" y="196" font-family="monospace" font-size="8.5" fill="#6a7280">última utilizable</text><text x="402" y="180" font-family="monospace" font-size="13" font-weight="700" fill="#f14c4c">.127</text><text x="402" y="196" font-family="monospace" font-size="8.5" fill="#6a7280">BROADCAST</text><text x="280" y="230" text-anchor="middle" class="s">Caben 2⁶ − 2 = 62 equipos. La primera y la última nunca se le dan a nadie.</text>
+</svg>
+<p class="pie-figura">Con /26 el último octeto queda partido en cuatro bloques de 64. La dirección cae en el que empieza en 64.</p>
 </div>
 <p>Con ese método se responde también a la pregunta más útil de todas: <strong>¿están estos dos equipos en la misma red?</strong> Se calcula el bloque de cada uno y se comparan.</p>
 <div class="salida">

@@ -366,6 +366,98 @@ h1, h2, h3 {
 
 .relacionar__estado { grid-column: 1 / -1; font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-dim); margin-top: 0.3rem; }
 
+/* ---------- Ejercicios generados (js/generadores.js) ---------- */
+
+.generador__fila {
+  display: grid;
+  grid-template-columns: 2rem 1fr 9rem 1.5rem;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.35rem 0;
+}
+
+.generador__numero {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+.generador__enunciado {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.generador__campo {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.35rem 0.5rem;
+  width: 100%;
+}
+.generador__campo:focus { outline: none; border-color: var(--accent); }
+
+.generador__marca { font-family: var(--font-mono); font-size: 1rem; }
+.generador__marca--bien { color: #4ec9b0; }
+.generador__marca--mal { color: #f48771; }
+
+.generador__pista {
+  grid-column: 1 / -1;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin: 0 0 0.6rem 2.6rem;
+  border-left: 2px solid var(--accent-warm);
+  padding-left: 0.7rem;
+}
+
+.generador__barra { display: flex; gap: 0.6rem; margin-top: 1rem; flex-wrap: wrap; }
+.generador__boton-otra { background: transparent; color: var(--accent); border: 1px solid var(--border); }
+.generador__boton-otra:hover { background: var(--surface-2); }
+
+.generador__estado {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin-top: 0.8rem;
+}
+
+@media (max-width: 640px) {
+  .generador__fila { grid-template-columns: 1.6rem 1fr 1.5rem; }
+  .generador__campo { grid-column: 2 / 4; }
+  .generador__pista { margin-left: 2.2rem; }
+}
+
+/* ---------- Preguntas para contestar a mano, en papel ---------- */
+
+.leccion .papel {
+  border: 1px solid var(--accent-warm);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  margin: 0 0 1.2rem;
+  background: var(--surface);
+}
+.leccion .papel > *:last-child { margin-bottom: 0; }
+.leccion .papel__titulo {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent-warm);
+  margin: 0 0 0.7rem;
+}
+
+/* Al imprimir (Ctrl+P) solo interesa la lección: fuera barra lateral,
+   índice lateral y actividades de pantalla. */
+@media print {
+  .sidebar, .indice, #seccion-actividades, .volver, .selector-idioma, .pie { display: none !important; }
+  .main-content { margin: 0; padding: 0; max-width: 100%; }
+  .leccion .papel { break-inside: avoid; }
+}
+
 footer.pie {
   border-top: 1px solid var(--border);
   padding: 1.5rem 0;

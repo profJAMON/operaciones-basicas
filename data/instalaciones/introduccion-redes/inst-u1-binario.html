@@ -1,0 +1,75 @@
+<h2>Por qué los ordenadores cuentan con dos dedos</h2>
+<p>Para transmitir un mensaje hay que <strong>representarlo</strong> de una forma que el receptor pueda interpretar. Las personas usamos idiomas, gestos, dibujos. Cuando emisor y receptor no comparten código, hace falta un intérprete que traduzca.</p>
+<p>Nosotros contamos con diez símbolos, del 0 al 9, porque tenemos diez dedos. Es el <strong>sistema decimal</strong>:</p>
+<pre><code>D = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}</code></pre>
+<p>Y la posición manda: 123, 321 y 231 se escriben con las mismas cifras y valen cosas distintas.</p>
+<p>Un ordenador no tiene dedos: tiene corriente. Y de la corriente solo sabe dos cosas con seguridad: <strong>pasa</strong> o <strong>no pasa</strong>. Así que su sistema tiene dos símbolos. Es el <strong>sistema binario</strong>:</p>
+<pre><code>B = {0, 1}      0 = no pasa corriente      1 = sí pasa</code></pre>
+<div class="nota">Esto no es una manía de los informáticos. Es lo único robusto que se puede hacer con electricidad: distinguir «hay señal» de «no hay señal» se acierta casi siempre, incluso con ruido. Distinguir diez niveles de voltaje distintos fallaría constantemente. El binario existe <strong>por el ruido de la sesión anterior</strong>.</div>
+
+<h3>Bit y byte</h3>
+<p>Cada 0 o cada 1 de una cadena binaria se llama <strong>bit</strong> (de <em>binary digit</em>). El bit es la <strong>unidad mínima de información</strong> de cualquier sistema informático: no hay nada más pequeño.</p>
+<p>Los bits se agrupan de ocho en ocho, y a ese grupo se le llama <strong>byte</strong>.</p>
+<pre><code>1 byte = 8 bits        1011 0111  ←  esto es un byte</code></pre>
+<div class="nota">Cuidado con las abreviaturas, porque esto cae en el examen y en la vida real: <strong>b minúscula = bit</strong>, <strong>B mayúscula = byte</strong>. Una diferencia de ocho veces según la tecla que pulses.</div>
+
+<h2>De decimal a binario</h2>
+<p>El método es mecánico: <strong>divide entre 2 una y otra vez</strong>, apunta los restos, y cuando el cociente ya no se pueda dividir más, lee de abajo arriba.</p>
+<p>Vamos con el 183:</p>
+<pre><code>183 : 2 = 91  resto 1   ↑
+ 91 : 2 = 45  resto 1   |
+ 45 : 2 = 22  resto 1   |
+ 22 : 2 = 11  resto 0   |  se lee
+ 11 : 2 =  5  resto 1   |  hacia
+  5 : 2 =  2  resto 1   |  arriba
+  2 : 2 =  1  resto 0   |
+  1 : 2 =  0  resto 1   |
+
+183 en binario = 1011 0111</code></pre>
+<p>Se escribe en grupos de cuatro (1011 0111) solo para leerlo mejor, igual que escribimos 1.500.000 con puntos. El número es el mismo.</p>
+<div class="salida">
+<p><strong>Comprobación con la calculadora de Windows:</strong> ábrela, pulsa el botón de las tres rayas ☰ y elige <strong>Programador</strong>. Escribe un número en DEC y verás aparecer solo su valor en BIN. Úsala para corregirte, nunca para hacer el ejercicio: en el examen no la vas a tener.</p>
+</div>
+
+<h2>De binario a decimal</h2>
+<p>Aquí se va al revés: cada posición vale una potencia de 2, empezando por la derecha en 2⁰.</p>
+<pre><code>D = b₀·2⁰ + b₁·2¹ + b₂·2² + b₃·2³ + … + bₙ·2ⁿ</code></pre>
+<p>Con 1011 0111:</p>
+<pre><code>   1     0     1     1     0     1     1     1
+  128    64    32    16     8     4     2     1
+  128  +  0  +  32  + 16  +  0  +  4  +  2  + 1  =  183</code></pre>
+<p>El truco práctico: <strong>apréndete la fila de los valores</strong> —128, 64, 32, 16, 8, 4, 2, 1— y suma los que tengan un 1 encima. Con eso resuelves cualquier octeto en diez segundos, y lo vas a usar sin parar cuando lleguemos a las máscaras de red.</p>
+<table>
+<tr><th>Posición</th><th>2⁷</th><th>2⁶</th><th>2⁵</th><th>2⁴</th><th>2³</th><th>2²</th><th>2¹</th><th>2⁰</th></tr>
+<tr><td><strong>Vale</strong></td><td>128</td><td>64</td><td>32</td><td>16</td><td>8</td><td>4</td><td>2</td><td>1</td></tr>
+</table>
+
+<h3>Dos números que tienes que saber de memoria</h3>
+<ul>
+<li>Con <strong>8 bits</strong> el número más grande es <code>1111 1111</code> = <strong>255</strong>. Y como también existe el 0, salen <strong>256 valores distintos</strong> (del 0 al 255).</li>
+<li><code>1000 0000</code> = <strong>128</strong>, la mitad del octeto. Este aparecerá en cuanto partamos una red en dos.</li>
+</ul>
+<div class="nota">255 y 256 no son lo mismo y confundirlos es el error más repetido de toda la unidad. <strong>256 son cuántos hay; 255 es el más grande.</strong> Igual que en una clase de 30 alumnos numerados del 0 al 29: hay 30, pero el último es el 29.</div>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 2 — a mano, en papel</p>
+<ol>
+<li>Define con tus palabras: <strong>bit</strong>, <strong>byte</strong>, <strong>sistema binario</strong>.</li>
+<li>Pasa a decimal, <strong>con el desarrollo escrito</strong>: <code>1100 0000</code> · <code>1111 1111</code> · <code>0010 1101</code>.</li>
+<li>Pasa a binario, <strong>con las divisiones escritas</strong>: 128 · 82 · 95 · 73.</li>
+<li>¿Cuál es el número decimal más grande que se puede formar con 8 bits? ¿Y cuántos valores distintos caben?</li>
+<li>¿Por qué crees que los ordenadores usan un sistema de dos símbolos y no uno de diez, como nosotros? Contesta con tus palabras, cuatro o cinco líneas.</li>
+</ol>
+</div>
+<p>Los ejercicios de aquí abajo son para practicar antes de escribir esos: se corrigen solos y cada vez salen números distintos. Hazlos hasta que te salgan de corrido.</p>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 ¿Cuántos bits hacen falta para escribir el número 255? ¿Y el 256?</summary>
+<p>El 255 son 8 bits justos (<code>1111 1111</code>). El 256 <strong>ya no cabe</strong> en 8 bits: necesita 9 (<code>1 0000 0000</code>). Esa frontera es exactamente la razón de que las direcciones IP lleguen hasta 255 y no más.</p>
+</details>
+<details>
+<summary>🤔 ¿Qué es más grande, 1 KB o 1.000 bits?</summary>
+<p>1 KB, y con diferencia. 1 KB son 1.024 bytes, y cada byte son 8 bits: 8.192 bits. Ocho veces más. Esto lo vemos entero en la sesión siguiente, pero ve acostumbrándote a mirar si la b es grande o pequeña.</p>
+</details>

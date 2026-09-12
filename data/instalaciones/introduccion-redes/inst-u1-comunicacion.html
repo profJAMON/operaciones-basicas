@@ -1,0 +1,85 @@
+<h2>Antes que la red, la comunicación</h2>
+<p>Este módulo va de montar redes. Pero una red no es más que una forma concreta de resolver un problema muy viejo: <strong>que algo que está en un sitio llegue entero a otro sitio</strong>. Antes de mirar un solo cable, vamos a mirar el problema.</p>
+<p>Comunicarse es el proceso por el que alguien transmite información a otro <em>con la intención de que la conozca</em>. Esa última parte importa: si la información sale pero no llega, no ha habido comunicación. Ha habido un intento.</p>
+
+<h3>Los cinco elementos</h3>
+<p>En cualquier comunicación, hables con un compañero o hable un ordenador con un servidor, intervienen siempre los mismos cinco elementos.</p>
+<table>
+<tr><th>Elemento</th><th>Qué es</th><th>Tú hablando en clase</th><th>Tu PC abriendo una web</th></tr>
+<tr><td><strong>Emisor</strong></td><td>Quien transmite la información</td><td>Tú</td><td>Tu ordenador</td></tr>
+<tr><td><strong>Receptor</strong></td><td>Quien la recibe</td><td>Tu compañero</td><td>El servidor web</td></tr>
+<tr><td><strong>Mensaje</strong></td><td>La información en sí</td><td>«¿Me dejas la crimpadora?»</td><td>La petición de la página</td></tr>
+<tr><td><strong>Canal</strong></td><td>El medio por el que viaja</td><td>El aire</td><td>El cable de red y la fibra</td></tr>
+<tr><td><strong>Código</strong></td><td>Las reglas y signos con los que se construye el mensaje</td><td>El castellano</td><td>El protocolo HTTP</td></tr>
+</table>
+<div class="nota">Fíjate en que <strong>canal y código son cosas distintas</strong>, aunque se confundan mucho. El canal es <em>por dónde</em> va; el código es <em>en qué</em> va escrito. Puedes cambiar de canal sin cambiar de código (le escribes lo mismo por WhatsApp) y cambiar de código sin cambiar de canal (le hablas en inglés, por el mismo aire).</div>
+
+<h3>El sexto elemento: el ruido</h3>
+<p>Hay un factor que no está en la lista pero que aparece siempre: el <strong>ruido</strong>. Ruido es cualquier interferencia que ensucie el mensaje, el canal o el código.</p>
+<ul>
+<li>En una conversación: la música, los coches, dos personas hablando a la vez.</li>
+<li>En un cable de red: un fluorescente, un motor, un cable de corriente pegado al de datos.</li>
+<li>En el wifi: una pared de hormigón, un microondas, otras veinte redes en el mismo canal.</li>
+</ul>
+<p>El ruido no impide la comunicación mientras se mantenga por debajo de cierto umbral. Por encima, el mensaje llega incompleto o no llega. Casi todo lo que vas a aprender este curso —cable apantallado, par trenzado, canaletas separadas de la corriente, canales de wifi— existe <strong>para pelearse con el ruido</strong>.</p>
+<div class="salida">
+<p><strong>El par trenzado te lo cuenta ya:</strong> los hilos del cable de red van trenzados de dos en dos, no por capricho. Al ir trenzados, la interferencia afecta casi igual a los dos hilos del par, y como la señal se mide por la <em>diferencia</em> entre ellos, el ruido se cancela en gran parte. Lo veremos en la unidad de medios de transmisión; de momento quédate con que el trenzado es una defensa contra el ruido.</p>
+</div>
+
+<h2>El protocolo: las normas de la conversación</h2>
+<p>Para que dos entidades se entiendan no basta con que compartan código. Hace falta un acuerdo previo sobre cómo se desarrolla la comunicación. A ese conjunto de normas se le llama <strong>protocolo</strong>.</p>
+<p>Un protocolo determina, entre otras cosas:</p>
+<ul>
+<li>Cómo se <strong>inicia</strong> y cómo se <strong>termina</strong> la comunicación.</li>
+<li>Qué <strong>lenguaje</strong> se usa y, si se admite más de uno, cuáles y cómo.</li>
+<li>Cuánto <strong>ruido y cuántos fallos</strong> se toleran antes de dar la comunicación por perdida.</li>
+<li>Qué se hace si la comunicación <strong>se corta</strong> a la mitad.</li>
+</ul>
+<p>Lo usas todos los días sin pensarlo. Cuando descuelgas el teléfono, el protocolo dice que primero se saluda («¿sí?»), que se habla por turnos, que si no oyes dices «¿cómo?» y el otro repite, y que si se corta la llamada vuelve a llamar quien llamó. Nadie te enseñó eso: es un protocolo social. En redes es exactamente lo mismo, pero escrito y sin margen de interpretación.</p>
+
+<h3>Ninguna comunicación es fiable al 100 %</h3>
+<p>Esto conviene aceptarlo pronto, porque es la razón de ser de media asignatura: <strong>los fallos son normales</strong>. Los sistemas de comunicación no se diseñan para que no fallen nunca, se diseñan para funcionar aun fallando.</p>
+<p>Cuando falla algo, caben dos salidas:</p>
+<ul>
+<li><strong>Corregirlo:</strong> pedir que se repita el trozo perdido. Es lo que hace el protocolo TCP, que veremos más adelante.</li>
+<li><strong>Rellenarlo por contexto:</strong> si en «tráeme el cable de r_d» falta una letra, la pones tú. Las personas hacemos esto todo el rato; las máquinas, mucho menos.</li>
+</ul>
+<p>Que la comunicación se considere exitosa o no depende de <em>qué</em> parte se haya perdido. Perder un fotograma de un vídeo no importa. Perder un dígito de un número de cuenta, sí. Por eso no todos los protocolos tratan los fallos igual, como verás en la sesión del modelo OSI.</p>
+
+<h2>Lo que esto tiene que ver con la red que vas a montar</h2>
+<p>Todo lo de arriba parece teoría suelta y no lo es. Cuando en el taller un puesto no tenga red, tu manera de buscar la avería va a ser exactamente esta:</p>
+<table>
+<tr><th>Pregunta</th><th>Elemento</th><th>Qué compruebas</th></tr>
+<tr><td>¿Está encendido el equipo, tiene tarjeta de red?</td><td>Emisor</td><td>Luces de la tarjeta, <code>ipconfig</code></td></tr>
+<tr><td>¿Existe y responde el destino?</td><td>Receptor</td><td><code>ping</code> al servidor</td></tr>
+<tr><td>¿Está el cable bien, entero y conectado?</td><td>Canal</td><td>Tester de cable, luces del switch</td></tr>
+<tr><td>¿Hablan el mismo idioma? ¿IP de la misma red?</td><td>Código</td><td>Dirección IP y máscara</td></tr>
+<tr><td>¿Hay algo que interfiera?</td><td>Ruido</td><td>Cable junto a corriente, latiguillo machacado</td></tr>
+</table>
+<p>Un técnico que no tiene este esquema en la cabeza va probando cosas al azar. Uno que lo tiene, va descartando por orden. Es la diferencia entre tardar cinco minutos y tardar toda la mañana.</p>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 1 — a mano, en papel</p>
+<ol>
+<li>Copia y define con tus palabras: <strong>emisor, receptor, mensaje, canal, código y ruido</strong>. Una línea cada uno.</li>
+<li>Pon <strong>tres ejemplos de comunicación</strong> que no sean informáticos e identifica en cada uno los cinco elementos.</li>
+<li>¿Qué puede causar ruido en una comunicación por Internet? Escribe <strong>tres causas distintas</strong>.</li>
+<li>Explica con un ejemplo tuyo la diferencia entre <strong>canal</strong> y <strong>código</strong>.</li>
+<li>Elige una aplicación de Internet que uses a diario. ¿Qué pasaría si perdiera el 5 % de la información por el camino? ¿Se notaría mucho o poco? ¿Por qué?</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 Si te hablo en un idioma que no entiendes, ¿qué elemento está fallando?</summary>
+<p>El <strong>código</strong>. El canal (el aire) funciona perfectamente, el mensaje sale y llega, pero tú no puedes interpretarlo. En redes pasa igual: dos equipos pueden estar unidos por un cable impecable y no entenderse porque hablan protocolos distintos.</p>
+</details>
+<details>
+<summary>🤔 ¿Por qué decimos que un fluorescente estropeado puede tirar una red?</summary>
+<p>Porque mete <strong>ruido</strong> electromagnético en el canal. Si el cable de red pasa cerca, ese ruido se suma a la señal y el receptor deja de distinguir bien los unos de los ceros. El equipo no está roto y el cable tampoco: el problema está en el canal.</p>
+</details>
+<details>
+<summary>🤔 ¿Un protocolo es un aparato, un programa o un acuerdo?</summary>
+<p>Un <strong>acuerdo</strong>: un conjunto de normas. Luego habrá programas y aparatos que lo cumplan, pero el protocolo en sí es el reglamento, no la máquina.</p>
+</details>

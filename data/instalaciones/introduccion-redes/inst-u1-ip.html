@@ -1,0 +1,95 @@
+<h2>La dirección lógica</h2>
+<p>Cada equipo capaz de enviar y recibir información en una red tiene una <strong>dirección IP</strong>. Al contrario que la MAC, no es del aparato: <strong>es del sitio que ocupa en la red</strong>, y por eso cambia con el tiempo y de una red a otra.</p>
+<p>Una dirección IPv4 está formada por <strong>4 octetos</strong>, es decir, 4 grupos de 8 bits. En total, <strong>32 bits</strong>. Para que las personas podamos leerla, cada octeto se escribe en decimal y se separan con puntos.</p>
+<pre><code>11000000 . 10101000 . 00000001 . 00011001      ← lo que ve la máquina
+   192   .   168    .    1     .    25         ← lo que escribimos</code></pre>
+<p>Como cada octeto son 8 bits, cada número va de <strong>0 a 255</strong> —la sesión del binario otra vez—. Por eso el rango completo es:</p>
+<table>
+<tr><th></th><th>Desde</th><th>Hasta</th></tr>
+<tr><td><strong>Binario</strong></td><td>00000000.00000000.00000000.00000000</td><td>11111111.11111111.11111111.11111111</td></tr>
+<tr><td><strong>Decimal</strong></td><td>0.0.0.0</td><td>255.255.255.255</td></tr>
+</table>
+<div class="nota">Cuidado con dos números que se copian mal muy a menudo. Un octeto son <strong>8 bits, no 4</strong> (los bloques de 4 bits son cosa del hexadecimal y de IPv6). Y con 32 bits hay <strong>2³² direcciones posibles = 4.294.967.296</strong>, unos 4.300 millones. No 2³⁶.</div>
+<p>La forma de contar es la de un cuentakilómetros: el bloque de la derecha sube hasta 255; al sumar uno más vuelve a 0 y sube en uno el bloque de su izquierda. Igual con el resto.</p>
+
+<h2>La máscara de red</h2>
+<p>Aquí está la idea importante de toda la sesión. Una dirección IP <strong>no dice solo quién eres: dice también en qué red estás</strong>. Es como una dirección postal, que lleva dentro la calle y el número de portal.</p>
+<p>Pero mirando 192.168.1.25 no hay forma de saber qué parte es la calle y qué parte el portal. Eso lo dice la <strong>máscara de red</strong>.</p>
+<ul>
+<li>Tiene el mismo formato que la IP: 32 bits, cuatro octetos.</li>
+<li>Los bits que valen <strong>1</strong> marcan la parte de <strong>RED</strong>. Los que valen <strong>0</strong>, la parte de <strong>HOST</strong> (el equipo).</li>
+<li>Los unos van siempre juntos y al principio: nunca hay un 0 entre dos 1.</li>
+</ul>
+<pre><code>IP       192.168.1.25     11000000.10101000.00000001.00011001
+Máscara  255.255.255.0     11111111.11111111.11111111.00000000
+                          └──────── RED ────────────┘└─ HOST ─┘
+
+Red:  192.168.1.0          Este equipo:  el 25 de esa red</code></pre>
+<p>Dos equipos están en <strong>la misma red</strong> si su parte de red coincide. Si coincide, se hablan directamente. Si no, necesitan un router de por medio. <strong>Ese es el motivo de que exista la máscara</strong>, y no otro.</p>
+
+<h3>Notación CIDR</h3>
+<p>Escribir 255.255.255.0 es largo. Como los unos van siempre seguidos, basta con decir <strong>cuántos hay</strong>, y eso se escribe con una barra detrás de la IP:</p>
+<table>
+<tr><th>Máscara decimal</th><th>CIDR</th><th>Bits de red</th><th>Bits de host</th></tr>
+<tr><td>255.0.0.0</td><td>/8</td><td>8</td><td>24</td></tr>
+<tr><td>255.255.0.0</td><td>/16</td><td>16</td><td>16</td></tr>
+<tr><td>255.255.255.0</td><td>/24</td><td>24</td><td>8</td></tr>
+</table>
+<p>Así, <code>192.168.1.25/24</code> lo dice todo de un golpe: esta dirección, en una red cuyos 24 primeros bits son la red. Es como se escribe hoy en cualquier equipo profesional.</p>
+
+<h2>Las clases de direcciones</h2>
+<p>Antes de CIDR, las direcciones se repartían en <strong>clases</strong> según el valor del <strong>primer octeto</strong>. Hoy el reparto real ya no funciona así, pero las clases siguen estudiándose y se siguen preguntando, porque explican de dónde salen las máscaras «por defecto» y por qué los rangos privados son los que son.</p>
+<table>
+<tr><th>Clase</th><th>1.<sup>er</sup> octeto</th><th>Red / Host</th><th>Máscara por defecto</th><th>Para qué</th></tr>
+<tr><td><strong>A</strong></td><td>0 – 127</td><td>1 octeto de red, 3 de host</td><td>255.0.0.0 (/8)</td><td>Redes enormes, pocas</td></tr>
+<tr><td><strong>B</strong></td><td>128 – 191</td><td>2 de red, 2 de host</td><td>255.255.0.0 (/16)</td><td>Redes medianas</td></tr>
+<tr><td><strong>C</strong></td><td>192 – 223</td><td>3 de red, 1 de host</td><td>255.255.255.0 (/24)</td><td>Redes pequeñas, muchas</td></tr>
+<tr><td><strong>D</strong></td><td>224 – 239</td><td colspan="2">No se reparte en red y host</td><td><em>Multicast</em>: enviar a un grupo</td></tr>
+<tr><td><strong>E</strong></td><td>240 – 255</td><td colspan="2">No se reparte en red y host</td><td>Reservada, experimental</td></tr>
+</table>
+<p><strong>Para identificar la clase solo hay que mirar el primer número.</strong> 10.250.1.1 empieza por 10 → clase A. 150.10.15.0 empieza por 150 → clase B. 199.155.77.56 empieza por 199 → clase C.</p>
+<div class="nota">Dos direcciones especiales de cada red, que nunca se le dan a un equipo: la que tiene <strong>todos los bits de host a 0</strong> es la <strong>dirección de red</strong> (identifica a la red entera) y la que los tiene <strong>todos a 1</strong> es la de <strong>broadcast</strong> (sirve para hablar con todos los equipos de esa red a la vez). Volveremos a ellas en la sesión siguiente.</div>
+
+<h3>Direcciones públicas y privadas</h3>
+<p>No todas las direcciones salen a Internet. Hay tres rangos reservados para redes internas: los puedes usar en tu oficina sin pedir permiso a nadie, y los routers de Internet no los encaminan.</p>
+<table>
+<tr><th>Clase</th><th>Rango privado</th></tr>
+<tr><td>A</td><td>10.0.0.0 – 10.255.255.255</td></tr>
+<tr><td>B</td><td>172.<strong>16</strong>.0.0 – 172.<strong>31</strong>.255.255</td></tr>
+<tr><td>C</td><td>192.168.0.0 – 192.168.255.255</td></tr>
+</table>
+<p>Por eso el router de tu casa reparte 192.168.1.algo y el de tu vecino también, sin que choquen: son direcciones internas, cada una en su casa. Hacia fuera, los dos routers salen con <strong>una única dirección pública</strong> que le da el operador.</p>
+<div class="nota">El rango privado de clase B es solo <strong>del 172.16 al 172.31</strong>. Ni 172.15 ni 172.32: esas son públicas. Es la pregunta con la que más gente cae.</div>
+<p>Y dos direcciones más que conviene reconocer al vuelo:</p>
+<ul>
+<li><strong>127.0.0.1</strong> — <em>localhost</em>, «yo mismo». Hacerle <code>ping</code> comprueba que tu propia pila de red funciona, sin salir de la máquina.</li>
+<li><strong>169.254.x.x</strong> — la que se autoasigna Windows <strong>cuando no ha conseguido IP del DHCP</strong>. Si ves una de estas en <code>ipconfig</code>, el equipo no está hablando con el router: ahí tienes la avería.</li>
+</ul>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 7 — a mano, en papel</p>
+<ol>
+<li>¿Cuántos bits tiene una dirección IPv4? ¿En cuántos octetos se divide? ¿Cuántas direcciones distintas existen?</li>
+<li>Identifica la clase de: 10.250.1.1 · 150.10.15.0 · 199.155.77.56 · 249.240.80.78 · 117.89.56.45 · 220.200.23.1 · 158.98.80.0</li>
+<li>De esas mismas direcciones, señala la <strong>parte de red</strong> y la <strong>parte de host</strong>.</li>
+<li>Escribe la <strong>máscara por defecto</strong> de: 177.100.18.4 · 119.18.45.0 · 223.23.223.109 · 128.212.250.254 · 193.100.77.89</li>
+<li>Di si son públicas o privadas y por qué: 10.8.4.1 · 172.15.3.9 · 172.20.3.9 · 192.168.0.7 · 8.8.8.8</li>
+<li>Explica con tus palabras para qué sirve la máscara de red. ¿Qué pasa si dos equipos de la misma oficina tienen máscaras distintas?</li>
+<li>Un equipo aparece con la IP 169.254.13.7. ¿Qué ha pasado? ¿Por dónde empezarías a mirar?</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 ¿Por qué el número más alto de un octeto es 255 y no 300?</summary>
+<p>Porque cada octeto son 8 bits, y con 8 bits el valor máximo es <code>1111 1111</code> = 255. No es una norma arbitraria: es el límite de lo que cabe.</p>
+</details>
+<details>
+<summary>🤔 Tu equipo tiene 192.168.1.25/24 y el servidor 192.168.2.10/24. ¿Se hablan directamente?</summary>
+<p>No. Con /24 la red son los tres primeros octetos: uno está en 192.168.<strong>1</strong>.0 y el otro en 192.168.<strong>2</strong>.0. Son <strong>redes distintas</strong>, así que hace falta un router que las una.</p>
+</details>
+<details>
+<summary>🤔 ¿Puede haber dos ordenadores en el mundo con la IP 192.168.1.10?</summary>
+<p>Millones, y no pasa nada: es una dirección <strong>privada</strong>, y solo tiene que ser única dentro de su propia red local. Lo que no puede repetirse es una dirección <strong>pública</strong>.</p>
+</details>

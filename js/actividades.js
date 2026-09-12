@@ -153,9 +153,130 @@ function renderRelacionar(contenedor, datos) {
   contenedor.appendChild(wrapper);
 }
 
+/* ---------- Ejercicios generados por código ---------- */
+
+/* Los enunciados los fabrica js/generadores.js. Aquí solo se pintan:
+   una lista de huecos, un botón para corregir y otro para pedir una
+   tanda nueva. Como los números cambian cada vez, la bolsa de
+   ejercicios no se agota y no sirve de nada copiarle al de al lado. */
+
+function renderGenerador(contenedor, datos) {
+  if (typeof generarTanda !== 'function') {
+    contenedor.appendChild(crearElemento('p', null, 'No se han podido cargar los ejercicios.'));
+    return;
+  }
+
+  const wrapper = crearElemento('div', 'generador');
+  const lista = crearElemento('div', 'generador__lista');
+  const estado = crearElemento('p', 'generador__estado', '');
+
+  const barra = crearElemento('div', 'generador__barra');
+  const btnComprobar = crearElemento('button', 'boton', 'Comprobar');
+  const btnOtra = crearElemento('button', 'boton generador__boton-otra', 'Otra tanda');
+  btnComprobar.type = 'button';
+  btnOtra.type = 'button';
+  barra.appendChild(btnComprobar);
+  barra.appendChild(btnOtra);
+
+  const cuantas = datos.n || 8;
+  let preguntas = [];
+  let campos = [];
+
+  function nuevaTanda() {
+    preguntas = generarTanda(datos.generador, cuantas);
+    campos = [];
+    lista.innerHTML = '';
+    estado.textContent = '';
+
+    if (preguntas.length === 0) {
+      lista.appendChild(crearElemento('p', null, `No existe el generador "${datos.generador}".`));
+      return;
+    }
+
+    preguntas.forEach((preg, i) => {
+      const fila = crearElemento('div', 'generador__fila');
+      fila.appendChild(crearElemento('span', 'generador__numero', `${i + 1}.`));
+
+      const enunciado = crearElemento('span', 'generador__enunciado', preg.enunciado);
+      enunciado.setAttribute('translate', 'no');
+      fila.appendChild(enunciado);
+
+      const campo = crearElemento('input', 'generador__campo');
+      campo.type = 'text';
+      campo.autocomplete = 'off';
+      campo.spellcheck = false;
+      campo.setAttribute('aria-label', `Respuesta del ejercicio ${i + 1}`);
+      campo.addEventListener('keydown', e => {
+        if (e.key === 'Enter') comprobar();
+      });
+      fila.appendChild(campo);
+
+      const marca = crearElemento('span', 'generador__marca', '');
+      fila.appendChild(marca);
+
+      lista.appendChild(fila);
+
+      const explicacion = crearElemento('p', 'generador__pista', '');
+      explicacion.hidden = true;
+      lista.appendChild(explicacion);
+
+      campos.push({ campo, marca, explicacion });
+    });
+  }
+
+  function comprobar() {
+    let aciertos = 0;
+    let contestadas = 0;
+
+    preguntas.forEach((preg, i) => {
+      const { campo, marca, explicacion } = campos[i];
+      const valor = campo.value.trim();
+      marca.classList.remove('generador__marca--bien', 'generador__marca--mal');
+
+      if (valor === '') {
+        marca.textContent = '';
+        explicacion.hidden = true;
+        return;
+      }
+      contestadas++;
+
+      if (respuestaCorrecta(preg, valor)) {
+        aciertos++;
+        marca.textContent = '✓';
+        marca.classList.add('generador__marca--bien');
+        explicacion.hidden = true;
+      } else {
+        marca.textContent = '✗';
+        marca.classList.add('generador__marca--mal');
+        explicacion.textContent = `Era ${preg.respuesta}. ${preg.pista || ''}`.trim();
+        explicacion.hidden = false;
+      }
+    });
+
+    if (contestadas === 0) {
+      estado.textContent = 'Escribe alguna respuesta y vuelve a pulsar Comprobar.';
+      return;
+    }
+    estado.textContent = contestadas < preguntas.length
+      ? `${aciertos} de ${contestadas} contestadas están bien (te faltan ${preguntas.length - contestadas}).`
+      : `${aciertos} de ${preguntas.length} correctas.`;
+  }
+
+  btnComprobar.addEventListener('click', comprobar);
+  btnOtra.addEventListener('click', nuevaTanda);
+
+  wrapper.appendChild(lista);
+  wrapper.appendChild(barra);
+  wrapper.appendChild(estado);
+  contenedor.appendChild(wrapper);
+
+  nuevaTanda();
+}
+
 const RENDERERS = {
   quiz: renderQuiz,
   relacionar: renderRelacionar,
+  generador: renderGenerador,
 };
 
 function renderActividad(contenedor, actividad) {

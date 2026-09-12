@@ -1,0 +1,64 @@
+<h2>Medir la información</h2>
+<p>Un bit es demasiado pequeño para hablar de archivos reales, igual que el milímetro es demasiado pequeño para hablar de la distancia a Valencia. Así que se agrupan. Y aquí hay una peculiaridad: en informática <strong>no se sube de mil en mil, se sube de 1024 en 1024</strong>, porque 1024 es 2¹⁰ y las máquinas van por potencias de dos.</p>
+<table>
+<tr><th>Unidad</th><th>Símbolo</th><th>Equivale a</th><th>En bytes</th></tr>
+<tr><td>Byte</td><td>B</td><td>8 bits</td><td>1</td></tr>
+<tr><td>Kilobyte</td><td>KB</td><td>1.024 B</td><td>2¹⁰ = 1.024</td></tr>
+<tr><td>Megabyte</td><td>MB</td><td>1.024 KB</td><td>2²⁰ = 1.048.576</td></tr>
+<tr><td>Gigabyte</td><td>GB</td><td>1.024 MB</td><td>2³⁰ = 1.073.741.824</td></tr>
+<tr><td>Terabyte</td><td>TB</td><td>1.024 GB</td><td>2⁴⁰ = 1.099.511.627.776</td></tr>
+</table>
+<p>La regla práctica es corta: <strong>para bajar de unidad multiplicas por 1024; para subir, divides entre 1024</strong>. Un salto, un 1024. Dos saltos, dos veces.</p>
+<pre><code>2 TB → GB   es 1 salto hacia abajo:   2 × 1024 = 2.048 GB
+2 TB → MB   son 2 saltos:             2 × 1024 × 1024 = 2.097.152 MB
+4096 MB → GB  es 1 salto hacia arriba: 4096 ÷ 1024 = 4 GB</code></pre>
+<div class="nota">Antes de operar, <strong>escribe la escalera</strong> en el margen: B – KB – MB – GB – TB. Cuenta los peldaños que hay entre las dos unidades del enunciado y ya sabes cuántas veces multiplicar o dividir. La mitad de los fallos en este tema son de contar mal los peldaños, no de calcular.</div>
+
+<h2>Almacenar no es transmitir</h2>
+<p>Esto es lo más importante de la sesión, y lo que más se confunde fuera del aula.</p>
+<ul>
+<li>Lo que <strong>ocupa</strong> un archivo se mide en <strong>bytes</strong>: B, KB, MB, GB, TB.</li>
+<li>Lo que <strong>corre</strong> una conexión se mide en <strong>bits por segundo</strong>: bps, Kbps, <strong>Mbps</strong>, Gbps.</li>
+</ul>
+<p>Fíjate en la letra: <strong>MB</strong> es megabytes (capacidad), <strong>Mb</strong> o <strong>Mbps</strong> es megabits (velocidad). Entre una y otra hay un factor 8.</p>
+<div class="salida">
+<p><strong>El caso de la fibra de 600 megas.</strong> Contratas 600 Mbps. Te bajas un archivo y el navegador dice «75 MB/s». No te han engañado ni va lento:</p>
+<pre><code>600 Mbps ÷ 8 = 75 MB/s</code></pre>
+<p>Son la misma velocidad escrita en dos unidades. Los operadores anuncian en megabits porque el número sale ocho veces más grande.</p>
+</div>
+<p>Y de ahí sale la pregunta típica de examen: <em>¿cuánto tarda?</em> El método siempre es el mismo — <strong>pon los dos datos en la misma familia</strong> antes de dividir:</p>
+<pre><code>Archivo de 400 MB por una línea de 200 Mbps
+
+1) el archivo a megabits:   400 MB × 8 = 3.200 Mb
+2) divide por la velocidad: 3.200 Mb ÷ 200 Mbps = 16 segundos</code></pre>
+<p>En la vida real tarda más: nunca se aprovecha el 100 % de la línea. Ese cálculo da el <strong>mínimo teórico</strong>, y así hay que decirlo en el examen.</p>
+
+<h3>Un aviso sobre los discos duros</h3>
+<p>Compras un disco de 1 TB, lo conectas y Windows dice 931 GB. No falta nada: el fabricante ha contado 1 TB = 1.000.000.000.000 bytes (de mil en mil) y Windows los reparte de 1024 en 1024. Mismo disco, dos formas de contar.</p>
+<p>Para deshacer el lío existen los nombres <strong>KiB, MiB, GiB</strong> (kibibyte, mebibyte, gibibyte) para las potencias de 1024, dejando KB, MB y GB para las de 1000. Se usan poco. <strong>En esta asignatura y en el examen trabajamos siempre con 1024</strong>, que es lo que dice la tabla de arriba; pero conviene que sepas por qué tu disco «ha encogido».</p>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 3 — a mano, en papel</p>
+<ol>
+<li>Completa, <strong>con las operaciones escritas</strong>: <br>a) 2 TB = ______ MB &nbsp;·&nbsp; b) 4096 MB = ______ GB &nbsp;·&nbsp; c) 3 GB = ______ KB &nbsp;·&nbsp; d) 512 KB = ______ B</li>
+<li>Relaciona cada ejemplo con la unidad que le pega: <em>bytes, kilobytes, megabytes, gigabytes, terabytes</em> → un disco duro actual · un documento de texto · un vídeo · los dígitos de una dirección IP · una foto.</li>
+<li>Has descargado una película de 2,3 GB y quieres pasarla en CD de 700 MB. ¿Cuántos CD necesitas? Cuidado con el redondeo y explica por qué redondeas así.</li>
+<li>Tu conexión es de 1000 Mbps. ¿Cuántos MB por segundo son? ¿Cuánto tardarías, como mínimo, en bajar 5 GB?</li>
+<li>Explica con tus palabras por qué un disco de 1 TB aparece en el ordenador como 931 GB.</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 Una línea de 100 Mbps, ¿baja 100 MB cada segundo?</summary>
+<p>No: baja <strong>12,5 MB por segundo</strong> como mucho (100 ÷ 8). La «b» pequeña de Mbps son bits, no bytes. Es el error más repetido de esta unidad.</p>
+</details>
+<details>
+<summary>🤔 ¿Por qué 1 KB son 1.024 bytes y no 1.000?</summary>
+<p>Porque las máquinas cuentan en potencias de dos y 1.024 es 2¹⁰, la potencia de dos más cercana a mil. El prefijo «kilo» se tomó prestado del sistema métrico por comodidad, aunque no cuadre exactamente.</p>
+</details>
+<details>
+<summary>🤔 Si un archivo ocupa 1,44 MB, ¿cuántos bits son?</summary>
+<p>1,44 × 1024 = 1.474,56 KB → × 1024 = 1.509.949,44 B → × 8 ≈ <strong>12.079.596 bits</strong>. El detalle importante no es el número exacto, sino el orden de las conversiones: primero bajas la escalera hasta bytes, y solo al final multiplicas por 8.</p>
+</details>

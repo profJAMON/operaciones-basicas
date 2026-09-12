@@ -59,6 +59,28 @@
 </svg>
 </div>
 
+<h2>Tu router: IP privada e IP pública</h2>
+<p>En casa o en el instituto no te conectas directamente a Internet: te conectas a un <strong>router</strong>. El router es el aparato que une todos los dispositivos de un sitio (por cable o por wifi) y habla con Internet por ellos. Y quien le da esa conexión a Internet es tu <strong>operadora</strong>: la empresa que tienes contratada (Movistar, Vodafone, Orange...).</p>
+<p>Por eso hay dos tipos de dirección IP:</p>
+<table>
+<tr><th>Tipo de IP</th><th>Quién la da</th><th>Para qué sirve</th></tr>
+<tr><td><strong>IP privada</strong><br>(por ejemplo, 192.168.1.20)</td><td>Tu router, a cada dispositivo</td><td>Identificar cada dispositivo <strong>dentro</strong> de esa red. Se repite en millones de casas: solo vale ahí dentro.</td></tr>
+<tr><td><strong>IP pública</strong><br>(por ejemplo, 83.45.120.17)</td><td>Tu operadora, al router</td><td>Identificar tu red <strong>en Internet</strong>. Es la que ven las webs que visitas.</td></tr>
+</table>
+<div class="salida" style="background:#fff;color:#1e1e1e;border-radius:6px;padding:14px 18px;font-family:monospace;font-size:0.9em;display:flex;gap:18px;flex-wrap:wrap;align-items:center;">
+<div style="flex:0 0 auto;line-height:1.8;">
+📱 móvil &nbsp;192.168.1.12<br>
+💻 portátil &nbsp;192.168.1.15<br>
+🖥️ ordenador &nbsp;192.168.1.20
+</div>
+<div style="flex:0 0 auto;font-size:1.4em;">→</div>
+<div style="flex:0 0 auto;border:2px solid #2563eb;border-radius:6px;padding:8px 12px;text-align:center;">📶 router<br><span style="font-size:0.85em;">192.168.1.1</span></div>
+<div style="flex:0 0 auto;font-size:1.4em;">→</div>
+<div style="flex:0 0 auto;text-align:center;">🌐 Internet<br><span style="font-size:0.85em;">te ve como 83.45.120.17</span></div>
+</div>
+<div class="nota">🤔 Antes de seguir: si toda la clase busca en Internet "cuál es mi IP", ¿por qué le sale a todo el mundo el mismo número, si cada ordenador es distinto?</div>
+<details><summary>Ver respuesta</summary>Porque esa web no ve los ordenadores uno a uno: ve el <strong>router</strong> del instituto, que es quien sale a Internet por todos. La IP que os enseña es la IP pública del centro, la misma para todos. Cada ordenador sí tiene su propia IP privada, pero esa solo se ve dentro de la red del instituto.</details>
+
 <h2>DNS</h2>
 
 <p>Nadie memoriza el número de teléfono de sus amigos: guardamos su nombre en la agenda y el teléfono busca el número por nosotros. El <code>DNS</code> (Domain Name System) hace justo eso con internet: tú escribes un nombre fácil de recordar (<code>google.com</code>) y el DNS busca, en una especie de agenda gigante de internet, la IP real que le corresponde — todo en milisegundos, sin que lo notes.</p>
@@ -121,6 +143,15 @@
 
 <p>Con la IP en la mano, el navegador ya puede hacer la petición del principio: cliente pide, servidor responde.</p>
 
+<h2>Internet e intranet</h2>
+<p>Una <strong>intranet</strong> es una red privada de una empresa o de un centro que usa la misma tecnología que Internet (páginas web, carpetas compartidas, impresoras en red...), pero a la que <strong>solo se puede entrar desde dentro</strong>. En el instituto, por ejemplo, las carpetas compartidas del servidor o una web interna del centro son intranet: desde casa no las ves.</p>
+<table>
+<tr><th></th><th>Internet</th><th>Intranet</th></tr>
+<tr><td><strong>Quién puede entrar</strong></td><td>Cualquiera, desde cualquier sitio</td><td>Solo quien está dentro de esa red (o entra con permiso)</td></tr>
+<tr><td><strong>Tamaño</strong></td><td>Mundial</td><td>Una empresa, un centro, un edificio</td></tr>
+<tr><td><strong>Ejemplo</strong></td><td>La web de tu instituto, que ve todo el mundo</td><td>Las carpetas compartidas del aula</td></tr>
+</table>
+
 <h2>Preguntas</h2>
 
 <div class="nota">
@@ -132,57 +163,6 @@ Responde estas preguntas en tu cuaderno, a mano. Cuando el profesor las corrija,
 <ol>
 <li>(V/F) Cuando visitas una página web, tu ordenador actúa como servidor y el otro extremo como cliente.</li>
 <li>Explica con tus palabras qué significa "cliente-servidor" usando un ejemplo distinto al del navegador (por ejemplo, un cajero automático, una app de mensajería...).</li>
-</ol>
-
-<h3>Dirección IP</h3>
-
-<ol start="3">
-<li>(ABC) Una dirección IP sirve para:
-  <ul>
-    <li>a) decorar la página web</li>
-    <li>b) identificar de forma única un dispositivo en la red</li>
-    <li>c) acelerar la conexión a internet</li>
-  </ul>
-</li>
-<li>Busca cuál es tu propia dirección IP pública ahora mismo (puedes usar una web tipo "cuál es mi IP") y anótala.</li>
-<li>¿Por qué crees que sería un problema que dos dispositivos conectados a internet tuvieran la misma IP pública al mismo tiempo?</li>
-</ol>
-
-<h3>DNS</h3>
-
-<ol start="6">
-<li>(V/F) Las direcciones IP existen desde antes que los nombres de dominio como "google.com".</li>
-<li>Busca qué significan las siglas DNS y explica, con tus palabras, qué "traduce" exactamente.</li>
-<li>Si el DNS dejara de funcionar durante una hora en todo el mundo, ¿podrías seguir navegando escribiendo direcciones IP directamente? Razona la respuesta.</li>
-<li>(ABC) El DNS funciona de forma parecida a:
-  <ul>
-    <li>a) una agenda de contactos que traduce nombres a números de teléfono</li>
-    <li>b) un antivirus</li>
-    <li>c) un disco duro externo</li>
-  </ul>
-</li>
-<li>Abre una terminal y ejecuta el comando <code>ping google.com</code> (o <code>ping instagram.com</code>). Copia la dirección IP que aparece en el resultado.</li>
-<li>Ejecuta <code>ping</code> sobre dos webs distintas y compara las IPs obtenidas. ¿Son parecidas o completamente distintas? ¿A qué crees que se debe?</li>
-<li>(V/F) Un mismo nombre de dominio puede corresponder a varias direcciones IP distintas (por ejemplo, para repartir el tráfico entre varios servidores).</li>
-<li>Busca qué es un "servidor DNS" y qué papel juega tu router o tu operador de internet en ese proceso.</li>
-<li>Imagina que escribes mal una letra de un dominio (por ejemplo, "gogle.com" en vez de "google.com"). ¿Qué crees que pasará y por qué?</li>
-<li>(ABC) Si un servidor está caído (apagado o sin conexión), lo más probable es que:
-  <ul>
-    <li>a) la web cargue igual pero más lenta</li>
-    <li>b) la web no cargue y aparezca un error</li>
-    <li>c) el DNS cambiará automáticamente el contenido</li>
-  </ul>
-</li>
-<li>¿Qué diferencia hay entre un "dominio" (google.com) y una "URL" completa (https://www.google.com/search?q=hola)? Búscalo si no lo tienes claro.</li>
-<li>Busca cuánto cuesta aproximadamente registrar un dominio ".com" o ".es" durante un año.</li>
-<li>(V/F) Cualquier persona puede comprar y registrar el nombre de dominio que quiera, siempre que nadie lo tenga ya registrado.</li>
-<li>Si tuvieras que registrar un dominio para tu propia web personal, ¿qué nombre elegirías y por qué?</li>
-</ol>
-
-<h3>Repaso general</h3>
-
-<ol start="20">
-<li>Explica, paso a paso y con tus propias palabras, qué ocurre desde que escribes una dirección en el navegador hasta que ves la página cargada (cliente, DNS, servidor).</li>
 <li>(ABC) El "cliente" en el modelo cliente-servidor es normalmente:
   <ul>
     <li>a) el navegador del usuario</li>
@@ -190,9 +170,76 @@ Responde estas preguntas en tu cuaderno, a mano. Cuando el profesor las corrija,
     <li>c) el proveedor de internet</li>
   </ul>
 </li>
-<li>Busca qué es un servidor "caído" o "en mantenimiento" y por qué a veces las empresas avisan de ventanas de mantenimiento nocturnas.</li>
 <li>(V/F) Los servidores web están siempre encendidos y accesibles, nunca se apagan ni fallan.</li>
+<li>(ABC) Si un servidor está caído (apagado o sin conexión), lo más probable es que:
+  <ul>
+    <li>a) la web cargue igual pero más lenta</li>
+    <li>b) la web no cargue y aparezca un error</li>
+    <li>c) el DNS cambie automáticamente el contenido</li>
+  </ul>
+</li>
+</ol>
+
+<h3>Dirección IP</h3>
+
+<ol start="6">
+<li>(ABC) Una dirección IP sirve para:
+  <ul>
+    <li>a) decorar la página web</li>
+    <li>b) identificar de forma única un dispositivo en la red</li>
+    <li>c) acelerar la conexión a internet</li>
+  </ul>
+</li>
+<li>¿Por qué sería un problema que dos dispositivos tuvieran la misma IP pública al mismo tiempo?</li>
 <li>¿Qué pasaría si intentaras conectarte a una web y tu propio dispositivo no tuviera ninguna dirección IP asignada? Razona tu respuesta.</li>
-<li>Busca la diferencia entre una IP "pública" y una IP "privada", y explica en qué grupo entraría la IP de tu ordenador dentro de tu red de casa.</li>
-<li>Con lo que has aprendido en este bloque, escribe tú mismo una pregunta de tipo "qué pasaría si..." relacionada con IP, DNS o cliente-servidor, y respóndela.</li>
+</ol>
+
+<h3>Router, IP privada e IP pública</h3>
+
+<ol start="9">
+<li>Explica con tus palabras qué hace un router.</li>
+<li>¿Qué diferencia hay entre una IP privada y una IP pública? Pon un ejemplo de cada una.</li>
+<li>(V/F) La IP privada de tu ordenador es única en todo el mundo.</li>
+<li>(ABC) Toda la clase busca "cuál es mi IP" y a todos les sale el mismo número. Eso es porque:
+  <ul>
+    <li>a) la web se ha equivocado</li>
+    <li>b) todos salís a Internet a través del mismo router, con la misma IP pública</li>
+    <li>c) todos los ordenadores del aula son iguales</li>
+  </ul>
+</li>
+<li>¿Qué es una operadora y qué papel tiene entre tu router e Internet? Escribe el nombre de dos operadoras.</li>
+</ol>
+
+<h3>Internet e intranet</h3>
+
+<ol start="14">
+<li>Explica con tus palabras qué es una intranet.</li>
+<li>(V/F) A la intranet de una empresa puede entrar cualquiera desde su casa.</li>
+<li>Pon un ejemplo de algo que sea intranet en tu instituto y otro de algo que esté en Internet.</li>
+</ol>
+
+<h3>DNS</h3>
+
+<ol start="17">
+<li>Busca qué significan las siglas DNS y explica, con tus palabras, qué "traduce" exactamente.</li>
+<li>(ABC) El DNS funciona de forma parecida a:
+  <ul>
+    <li>a) una agenda de contactos que traduce nombres a números de teléfono</li>
+    <li>b) un antivirus</li>
+    <li>c) un disco duro externo</li>
+  </ul>
+</li>
+<li>Si el DNS dejara de funcionar durante una hora en todo el mundo, ¿podrías seguir navegando escribiendo direcciones IP directamente? Razona la respuesta.</li>
+<li>(V/F) Un mismo nombre de dominio puede corresponder a varias direcciones IP distintas (por ejemplo, para repartir el tráfico entre varios servidores).</li>
+<li>Imagina que escribes mal una letra de un dominio (por ejemplo, "gogle.com" en vez de "google.com"). ¿Qué crees que pasará y por qué?</li>
+<li>(V/F) Cualquier persona puede comprar y registrar el nombre de dominio que quiera, siempre que nadie lo tenga ya registrado.</li>
+<li>Si tuvieras que registrar un dominio para tu propia web personal, ¿qué nombre elegirías y por qué?</li>
+</ol>
+
+<h3>Repaso general</h3>
+
+<ol start="24">
+<li>Explica, paso a paso y con tus propias palabras, qué ocurre desde que escribes una dirección en el navegador hasta que ves la página cargada (cliente, router, DNS, servidor).</li>
+<li>Busca qué es un servidor "caído" o "en mantenimiento" y por qué a veces las empresas avisan de ventanas de mantenimiento nocturnas.</li>
+<li>Con lo que has aprendido en este bloque, escribe tú mismo una pregunta de tipo "qué pasaría si..." relacionada con IP, DNS, router o cliente-servidor, y respóndela.</li>
 </ol>

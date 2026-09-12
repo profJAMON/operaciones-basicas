@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* ============================================================
-   Operaciones Básicas — hoja de estilos
+   Material de clase — hoja de estilos (compartida por las asignaturas)
    Sigue la guía de estilo del proyecto (estilo-web-materiales_2.md):
    modo oscuro tipo VS Code Dark+, minimalista, sin sombras.
    Layout: menú (200px) | contenido elástico (hasta 1100px) | índice de página (180px).
@@ -717,6 +717,83 @@ font {
 .goog-text-highlight {
   background: none !important;
   box-shadow: none !important;
+}
+
+/* ---------- Asignaturas ---------- */
+
+/* Nivel de arriba de la barra lateral: una asignatura, con sus
+   unidades dentro. Se distingue de .unidad por el borde inferior y
+   por ir en mayúsculas. */
+
+.asignatura {
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+.asignatura:last-child { border-bottom: none; }
+
+.asignatura > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 0.4rem 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  border-radius: 4px;
+  line-height: 1.35;
+}
+.asignatura > summary::-webkit-details-marker { display: none; }
+.asignatura > summary::before {
+  content: "▸";
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+}
+.asignatura[open] > summary::before { transform: rotate(90deg); }
+.asignatura[open] > summary { color: var(--accent); }
+.asignatura > summary:hover { background: var(--surface-2); color: var(--text); }
+
+.asignatura__cuerpo { padding-left: 0.35rem; margin-top: 0.3rem; }
+
+/* Tarjetas de la portada cuando toca elegir asignatura */
+
+.asignatura-card {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  margin-bottom: 1.2rem;
+  padding: 1.4rem;
+  text-decoration: none;
+  color: var(--text);
+  transition: background-color 0.12s ease, border-color 0.12s ease;
+}
+.asignatura-card:hover { background: var(--surface-2); border-color: var(--accent); }
+.asignatura-card:hover .asignatura-card__titulo { color: var(--accent); }
+
+.asignatura-card__titulo {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 0 0 0.4rem;
+}
+
+.asignatura-card__descripcion {
+  color: var(--text-dim);
+  font-size: 0.92rem;
+  margin: 0 0 0.7rem;
+}
+
+.asignatura-card__meta {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  margin: 0;
 }
 
 @media (max-width: 1000px) {

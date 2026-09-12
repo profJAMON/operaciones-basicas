@@ -16,23 +16,33 @@ async function cargarTema() {
   const id = params.get('id');
   const raiz = document.getElementById('tema-raiz');
 
-  cargarBarraLateral(id);
-
   if (!id) {
+    cargarBarraLateral(null, asignaturaDeLaUrl());
     raiz.innerHTML = '<p class="vacio">No se ha especificado ninguna sesión.</p>';
     return;
   }
 
   try {
-    const curso = await (await fetch('data/curso.json')).json();
-    const unidadDeLaSesion = (curso.unidades || []).find(u => (u.sesiones || []).includes(id));
+    /* La sesión puede ser de cualquier asignatura: se busca en todas,
+       así los enlaces antiguos (sin ?a=) siguen funcionando. */
+    const ubicacion = await localizarSesion(id, asignaturaDeLaUrl());
 
-    if (!unidadDeLaSesion) {
+    if (!ubicacion) {
+      cargarBarraLateral(null, asignaturaDeLaUrl());
       raiz.innerHTML = '<p class="vacio">No se ha encontrado esta sesión.</p>';
       return;
     }
 
-    const sesionResp = await fetch(`data/unidades/${unidadDeLaSesion.id}/${id}.json`);
+    const { asignatura, unidad: unidadDeLaSesion } = ubicacion;
+    cargarBarraLateral(id, asignatura);
+
+    const enlaceVolver = document.getElementById('tema-volver');
+    if (enlaceVolver) {
+      enlaceVolver.href = urlPortadaAsignatura(asignatura);
+      enlaceVolver.textContent = `← ${asignatura.nombre}`;
+    }
+
+    const sesionResp = await fetch(rutaSesionJson(asignatura, unidadDeLaSesion.id, id));
 
     if (!sesionResp.ok) {
       raiz.innerHTML = '<p class="vacio">No se ha encontrado esta sesión.</p>';
@@ -43,11 +53,11 @@ async function cargarTema() {
     let contenidoHtml = tema.contenido || '';
     if (!contenidoHtml) {
       // Formato nuevo: el contenido vive en un archivo .html hermano del .json.
-      const leccionResp = await fetch(`data/unidades/${unidadDeLaSesion.id}/${id}.html`);
+      const leccionResp = await fetch(rutaSesionHtml(asignatura, unidadDeLaSesion.id, id));
       if (leccionResp.ok) contenidoHtml = await leccionResp.text();
     }
 
-    document.title = `${tema.titulo} · Operaciones Básicas`;
+    document.title = `${tema.titulo} · ${asignatura.nombre}`;
     document.getElementById('tema-unidad').textContent = unidadDeLaSesion.titulo;
     document.getElementById('tema-titulo').textContent = tema.titulo;
     document.getElementById('tema-descripcion').textContent = tema.descripcion || '';

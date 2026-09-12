@@ -1,0 +1,13 @@
+{
+  "unidades": [
+    {
+      "id": "evaluacion-inicial",
+      "titulo": "Unidad 0. Evaluación inicial",
+      "descripcion": "De qué va el módulo, cómo vamos a trabajar y una prueba sin nota para ver de dónde partimos.",
+      "sesiones": [
+        "inst-u0-de-que-va-el-modulo",
+        "inst-u0-prueba-inicial"
+      ]
+    }
+  ]
+}

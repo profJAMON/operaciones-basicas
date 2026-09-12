@@ -1,20 +1,98 @@
-/* Página de inicio.
-   1. Pinta la barra lateral (Temario) — la hace js/sidebar.js.
-   2. Pinta el índice de portada: una tarjeta desplegable por unidad,
-      con sus sesiones dentro (título, descripción y cuántos
-      materiales/actividades tiene). La primera unidad se abre sola;
-      el resto quedan colapsadas para no saturar la portada cuando
-      haya muchas unidades. */
+/* Portada (index.html). Tiene dos estados:
 
-cargarBarraLateral(null);
-cargarIndicePortada();
+   - Sin ?a= en la URL: muestra una tarjeta por asignatura.
+   - Con ?a=<id>: muestra las unidades de esa asignatura, cada una
+     desplegable con sus sesiones dentro (título, descripción y cuántos
+     materiales/actividades tiene).
 
-async function cargarIndicePortada() {
+   La barra lateral la pinta js/sidebar.js. */
+
+const _asignaturaPortada = asignaturaDeLaUrl();
+
+cargarBarraLateral(null, _asignaturaPortada);
+arrancarPortada();
+
+function arrancarPortada() {
+  if (_asignaturaPortada) {
+    pintarCabecera(
+      _asignaturaPortada.nombre,
+      'Apuntes y Actividades',
+      `${_asignaturaPortada.descripcion} Elige una unidad para ver sus sesiones.`,
+      true
+    );
+    cargarUnidades(_asignaturaPortada);
+  } else {
+    pintarCabecera(
+      'Material de clase',
+      'Apuntes y Actividades',
+      'Elige la asignatura con la que quieres trabajar.',
+      false
+    );
+    pintarAsignaturas();
+  }
+}
+
+function pintarCabecera(badge, titulo, descripcion, conVolver) {
+  const elBadge = document.getElementById('portada-badge');
+  const elTitulo = document.getElementById('portada-titulo');
+  const elDesc = document.getElementById('portada-descripcion');
+  const elVolver = document.getElementById('portada-volver');
+
+  if (elBadge) elBadge.textContent = badge;
+  if (elTitulo) elTitulo.textContent = titulo;
+  if (elDesc) elDesc.textContent = descripcion;
+  if (elVolver) elVolver.hidden = !conVolver;
+
+  document.title = conVolver ? `${badge} · Material de clase` : 'Material de clase';
+}
+
+/* ---------- Estado 1: elegir asignatura ---------- */
+
+function pintarAsignaturas() {
+  const contenedor = document.getElementById('indice-portada');
+  if (!contenedor) return;
+
+  ASIGNATURAS.forEach(async asignatura => {
+    const tarjeta = document.createElement('a');
+    tarjeta.className = 'asignatura-card';
+    tarjeta.href = urlPortadaAsignatura(asignatura);
+
+    const titulo = document.createElement('p');
+    titulo.className = 'asignatura-card__titulo';
+    titulo.textContent = asignatura.nombre;
+
+    const descripcion = document.createElement('p');
+    descripcion.className = 'asignatura-card__descripcion';
+    descripcion.textContent = asignatura.descripcion;
+
+    const meta = document.createElement('p');
+    meta.className = 'asignatura-card__meta';
+    meta.textContent = 'Cargando…';
+
+    tarjeta.appendChild(titulo);
+    tarjeta.appendChild(descripcion);
+    tarjeta.appendChild(meta);
+    contenedor.appendChild(tarjeta);
+
+    const curso = await cargarCursoSeguro(asignatura);
+    const unidades = curso.unidades || [];
+    const nSesiones = unidades.reduce((total, u) => total + (u.sesiones || []).length, 0);
+    meta.textContent = unidades.length === 0
+      ? 'Todavía sin contenido publicado'
+      : `${unidades.length} unidad(es) · ${nSesiones} sesión(es)`;
+
+    if (typeof retraducir === 'function') retraducir();
+  });
+}
+
+/* ---------- Estado 2: unidades de una asignatura ---------- */
+
+async function cargarUnidades(asignatura) {
   const contenedor = document.getElementById('indice-portada');
   if (!contenedor) return;
 
   try {
-    const curso = await (await fetch('data/curso.json')).json();
+    const curso = await cargarCurso(asignatura);
     const unidades = curso.unidades || [];
 
     if (unidades.length === 0) {
@@ -25,7 +103,6 @@ async function cargarIndicePortada() {
     unidades.forEach(unidad => {
       const detalles = document.createElement('details');
       detalles.className = 'unidad-card';
-      
 
       const resumen = document.createElement('summary');
 
@@ -43,11 +120,10 @@ async function cargarIndicePortada() {
       resumen.appendChild(cabecera);
       detalles.appendChild(resumen);
 
-      const idsSesiones = unidad.sesiones || [];
       const lista = document.createElement('div');
       lista.className = 'sesiones-portada';
 
-      if (idsSesiones.length === 0) {
+      if ((unidad.sesiones || []).length === 0) {
         const vacio = document.createElement('p');
         vacio.className = 'vacio';
         vacio.textContent = 'Todavía no hay sesiones publicadas en esta unidad.';
@@ -57,16 +133,10 @@ async function cargarIndicePortada() {
       detalles.appendChild(lista);
       contenedor.appendChild(detalles);
 
-      Promise.all(
-        idsSesiones.map(id =>
-          fetch(`data/unidades/${unidad.id}/${id}.json`)
-            .then(r => r.ok ? r.json() : null)
-            .catch(() => null)
-        )
-      ).then(sesiones => {
+      cargarSesionesDeUnidad(asignatura, unidad).then(sesiones => {
         sesiones.forEach((sesion, i) => {
           if (!sesion) {
-            console.error(`No se ha podido cargar la sesión "${idsSesiones[i]}"`);
+            console.error(`No se ha podido cargar la sesión "${unidad.sesiones[i]}"`);
             return;
           }
           lista.appendChild(crearFilaSesionPortada(sesion));
@@ -85,7 +155,7 @@ async function cargarIndicePortada() {
 function crearFilaSesionPortada(sesion) {
   const fila = document.createElement('a');
   fila.className = 'sesion-portada';
-  fila.href = `tema.html?id=${encodeURIComponent(sesion.id)}`;
+  fila.href = urlSesion(sesion.id);
 
   const cuerpo = document.createElement('div');
   const tituloSesion = document.createElement('p');

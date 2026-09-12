@@ -583,6 +583,130 @@ footer.pie {
 
 /* Portátiles pequeños: el índice de página se queda sin sitio
    antes que el menú, así que es lo primero que se retira. */
+
+/* ============================================================
+   Selector de idioma  (js/idioma.js)
+   ============================================================ */
+
+.selector-idioma {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.selector-idioma .sidebar__titulo { margin-bottom: 0.6rem; }
+
+.idiomas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.idioma {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1;
+  color: var(--text-dim);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.35rem 0.5rem;
+  cursor: pointer;
+}
+
+.idioma:hover {
+  color: var(--text);
+  border-color: var(--text-faint);
+}
+
+.idioma--activo {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+
+.idioma-extra {
+  width: 100%;
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.35rem 0.4rem;
+  cursor: pointer;
+}
+
+.idioma-original {
+  display: block;
+  margin-top: 8px;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-warm);
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.idioma-original:hover { text-decoration: underline; }
+
+.idioma-aviso {
+  margin: 8px 0 0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.45;
+  color: var(--accent-warm);
+}
+
+.idioma:focus-visible,
+.idioma-extra:focus-visible,
+.idioma-original:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* --- Interfaz propia del widget de Google: fuera ---------------
+   El widget inyecta una barra gris en la parte de arriba y su propio
+   desplegable, que no pegan nada con el tema oscuro. La web usa el
+   selector de aquí arriba; del widget solo se aprovecha el motor. */
+
+#google_translate_element,
+.goog-te-gadget,
+.goog-te-banner-frame,
+.goog-logo-link,
+.goog-te-balloon-frame,
+#goog-gt-tt {
+  display: none !important;
+}
+
+iframe.skiptranslate {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* El widget desplaza el <body> hacia abajo para hacer hueco a su barra. */
+body {
+  top: 0 !important;
+  position: static !important;
+}
+
+/* Google envuelve cada fragmento traducido en un <font>: que no traiga
+   colores ni tamaños propios. */
+font {
+  color: inherit !important;
+  background: none !important;
+  font-size: inherit !important;
+  vertical-align: inherit !important;
+}
+
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
 @media (max-width: 1000px) {
   body { grid-template-columns: var(--ancho-menu) minmax(0, 1fr); }
   .indice { display: none; }

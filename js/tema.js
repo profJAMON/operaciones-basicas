@@ -56,6 +56,11 @@ async function cargarTema() {
     pintarMateriales(tema.materiales || []);
     pintarActividades(tema.actividades || []);
     pintarIndicePagina();
+
+    /* La sesión se ha cargado por fetch, después de la primera pasada del
+       traductor: hay que avisarle de que hay texto nuevo en pantalla. */
+    if (typeof protegerCodigo === 'function') protegerCodigo(document.body);
+    if (typeof retraducir === 'function') retraducir();
   } catch (error) {
     raiz.innerHTML = '<p class="vacio">No se ha podido cargar la sesión. Si estás probando el sitio en tu ordenador, recuerda abrirlo con un servidor local (ver README).</p>';
     console.error(error);
@@ -67,6 +72,9 @@ function pintarLeccion(contenidoHtml) {
   const contenedor = document.getElementById('leccion-contenido');
   contenedor.innerHTML = contenidoHtml;
   agruparSubsecciones(contenedor);
+  /* Marca código y salidas como no traducibles ANTES de que el traductor
+     automático vea el contenido recién insertado. Ver js/idioma.js. */
+  if (typeof protegerCodigo === 'function') protegerCodigo(contenedor);
   document.getElementById('seccion-leccion').hidden = false;
 }
 

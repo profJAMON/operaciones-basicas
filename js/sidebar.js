@@ -52,6 +52,9 @@ async function cargarBarraLateral(idActivo) {
 
       contenedor.appendChild(detalles);
     }
+
+    /* El temario se ha construido por fetch: avisar al traductor. */
+    if (typeof retraducir === 'function') retraducir();
   } catch (error) {
     contenedor.innerHTML = '<p class="vacio">No se ha podido cargar el temario.</p>';
     console.error(error);

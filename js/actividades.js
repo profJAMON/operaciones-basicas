@@ -16,6 +16,21 @@ function crearElemento(etiqueta, clase, texto) {
   return el;
 }
 
+/* Igual que crearElemento, pero para textos que pueden llevar fragmentos
+   de código mezclados ('Añadir rowspan="5" a la fila <tr>'). Marca esos
+   fragmentos como no traducibles para que el traductor automático no los
+   convierta en código roto. Ver js/idioma.js. */
+function crearElementoConCodigo(etiqueta, clase, texto) {
+  const el = document.createElement(etiqueta);
+  if (clase) el.className = clase;
+  if (typeof window.textoConCodigoProtegido === 'function') {
+    window.textoConCodigoProtegido(el, texto === undefined ? '' : texto);
+  } else {
+    el.textContent = texto === undefined ? '' : texto;
+  }
+  return el;
+}
+
 /* ---------- Quiz de opción múltiple ---------- */
 
 function renderQuiz(contenedor, datos) {
@@ -24,14 +39,14 @@ function renderQuiz(contenedor, datos) {
 
   (datos.preguntas || []).forEach((preg, i) => {
     const bloque = crearElemento('div', 'pregunta');
-    bloque.appendChild(crearElemento('p', 'pregunta__enunciado', `${i + 1}. ${preg.pregunta}`));
+    bloque.appendChild(crearElementoConCodigo('p', 'pregunta__enunciado', `${i + 1}. ${preg.pregunta}`));
 
     const opcionesEl = crearElemento('div', 'opciones');
     const botones = [];
     const estadoPregunta = { acertada: null };
 
     preg.opciones.forEach((texto, idx) => {
-      const boton = crearElemento('button', 'opcion', texto);
+      const boton = crearElementoConCodigo('button', 'opcion', texto);
       boton.type = 'button';
       boton.addEventListener('click', () => {
         botones.forEach(b => b.disabled = true);
@@ -107,7 +122,7 @@ function renderRelacionar(contenedor, datos) {
   }
 
   izquierda.forEach(item => {
-    const ficha = crearElemento('button', 'ficha', item.texto);
+    const ficha = crearElementoConCodigo('button', 'ficha', item.texto);
     ficha.type = 'button';
     ficha.dataset.grupo = item.grupo;
     ficha.dataset.lado = 'izq';
@@ -121,7 +136,7 @@ function renderRelacionar(contenedor, datos) {
   });
 
   derecha.forEach(item => {
-    const ficha = crearElemento('button', 'ficha', item.texto);
+    const ficha = crearElementoConCodigo('button', 'ficha', item.texto);
     ficha.type = 'button';
     ficha.dataset.grupo = item.grupo;
     ficha.dataset.lado = 'der';

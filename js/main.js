@@ -71,6 +71,9 @@ async function cargarIndicePortada() {
           }
           lista.appendChild(crearFilaSesionPortada(sesion));
         });
+        /* Las sesiones llegan por fetch: hay que avisar al traductor
+           de que hay texto nuevo. Ver js/idioma.js. */
+        if (typeof retraducir === 'function') retraducir();
       });
     });
   } catch (error) {
